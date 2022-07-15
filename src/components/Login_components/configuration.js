@@ -26,7 +26,7 @@ Amplify.configure({
             scope: ['register-rider-web/auth.write','openid','profile','email'],
             redirectSignIn: 'http://localhost:3000/',
             redirectSignOut: 'http://localhost:3000/',
-            responseType: 'token' // or 'token', note that REFRESH token will only be generated when the responseType is code
+            responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
         }
 
     }
