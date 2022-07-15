@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import axios from 'axios';
-import Auth from '../Login_components/configuration'
+// import Auth from '../Login_components/configuration'
 import { Redirect } from 'react-router-dom'
 
 
@@ -10,32 +10,32 @@ import { Redirect } from 'react-router-dom'
 
 const Callback = () => {
 
-   const [user, setUser] = useState(null);
+  //  const [user, setUser] = useState(null);
    const [Currenttoken, setCurrenttoken] = useState(null);
 
-   useEffect( () => {
-    async function check() {
-       try{
-          console.log('current user');
-          console.log('url page login facebook: ', window.location.href )
-          await Auth.currentAuthenticatedUser({
-              bypassCache: false
-          }).then(user => {
-            setUser(user);
-            console.log(user);
+//    useEffect( () => {
+//     async function check() {
+//        try{
+//           console.log('current user');
+//           console.log('url page login facebook: ', window.location.href )
+//           await Auth.currentAuthenticatedUser({
+//               bypassCache: false
+//           }).then(user => {
+//             setUser(user);
+//             console.log(user);
 
-            })
-          .catch(err => console.log(err));
-       }catch(error){
-          // console.log('error: ',error);
-       }
-    }
-    check();
-}, [])
+//             })
+//           .catch(err => console.log(err));
+//        }catch(error){
+//           // console.log('error: ',error);
+//        }
+//     }
+//     check();
+// }, [])
 
-   if(user){
-    window.location.href= 'https://authregisterrider.auth.ap-southeast-1.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:3000/callbackpage/&response_type=CODE&client_id=1nr9emdl7aqvl74n9airikfpac&scope=email+openid+profile+register-rider-web/auth.write+register-rider-web/auth.read';
-   }
+//    if(user){
+//     window.location.href= 'https://authregisterrider.auth.ap-southeast-1.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:3000/callbackpage/&response_type=CODE&client_id=1nr9emdl7aqvl74n9airikfpac&scope=email+openid+profile+register-rider-web/auth.write+register-rider-web/auth.read';
+//    }
 
     const url = window.location.href;
     console.log('url page authcallback : ', window.location.href );
@@ -43,7 +43,7 @@ const Callback = () => {
     const params = new URLSearchParams()
     params.append('grant_type', 'authorization_code')
     params.append('client_id', '1nr9emdl7aqvl74n9airikfpac')
-    params.append('redirect_uri', 'http://localhost:3000/callbackpage/')
+    params.append('redirect_uri', 'http://localhost:3000/callback/')
     params.append('code', url.split('/')[4].split('=')[1])
   
     const config = {

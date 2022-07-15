@@ -121,8 +121,7 @@ const Home = () => {
     }
 
     const signinwithfacebook = async () => {
-        const response = await Auth.federatedSignIn({provider: 'Facebook'});
-        console.log(response);
+        await Auth.federatedSignIn({provider: 'Facebook'});
 
     }
 

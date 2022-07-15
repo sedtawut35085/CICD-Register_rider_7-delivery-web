@@ -12,13 +12,15 @@ import VerifyphoneComponent from './components/VerifyphoneComponent/index'
 import { AuthProvider } from './components/Login_components/Auth'
 
 function App() {
+
+  console.log('window.location.search: ' ,window.location.href);
   return (
         <Router>
           <Switch>
               <Route exact path="/" component={LoginComponent} />
               <Route exact path="/confirmcode" component={confirmcodeComponent}/>
             <AuthProvider>
-              <Route exact path="/callbackpage" component={callbackpage}/>
+              <Route exact path="/callback" component={callbackpage}/>
               <Route exact path="/signup" component={PreliminaryinformationComponent}/>
               <Route exact path="/resultpage" component={resultpage}/>
             </AuthProvider>
