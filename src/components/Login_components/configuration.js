@@ -24,8 +24,8 @@ Amplify.configure({
         oauth: {
             domain: 'authregisterrider.auth.ap-southeast-1.amazoncognito.com',
             scope: ['register-rider-web/auth.write','openid','profile','email'],
-            redirectSignIn: 'http://registerrider.com.s3-website-ap-southeast-1.amazonaws.com/',
-            redirectSignOut: 'http://registerrider.com.s3-website-ap-southeast-1.amazonaws.com/',
+            redirectSignIn: 'http://localhost:3000/',
+            redirectSignOut: 'http://localhost:3000/',
             responseType: 'token' // or 'token', note that REFRESH token will only be generated when the responseType is code
         }
 
