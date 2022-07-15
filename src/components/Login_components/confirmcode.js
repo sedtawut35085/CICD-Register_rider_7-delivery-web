@@ -30,6 +30,18 @@ const ConfirmCodePage = () => {
 
     if(correct){
         console.log('correct: ',correct);
+
+        Auth.currentSession()
+        .then(data => {
+            console.log('data: ',data);
+            const token = data.getAccessToken();
+            console.log(token);
+            console.log(token.getJwtToken());
+            // console.log(parseJwt(token.getJwtToken()));  
+          //   console.log(parseJwt(token.getJwtToken()).username);      
+          })
+        .catch(err => console.log(err));
+
         return <Redirect to="/signup" />;
     }
 

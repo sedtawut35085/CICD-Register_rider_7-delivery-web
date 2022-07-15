@@ -8,22 +8,23 @@ import resultpage from './components/Login_components/result'
 import PreliminaryinformationComponent from './components/PreliminaryinformationComponent'
 import confirmcodeComponent from './components/Login_components/confirmcode'
 import VerifyphoneComponent from './components/VerifyphoneComponent/index'
+import signinwithemail from './components/Login_components/signinwithemail'
 // import test from './components/Login_components/test'
-import { AuthProvider } from './components/Login_components/Auth'
+// import { AuthProvider } from './components/Login_components/Auth'
 
 function App() {
 
-  console.log('window.location.search: ' ,window.location.href);
+  // console.
   return (
         <Router>
           <Switch>
               <Route exact path="/" component={LoginComponent} />
               <Route exact path="/confirmcode" component={confirmcodeComponent}/>
-            <AuthProvider>
+            {/* <AuthProvider> */}
               <Route exact path="/callback" component={callbackpage}/>
               <Route exact path="/signup" component={PreliminaryinformationComponent}/>
               <Route exact path="/resultpage" component={resultpage}/>
-            </AuthProvider>
+            {/* </AuthProvider> */}
           </Switch>
         </Router>
   );

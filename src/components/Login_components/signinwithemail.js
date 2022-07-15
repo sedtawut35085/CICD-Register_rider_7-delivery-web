@@ -20,9 +20,9 @@ const Test = () =>   {
 
               
 
-            //   Auth.currentSession()
-            //   .then(data => console.log(data))
-            //   .catch(err => console.log(err));
+              Auth.currentSession()
+              .then(data => console.log(data))
+              .catch(err => console.log(err));
            }catch(error){
               console.log('error: ',error);
            }
@@ -36,7 +36,9 @@ const Test = () =>   {
            .then(user => console.log('success: ' ,user))
            .catch(err => console.log(err));
             // setUser(result);
-            
+            Auth.currentSession()
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
             } catch (error) {
             console.log('error signing up:', error);
         }

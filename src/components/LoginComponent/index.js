@@ -22,22 +22,22 @@ const Home = () => {
 
     const [user, setUser] = useState(null);
 
-    useEffect( () => {
-        async function check() {
-           try{
-              await Auth.currentAuthenticatedUser({
-                  bypassCache: false
-              }).then(user => {
-                  console.log(user);
-                  setUser(user);
-                })
-              .catch(err => console.log(err));
-           }catch(error){
-              console.log('error: ',error);
-           }
-        }
-        check();
-    }, [])
+    // useEffect( () => {
+    //     async function check() {
+    //        try{
+    //           await Auth.currentAuthenticatedUser({
+    //               bypassCache: false
+    //           }).then(user => {
+    //               console.log(user);
+    //               setUser(user);
+    //             })
+    //           .catch(err => console.log(err));
+    //        }catch(error){
+    //           console.log('error: ',error);
+    //        }
+    //     }
+    //     check();
+    // }, [])
 
     const checkPassword = (e) => {
         const Pass = e.target.value;
@@ -121,6 +121,7 @@ const Home = () => {
     }
 
     const signinwithfacebook = async () => {
+        // window.location.href= 'https://authregisterrider.auth.ap-southeast-1.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:3000/callback/&response_type=CODE&client_id=1nr9emdl7aqvl74n9airikfpac&scope=email+openid+profile+register-rider-web/auth.write+register-rider-web/auth.read';
         await Auth.federatedSignIn({provider: 'Facebook'});
 
     }

@@ -54,6 +54,7 @@ const Callback = () => {
   
     axios.post('https://authregisterrider.auth.ap-southeast-1.amazoncognito.com/oauth2/token', params, config)
       .then((result) => {
+        console.log('data : ', result.data);
         console.log('data : ', result.data.access_token);
         setCurrenttoken(result);
         // Do somthing
