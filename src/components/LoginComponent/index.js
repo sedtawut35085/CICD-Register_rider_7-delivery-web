@@ -22,22 +22,22 @@ const Home = () => {
 
     const [user, setUser] = useState(null);
 
-    // useEffect( () => {
-    //     async function check() {
-    //        try{
-    //           await Auth.currentAuthenticatedUser({
-    //               bypassCache: false
-    //           }).then(user => {
-    //               console.log(user);
-    //               setUser(user);
-    //             })
-    //           .catch(err => console.log(err));
-    //        }catch(error){
-    //           console.log('error: ',error);
-    //        }
-    //     }
-    //     check();
-    // }, [])
+    useEffect( () => {
+        async function check() {
+           try{
+              await Auth.currentAuthenticatedUser({
+                  bypassCache: false
+              }).then(user => {
+                  console.log(user);
+                  setUser(user);
+                })
+              .catch(err => console.log('err: ',err));
+           }catch(error){
+              console.log('error: ',error);
+           }
+        }
+        check();
+    }, [])
 
     const checkPassword = (e) => {
         const Pass = e.target.value;

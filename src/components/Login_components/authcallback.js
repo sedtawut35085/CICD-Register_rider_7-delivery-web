@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import axios from 'axios';
-// import Auth from '../Login_components/configuration'
+import Auth from '../Login_components/configuration'
 import { Redirect } from 'react-router-dom'
 
 
@@ -13,25 +13,24 @@ const Callback = () => {
   //  const [user, setUser] = useState(null);
    const [Currenttoken, setCurrenttoken] = useState(null);
 
-//    useEffect( () => {
-//     async function check() {
-//        try{
-//           console.log('current user');
-//           console.log('url page login facebook: ', window.location.href )
-//           await Auth.currentAuthenticatedUser({
-//               bypassCache: false
-//           }).then(user => {
-//             setUser(user);
-//             console.log(user);
-
-//             })
-//           .catch(err => console.log(err));
-//        }catch(error){
-//           // console.log('error: ',error);
-//        }
-//     }
-//     check();
-// }, [])
+   useEffect( () => {
+    async function check() {
+       try{
+          console.log('current user');
+          console.log('url page login facebook: ', window.location.href )
+          await Auth.currentAuthenticatedUser({
+              bypassCache: false
+          }).then(user => {
+            // setUser(user);
+            console.log('user current:',user);
+            })
+          .catch(err => console.log(err));
+       }catch(error){
+          // console.log('error: ',error);
+       }
+    }
+    check();
+}, [])
 
 //    if(user){
 //     window.location.href= 'https://authregisterrider.auth.ap-southeast-1.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:3000/callbackpage/&response_type=CODE&client_id=1nr9emdl7aqvl74n9airikfpac&scope=email+openid+profile+register-rider-web/auth.write+register-rider-web/auth.read';
