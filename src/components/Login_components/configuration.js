@@ -1,7 +1,13 @@
 import Amplify , {Auth} from 'aws-amplify';
 
 
-console.log('aws amplify config');
+console.log('aws amplify config2');
+console.log('hostname: ',window.location.hostname)
+console.log('isLocalhost: ',isLocalhost)
+console.log('localRedirectSignIn: ',localRedirectSignIn)
+console.log('productionRedirectSignIn: ',productionRedirectSignIn)
+console.log('awsConfig.oauth.redirectSignIn.split(","): ',awsConfig.oauth.redirectSignIn.split(","))
+
 
 const awsConfig = {
         // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
@@ -23,7 +29,7 @@ const awsConfig = {
         oauth: {
             domain: 'authregisterrider.auth.ap-southeast-1.amazoncognito.com',
             scope: ['register-rider-web/auth.write','openid','profile','email'],
-            redirectSignIn: 'http://localhost:3000/callback/',
+            redirectSignIn: 'http://registerrider.com.s3-website-ap-southeast-1.amazonaws.com/callback/',
             redirectSignOut: 'http://localhost:3000/',
             responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
         }
@@ -58,12 +64,6 @@ const isLocalhost = Boolean(
       redirectSignOut: isLocalhost ? localRedirectSignOut : productionRedirectSignOut,
     }
   }
-
-  console.log('hostname: ',window.location.hostname)
-  console.log('isLocalhost: ',isLocalhost)
-  console.log('localRedirectSignIn: ',localRedirectSignIn)
-  console.log('productionRedirectSignIn: ',productionRedirectSignIn)
-  console.log('awsConfig.oauth.redirectSignIn.split(","): ',awsConfig.oauth.redirectSignIn.split(","))
 
   Amplify.configure(updatedAwsConfig);
 
