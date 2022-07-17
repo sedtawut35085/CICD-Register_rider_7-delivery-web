@@ -24,7 +24,7 @@ const awsConfig = {
         oauth: {
             domain: 'authregisterrider.auth.ap-southeast-1.amazoncognito.com',
             scope: ['register-rider-web/auth.write','openid','profile','email'],
-            redirectSignIn: 'http://localhost:3000/callback/',
+            redirectSignIn: 'http://localhost:3000/callback/,http://registerrider.com.s3-website-ap-southeast-1.amazonaws.com/callback/',
             redirectSignOut: 'http://localhost:3000/',
             responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
         }
