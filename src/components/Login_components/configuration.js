@@ -1,7 +1,7 @@
 import Amplify , {Auth} from 'aws-amplify';
 
 
-console.log('aws amplify config2');
+console.log('aws amplify config');
 console.log('hostname: ',window.location.hostname)
 console.log('isLocalhost: ',isLocalhost)
 console.log('localRedirectSignIn: ',localRedirectSignIn)
@@ -29,7 +29,7 @@ const awsConfig = {
         oauth: {
             domain: 'authregisterrider.auth.ap-southeast-1.amazoncognito.com',
             scope: ['register-rider-web/auth.write','openid','profile','email'],
-            redirectSignIn: 'http://registerrider.com.s3-website-ap-southeast-1.amazonaws.com/callback/',
+            redirectSignIn: 'http://localhost:3000/callback/',
             redirectSignOut: 'http://localhost:3000/',
             responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
         }
@@ -65,6 +65,7 @@ const isLocalhost = Boolean(
     }
   }
 
+  
   Amplify.configure(updatedAwsConfig);
 
 export default Auth;
