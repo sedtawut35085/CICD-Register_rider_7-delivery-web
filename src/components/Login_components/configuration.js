@@ -3,11 +3,6 @@ import Amplify , {Auth} from 'aws-amplify';
 
 console.log('aws amplify config');
 console.log('hostname: ',window.location.hostname)
-console.log('isLocalhost: ',isLocalhost)
-console.log('localRedirectSignIn: ',localRedirectSignIn)
-console.log('productionRedirectSignIn: ',productionRedirectSignIn)
-console.log('awsConfig.oauth.redirectSignIn.split(","): ',awsConfig.oauth.redirectSignIn.split(","))
-
 
 const awsConfig = {
         // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
@@ -64,8 +59,12 @@ const isLocalhost = Boolean(
       redirectSignOut: isLocalhost ? localRedirectSignOut : productionRedirectSignOut,
     }
   }
-
+console.log('isLocalhost: ',isLocalhost)
+console.log('localRedirectSignIn: ',localRedirectSignIn)
+console.log('productionRedirectSignIn: ',productionRedirectSignIn)
+console.log('awsConfig.oauth.redirectSignIn.split(","): ',awsConfig.oauth.redirectSignIn.split(","))
   
-  Amplify.configure(updatedAwsConfig);
+  
+Amplify.configure(updatedAwsConfig);
 
 export default Auth;
