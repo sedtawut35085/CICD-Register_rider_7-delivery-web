@@ -43,6 +43,7 @@
   </body>
   <script text='text/javascript'>
     console.log('check');
+    console.log('window.location.hostname : ',window.location.href)
     if(window.location.pathname.indexOf('index.html') > -1){
       console.log('check callback');
       const token = localStorage.getItem('token')

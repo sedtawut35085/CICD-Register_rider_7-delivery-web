@@ -122,7 +122,9 @@ const Home = () => {
 
     const signinwithfacebook = async () => {
         // window.location.href= 'https://authregisterrider.auth.ap-southeast-1.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:3000/callback/&response_type=CODE&client_id=1nr9emdl7aqvl74n9airikfpac&scope=email+openid+profile+register-rider-web/auth.write+register-rider-web/auth.read';
+        console.log('eiei');
         await Auth.federatedSignIn({provider: 'Facebook'});
+        // window.location.href= 'http://localhost:3000/callback/'
 
     }
 

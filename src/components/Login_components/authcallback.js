@@ -24,6 +24,11 @@ const Callback = () => {
             // setUser(user);
             console.log('user current:',user);
             })
+            await Auth.currentSession({
+          }).then(user => {
+            // setUser(user);
+            console.log('session current:',user);
+            })
           .catch(err => console.log(err));
        }catch(error){
           // console.log('error: ',error);
