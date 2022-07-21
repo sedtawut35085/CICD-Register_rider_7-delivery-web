@@ -6,8 +6,7 @@ phases:
       - npm install
   build:
     commands:
-      - npm run build
-
+      - npm run client-deploy
 artifacts:
   files:
     - '**/*'
