@@ -2,7 +2,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
-
 const firebaseConfig =  firebase.initializeApp( {
     apiKey: "AIzaSyB2Tj0vEQmVYWZioYEnsV_T_EteyIoDOeU",
     authDomain: "rider-verify.firebaseapp.com",

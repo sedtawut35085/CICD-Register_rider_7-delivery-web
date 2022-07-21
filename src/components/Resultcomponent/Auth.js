@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Auth from './configuration'
+import Auth from '../configuration/configuration-aws'
 
 export const AuthContext = React.createContext();
 

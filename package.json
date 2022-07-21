@@ -15,6 +15,7 @@
     "query-string": "^7.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
     "use-state-with-callback": "^3.0.2",
@@ -24,6 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "client-s3-deploy": "aws s3 sync build/ s3://rider-verify-web",
+    "client-cloudfront-invalidation": "aws cloudfront create-invalidation --distribution-id E3NI5J3UW5BU7J  --paths '/*'",
+    "client-deploy": "npm run build && npm run client-s3-deploy && npm run client-cloudfront-invalidation",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

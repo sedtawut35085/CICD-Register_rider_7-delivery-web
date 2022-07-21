@@ -1,14 +1,11 @@
 import React, { useState, useEffect} from 'react'
-// import { Link } from 'react-router-dom'
-// import signupImg from '../assets/wallpaper-page-1.webp'
 import logo from '../../assets/logo.png'
 import testImg from './assets/wallpaper-test-5.webp'
 import { Redirect } from 'react-router-dom'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faUser } from '@fortawesome/free-solid-svg-icons'
-// import { faLock } from '@fortawesome/free-solid-svg-icons'
-// import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons' 
-import Auth from '../Login_components/configuration'
+import { FaUserAlt, FaLock, FaFacebookF, FaGoogle } from 'react-icons/fa'
+import ConfirmcodeComponent from '../ConfirmemailComponent'
+
+import Auth from '../configuration/configuration-aws'
 
 const Home = () => {
     const [userEmail, setUserEmail] = useState(null);
@@ -28,7 +25,7 @@ const Home = () => {
               await Auth.currentAuthenticatedUser({
                   bypassCache: false
               }).then(user => {
-                  console.log(user);
+                  console.log('current user: ',user);
                   setUser(user);
                 })
               .catch(err => console.log('err: ',err));
@@ -42,7 +39,6 @@ const Home = () => {
     const checkPassword = (e) => {
         const Pass = e.target.value;
         setPassword(Pass);
-        console.log('password: ',Pass);
         const uppercaseRegExp   = /(?=.*?[A-Z])/;
         const lowercaseRegExp   = /(?=.*?[a-z])/;
         const digitsRegExp      = /(?=.*?[0-9])/;
@@ -75,8 +71,6 @@ const Home = () => {
     const checkValidation = (e) =>{
         const confPass = e.target.value
         setConfirmPassword(confPass)
-        console.log('confirmpassword: ',confirmPassword);
-        console.log('password: ',password);
         if(password !== confPass){
             setIsErrorMessage("รหัสผ่านไม่ตรงกัน")
             setIsError(false)
@@ -87,12 +81,11 @@ const Home = () => {
     }
 
     const Signupwithemail = async (e) => {
-        console.log(password)
         e.preventDefault();
         if(isError === true && isErrorPassword === true){
             const { email, password} = e.target.elements;
-            console.log('email : ', email.value);
             const name ='sss';
+            setUserEmail(email.value);
             await Auth.signUp({
                 username: email.value,
                 password: password.value,
@@ -103,12 +96,10 @@ const Home = () => {
                 }
             })
             .then(data => {
-                console.log(data);
                 setUserEmail(email.value);
                 // setUserPassword(password.value);
             })
             .catch(err =>{
-                console.log('error signing up:', err);
                 if(err.toString().includes('An account with the given email already exists.')){
                     setIsErrorRegister('อีเมลนี้ได้ถูกใช้งานไปแล้ว');
                 }
@@ -122,7 +113,6 @@ const Home = () => {
 
     const signinwithfacebook = async () => {
         // window.location.href= 'https://authregisterrider.auth.ap-southeast-1.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:3000/callback/&response_type=CODE&client_id=1nr9emdl7aqvl74n9airikfpac&scope=email+openid+profile+register-rider-web/auth.write+register-rider-web/auth.read';
-        console.log('eiei');
         await Auth.federatedSignIn({provider: 'Facebook'});
         // window.location.href= 'http://localhost:3000/callback/'
 
@@ -138,8 +128,10 @@ const Home = () => {
     }
 
     if(userEmail){
-        return <Redirect to="/confirmcode" />
+        return <ConfirmcodeComponent userEmail={userEmail} userPassword={confirmPassword}></ConfirmcodeComponent>
+        // return <Redirect to="/confirmcode" />
     }
+
 
     return (  
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>    
@@ -153,17 +145,17 @@ const Home = () => {
             <form className='max-w-[400px] w-full mx-auto bg-white pl-8 pr-8' onSubmit={Signupwithemail}>
                 <h2 className='text-2xl font-bold text-left py-6'>ลงทะเบียนผู้ใช้งาน</h2>
                 <div className='flex flex-col py-2'>
-                    {/* <FontAwesomeIcon className='absolute pt-2.5 pl-3 mt-1 w-3.5 h-3.5 text-gray-500' icon={faUser}></FontAwesomeIcon> */}
+                    <FaUserAlt  className='absolute pt-2.5 pl-3 w-7 h-7 text-gray-500'></FaUserAlt>
                     <input type='email' className='border-bottom pl-12 pb-2 pt-2' name='email' id="exampleInputEmail1" required placeholder='อีเมลผู้ใช้งาน' aria-describedby="emailHelp"  />
                     <div className='ml-2 text-sm text-red-500'>{isErrorRegister}</div>
                 </div>
                 <div className='flex flex-col py-2'>
-                    {/* <FontAwesomeIcon className='absolute pt-2.5 pl-3 mt-1 w-3.5 h-3.5 text-gray-500' icon={faLock}></FontAwesomeIcon> */}
+                    <FaLock className='absolute pt-2.5 pl-3 w-7 h-7 text-gray-500'></FaLock>
                     <input value={password} className='border-bottom pl-12 pb-2 pt-2' type="password" name="password" required placeholder='รหัสผ่าน' onChange={(e) => checkPassword(e)} />
                     <div className='ml-2 text-sm text-red-500'>{isErrorPasswordMessage}</div>
                 </div>
                 <div className='flex flex-col py-2'>
-                    {/* <FontAwesomeIcon className='absolute pt-2.5 pl-3 mt-1 w-3.5 h-3.5 text-gray-500' icon={faLock}></FontAwesomeIcon> */}
+                    <FaLock className='absolute pt-2.5 pl-3 w-7 h-7 text-gray-500'></FaLock>
                     <input value={confirmPassword} className='border-bottom pl-12 pb-2 pt-2' type="password" name="confirmpassword" required placeholder='กรอกรหัสผ่านอีกครั้ง' onChange={(e) => checkValidation(e)} />
                     <div className='ml-2 text-sm text-red-500'>{isErrorMessage}</div>
                 </div>
@@ -174,6 +166,7 @@ const Home = () => {
             <div className='max-w-[400px] w-full mx-auto bg-white pl-8 pr-8'>
                 <div className='or'></div>
                 <div className='pl-4 pr-4 ml-1'>
+                    <FaFacebookF className='absolute pt-8 mt-1 pl-9 w-14 h-12 text-white'></FaFacebookF>
                     {/* <FontAwesomeIcon className='absolute pt-8 pl-11 mt-1 w-4 h-4 text-white' icon={faFacebookF}></FontAwesomeIcon> */}
                     <button onClick={signinwithfacebook} className='transition border w-full mt-4 mb-2 h-13 py-2 bg-blue-600 hover:bg-blue-800 text-white rounded-2xl delay-150'>
                         <div className='pl-10'>
@@ -182,6 +175,7 @@ const Home = () => {
                     </button>
                 </div>
                 <div className='pl-4 pr-4 ml-1'>
+                   <FaGoogle className='absolute pt-8 mt-1 pl-9 w-14 h-12 text-white'></FaGoogle>
                     {/* <FontAwesomeIcon className='absolute pt-8 pl-11 mt-1 w-4 h-4 text-white' icon={faGoogle}></FontAwesomeIcon> */}
                     <button onClick={signinwithgoogle} className='transition border w-full my-4 h-13 py-2 bg-red-600 hover:bg-red-800 text-white rounded-2xl delay-150'>
                         <div className='pl-6'>
@@ -189,6 +183,8 @@ const Home = () => {
                         </div>
                     </button>
                 </div>
+        
+            
             </div>        
         </div>
     </div>

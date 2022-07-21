@@ -1,9 +1,5 @@
 import Amplify , {Auth} from 'aws-amplify';
 
-
-console.log('aws amplify config');
-console.log('hostname: ',window.location.hostname)
-
 const awsConfig = {
         // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
         identityPoolId: 'ap-southeast-1:26d09956-7796-4bf0-a58d-d48ffa65499f',
@@ -24,8 +20,8 @@ const awsConfig = {
         oauth: {
             domain: 'authregisterrider.auth.ap-southeast-1.amazoncognito.com',
             scope: ['register-rider-web/auth.write','openid','profile','email'],
-            redirectSignIn: 'http://localhost:3000/',
-            redirectSignOut: 'http://localhost:3000/',
+            redirectSignIn: 'https://d2jw790xar9n64.cloudfront.net/',
+            redirectSignOut: 'https://d2jw790xar9n64.cloudfront.net/',
             responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
         }
 };

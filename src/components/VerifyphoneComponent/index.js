@@ -55,15 +55,15 @@ const Verifyphone = () => {
     return (
         <div>
             <form onSubmit={requestotp}>
-                <h1>verify phone number</h1>
+                <h1>ใส่เบอร์โทรศัพท์</h1>
                 <div>
-                    <input type="tel" id="phoneNumberInput" name="phonenumber"/>
+                    <input type="tel"  className='border pl-4 pb-2 pt-2'  id="phoneNumberInput" name="phonenumber"/>
                 </div>
                 {expandForm === true?
                  <>
                    <div>
                        <label>OTP</label>
-                       <input type="number" id="otpinput" value={OTP} onChange={(e) => verifyOTP(e)} />
+                       <input type="number" className='border pl-4 pb-2 pt-2' id="otpinput" value={OTP} onChange={(e) => verifyOTP(e)} />
                    </div>
                  </>
                  :
@@ -71,7 +71,7 @@ const Verifyphone = () => {
                 }
                 {
                     expandForm === false?
-                    <button type="submit">Request OTP</button>
+                    <button type="submit" className='border w-40 my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl'>Request OTP</button>
                     :
                     null
                 }

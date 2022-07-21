@@ -41,25 +41,4 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
-  <script text='text/javascript'>
-    console.log('check');
-    console.log('window.location.hostname : ',window.location.href)
-    if(window.location.pathname.indexOf('index.html') > -1){
-      console.log('check callback');
-      const token = localStorage.getItem('token')
-      if(token){
-        localStorage.removeItem('token')
-        window.location.assign('/')
-      } else {
-        if(window.localtion.search.indexOf('code') > -1){
-           console.log(window.location.href)
-           const hash = window.location.href;
-           let urlCode = hash.split('=')
-           urlCode = urlCode[urlCode.length - 1];
-           localStorage.setItem('code', urlCode);
-           window.location.assign('/')
-      }
-    }  
-  }
-  </script>
 </html>
