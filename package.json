@@ -27,7 +27,7 @@
     "test": "react-scripts test",
     "client-s3-deploy": "aws s3 sync build/ s3://rider-verify-web",
     "client-cloudfront-invalidation": "aws cloudfront create-invalidation --distribution-id EB7O647OTSUWJ  --paths '/*'",
-    "client-deploy": "npm run build && npm run client-s3-deploy && npm run client-cloudfront-invalidation",
+    "client-deploy": "npm run build && npm run client-cloudfront-invalidation",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
