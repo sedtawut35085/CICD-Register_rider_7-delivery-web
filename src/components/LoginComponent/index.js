@@ -138,11 +138,11 @@ const Home = () => {
         <div className='hidden sm:block'>
             <img className='w-full h-full object-cover photo' src={testImg} alt="" />
         </div>
-        <div className='bg-white flex flex-col justify-center mb-14 pb-5'>
-            <div className='flex justify-end pr-10 pb-14 mb-14 content-start'>
+        <div className='bg-white flex flex-col mb-14 pb-5'>
+            <div className='flex justify-end pr-10 pb-14 pt-3 mb-14 content-start'>
                 <img className='absolute w-14 h-14 object-cover photo mb-14' src={logo} alt="" />
             </div>
-            <form className='max-w-[400px] w-full mx-auto bg-white pl-8 pr-8' onSubmit={Signupwithemail}>
+            <form className='max-w-[400px] w-full mx-auto bg-white pl-8 pr-8 pt-3 justify-center ' onSubmit={Signupwithemail}>
                 <h2 className='text-2xl font-bold text-left py-6'>ลงทะเบียนผู้ใช้งาน</h2>
                 <div className='flex flex-col py-2'>
                     <FaUserAlt  className='absolute pt-2.5 pl-3 w-7 h-7 text-gray-500'></FaUserAlt>
