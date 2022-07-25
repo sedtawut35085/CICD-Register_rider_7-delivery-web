@@ -111,10 +111,38 @@ const Page2 = () => {
                 <div className='flex flex-col py-2'>
                     <label htmlFor="exampleFormControlInput2" className="form-label inline-blocktext-gray-700 pl-2 pt-1 text-sm">จังหวัดที่ต้องการรับงาน</label>
                     <select required id="countries" name='country' type='text' className="border-bottom text-gray-700 pl-4 pb-2 pt-1 block w-fullfocus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none ">
-                        <option>กรุงเทพ</option>
-                        <option>นนทบุรี</option>
+                        <option>กรุงเทพมหานคร</option>
+                        <option>กระบี่</option>
+                        <option>กาญจนบุรี</option>
+                        <option>กาฬสินธุ์</option>
+                        <option>กำแพงเพชร</option>
+                        <option>ขอนแก่น</option>
+                        <option>จันทบุรี</option>
+                        <option>ฉะเชิงเทรา</option>
+                        <option>ชลบุรี</option>
+                        <option>ชัยนาท</option>
+                        <option>ชัยภูมิ</option>
+                        <option>ชุมพร</option>
+                        <option>เชียงราย</option>
                         <option>เชียงใหม่</option>
-                        <option>ศรีษะเกต</option>
+                        <option>ตรัง</option>
+                        <option>ตราด</option>
+                        <option>ตาก</option>
+                        <option>นครนายก</option>
+                        <option>นครปฐม</option>
+                        <option>นครพนม</option>
+                        <option>นครราชสีมา</option>
+                        <option>นครศรีธรรมราช</option>
+                        <option>นครสวรรค์</option>
+                        <option>นนทบุรี</option>
+                        <option>นราธิวาส</option>
+                        <option>น่าน</option>
+                        <option>บึงกาฬ</option>
+                        <option>บุรีรัมย์</option>
+                        <option>ปทุมธานี</option>
+                        <option>ประจวบคีรีขันธ์</option>
+                        <option>ปราจีนบุรี</option>
+                        {/* https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%AD%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%A3%E0%B8%A2%E0%B9%88%E0%B8%AD%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2 */}
                     </select>
                     {/* <input
                         type="text"

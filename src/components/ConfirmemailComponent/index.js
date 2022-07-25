@@ -2,41 +2,55 @@ import React, { useState } from 'react';
 import logo from '../../assets/logo.png'
 import testImg from '../LoginComponent/assets/wallpaper-test-5.webp'
 import Auth from '../configuration/configuration-aws'
+import { FaCode } from 'react-icons/fa'
 
 import { Redirect } from 'react-router-dom'
 
 const ConfirmCodePage = ({userEmail, userPassword}) => {
     // const { currentUser } = useContext(AuthContext);  
     const [correct, setCorrect] = useState(null);
+    const [messageError,setMessageError] = useState(null);
+    const [messageResendCode, setmessageResendCode] = useState("คลิกเพื่อส่งรหัสอีกครั้ง")
 
-    console.log(userEmail);
-    console.log(userPassword);
+    const resendConfirmationCode = async (e) => {
+        try {
+            await Auth.resendSignUp(userEmail);
+            setmessageResendCode("ส่งหรัสไปยังเมลของคุณเรียบร้อยแล้ว")
+        } catch (err) {
+            console.log('error resending code: ', err);
+        }
+    }
 
     const confirmCode = async (e) =>  {
         e.preventDefault();
         const { code} = e.target.elements;
-        console.log('code: ',code.value);
+        let isConfirmcode = false;
         const email = userEmail;
         const password =userPassword;
         await Auth.confirmSignUp(email,code.value, {
             forceAliasCreation: true
         }).then(data => 
-            {console.log(data);
+            {
+                isConfirmcode = true
             })
-        .catch(err => console.log(err));
-        await Auth.signIn(email, password)
-           .then(user => {
-               console.log('success: ' ,user);
-               setCorrect(true);})
-           .catch(err => console.log(err));   
+        .catch(err => 
+            {
+                setMessageError('รหัสผิด โปรดคลิกส่งรหัสอีกครั้งเพื่อรับรหัสใหม่')
+            }
+        );
+        console.log(isConfirmcode);
+        if(isConfirmcode){
+            await Auth.signIn(email, password)
+            .then(user => {
+                setCorrect(true);})
+            .catch(err => console.log(err));   
+        }   
     }
 
     if(correct){
         return <Redirect to="/signup" />;
     }
 
-
-    
     return (
         <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>    
             <div className='hidden sm:block'>
@@ -49,18 +63,21 @@ const ConfirmCodePage = ({userEmail, userPassword}) => {
                 <form className='max-w-[400px] w-full mx-auto bg-white pl-8 pr-8 pt-3 justify-center ' onSubmit={confirmCode}>
                     <h2 className='text-2xl font-bold text-left py-6'>ใส่รหัส 6 ตัวที่ส่งไปยังเมล {userEmail}</h2>
                     <div className='flex flex-col py-2'>
-                        {/* <FaUserAlt  className='absolute pt-2.5 pl-3 w-7 h-7 text-gray-500'></FaUserAlt> */}
+                        <FaCode className='absolute pt-2.5 pl-3 w-7 h-7 text-gray-500'></FaCode>
                         <input type='code' className='border-bottom pl-12 pb-2 pt-2' name='code' id="exampleInputCode" required placeholder='รหัสที่ส่งไปยังอีเมลของท่าน' aria-describedby="codeHelp"  />
+                        <div className='ml-2 text-sm text-red-500'>{messageError}</div>
                     </div>
                     {/* <div className='flex flex-col py-2'>
                         <FaLock className='absolute pt-2.5 pl-3 w-7 h-7 text-gray-500'></FaLock>
                         <input value={confirmPassword} className='border-bottom pl-12 pb-2 pt-2' type="password" name="confirmpassword" required placeholder='กรอกรหัสผ่านอีกครั้ง' onChange={(e) => checkValidation(e)} />
                         <div className='ml-2 text-sm text-red-500'>{isErrorMessage}</div>
                     </div> */}
+                    <h4 className='text-red-500 text-xs pt-3' onClick={resendConfirmationCode}>{messageResendCode}</h4>
                     <div className='pl-4 pr-4 ml-1'>
                         <button className='transition border w-full my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl delay-150'>ยืนยัน</button>
                     </div>
-                </form>         
+                </form>  
+                      
             </div>
         </div>
         // <div className='App'>
