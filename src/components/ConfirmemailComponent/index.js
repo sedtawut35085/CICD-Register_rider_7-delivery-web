@@ -72,9 +72,11 @@ const ConfirmCodePage = ({userEmail, userPassword}) => {
                         <input value={confirmPassword} className='border-bottom pl-12 pb-2 pt-2' type="password" name="confirmpassword" required placeholder='กรอกรหัสผ่านอีกครั้ง' onChange={(e) => checkValidation(e)} />
                         <div className='ml-2 text-sm text-red-500'>{isErrorMessage}</div>
                     </div> */}
-                    <h4 className='text-red-500 text-xs pt-3' onClick={resendConfirmationCode}>{messageResendCode}</h4>
                     <div className='pl-4 pr-4 ml-1'>
                         <button className='transition border w-full my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl delay-150'>ยืนยัน</button>
+                    </div>
+                    <div className='pl-14 ml-8'>
+                        <h2 className='text-red-500 text-sm pt-3 underline' onClick={resendConfirmationCode}>{messageResendCode}</h2>
                     </div>
                 </form>  
                       

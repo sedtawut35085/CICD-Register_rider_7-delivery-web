@@ -3,6 +3,7 @@ import { authentication } from './configuration-firebase';
 import { RecaptchaVerifier,signInWithPhoneNumber } from 'firebase/auth';
 import testImg from './assets/wallpaper-7-eleven-delivery-02.jpeg'
 import logo from '../../assets/logo.png'
+import { Redirect } from 'react-router-dom'
 
 const Verifyotp = ({userPhone}) => {
     const [correct, setCorrect] = useState(false);
@@ -50,7 +51,9 @@ const Verifyotp = ({userPhone}) => {
     }
 
     if(correct){
+
         console.log('correct confimcode')
+        return <Redirect to="/personalinformation" />;
     }
 
     return (
@@ -75,10 +78,15 @@ const Verifyotp = ({userPhone}) => {
                               placeholder="000000" id="otpinput" name="phonenumber" value={OTP} onChange={(e) =>verifyOTP(e)}
                             />
                     </div>
-                    <h4 className='text-red-500 text-xs pt-3' onClick={ResendOTP}>{messageResendOTP}</h4>
-                    <div className='pl-4 pr-4 ml-1'>
-                        <button className='border w-full my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl'>ยืนยัน</button>
+                
+                    <div className='pl-4 pr-4 ml-1 mb-2'>
+                        <button className='border w-full mt-4 mb-2 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl'>ยืนยัน</button>
+                        
                     </div>
+                    <div className='pl-14 ml-8'>
+                        <h2 className='text-red-500 text-sm pt-3 underline' onClick={ResendOTP}>{messageResendOTP}</h2>
+                    </div>
+                   
                     </div>       
                     <div id="recaptcha-container"></div>   
             </div>

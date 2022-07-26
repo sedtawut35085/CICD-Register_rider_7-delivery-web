@@ -7,7 +7,7 @@ import logo from '../../assets/logo.png'
 
 const Verifyphone = () => {
 
-    const countryCode = "+66";
+    // const countryCode = "+66";
     const [phoneNumber, setPhoneNumber] = useState("");
     const [expandForm, setExpandForm] = useState(false);
     

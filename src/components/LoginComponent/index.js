@@ -6,6 +6,7 @@ import { FaUserAlt, FaLock, FaFacebookF, FaGoogle } from 'react-icons/fa'
 import ConfirmcodeComponent from '../ConfirmemailComponent'
 
 import Auth from '../configuration/configuration-aws'
+import './style.css'
 
 const Home = () => {
     const [userEmail, setUserEmail] = useState(null);
