@@ -60,8 +60,11 @@ const ConfirmCodePage = ({userEmail, userPassword}) => {
                 <div className='flex justify-end pr-10 pb-14 pt-3 mb-14 content-start'>
                     <img className='absolute w-14 h-14 object-cover photo mb-14' src={logo} alt="" />
                 </div>
-                <form className='max-w-[400px] w-full mx-auto bg-white pl-8 pr-8 pt-3 justify-center ' onSubmit={confirmCode}>
-                    <h2 className='text-2xl font-bold text-left py-6'>ใส่รหัส 6 ตัวที่ส่งไปยังเมล {userEmail}</h2>
+                <form className='max-w-[400px] w-full mx-auto bg-white pl-8 pr-8 pt-16 justify-center mt-4 ' onSubmit={confirmCode}>
+                    <div className='text-left py-6 pt-12'>
+                        <h2 className='text-2xl font-bold pb-1' >ใส่รหัส 6 ตัวที่ส่งไปยังเมล</h2>
+                        <h5 className='pl-1 text-sm'>aoy35085</h5>
+                    </div>
                     <div className='flex flex-col py-2'>
                         <FaCode className='absolute pt-2.5 pl-3 w-7 h-7 text-gray-500'></FaCode>
                         <input type='code' className='border-bottom pl-12 pb-2 pt-2' name='code' id="exampleInputCode" required placeholder='รหัสที่ส่งไปยังอีเมลของท่าน' aria-describedby="codeHelp"  />
@@ -72,10 +75,10 @@ const ConfirmCodePage = ({userEmail, userPassword}) => {
                         <input value={confirmPassword} className='border-bottom pl-12 pb-2 pt-2' type="password" name="confirmpassword" required placeholder='กรอกรหัสผ่านอีกครั้ง' onChange={(e) => checkValidation(e)} />
                         <div className='ml-2 text-sm text-red-500'>{isErrorMessage}</div>
                     </div> */}
-                    <div className='pl-4 pr-4 ml-1'>
+                    <div className='pl-4 pr-4 ml-1 pt-2'>
                         <button className='transition border w-full my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl delay-150'>ยืนยัน</button>
                     </div>
-                    <div className='pl-14 ml-8'>
+                    <div className='pl-16 ml-11'>
                         <h2 className='text-red-500 text-sm pt-3 underline' onClick={resendConfirmationCode}>{messageResendCode}</h2>
                     </div>
                 </form>  

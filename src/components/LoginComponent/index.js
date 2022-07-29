@@ -86,7 +86,6 @@ const Home = () => {
         if(isError === true && isErrorPassword === true){
             const { email, password} = e.target.elements;
             const name ='sss';
-            setUserEmail(email.value);
             await Auth.signUp({
                 username: email.value,
                 password: password.value,

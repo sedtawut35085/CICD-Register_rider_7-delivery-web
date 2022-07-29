@@ -4,18 +4,11 @@ import testImg from './assets/wallpaper-7-eleven-delivery-02.jpeg'
 import logo from '../../assets/logo.png'
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import { Select, Option } from "@material-tailwind/react";
 import moment from "moment";
 
 const Page2 = () => {
 
     const [expandForm, setExpandForm] = useState(false);
-
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-      ]
 
     useEffect( () => {
         Auth.currentSession()
