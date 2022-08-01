@@ -1,0 +1,11 @@
+import { useStepperContext } from "../../../context/StepperContext";
+
+export default function Details() {
+
+  return (
+    <div>
+      ข้อมูลบัญชีธนาคาร
+     
+    </div>
+  );
+}

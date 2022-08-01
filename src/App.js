@@ -5,7 +5,7 @@ import LoginComponent from './components/LoginComponent'
 import resultpage from './components/Resultcomponent/result'
 import PreliminaryinformationComponent from './components/PreliminaryinformationComponent/index'
 import VerifyphoneComponent from './components/VerifyphoneComponent/index'
-import PersonalinformationComponent from './components/PersonalinformationComponent/index'
+import PersonalinformationComponent from './components/information/index'
 // import { AuthProvider } from './components/Resultcomponent/Auth'
 
 function App() {
