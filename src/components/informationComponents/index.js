@@ -51,7 +51,9 @@ function App() {
     <div className="mx-auto rounded-2xl bg-white pb-2">
       {/* Stepper */}
       <div className="">
-        
+        <div className="bg-green-600 pb-10 pt-8 md:pl-16 md:pr-16">
+          <Stepper steps={steps} currentStep={currentStep} />
+        </div>
         
 
         <div className="my-10 p-10 ">
@@ -59,7 +61,14 @@ function App() {
         </div>
       </div>
 
-      
+      {/* navigation button */}
+      {currentStep !== steps.length && (
+        <StepperControl
+          handleClick={handleClick}
+          currentStep={currentStep}
+          steps={steps}
+        />
+      )}
     </div>
   );
 }
