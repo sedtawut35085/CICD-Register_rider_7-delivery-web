@@ -1,7 +1,6 @@
-/*custom font*/
+/* 
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-/*basic reset*/
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +19,6 @@ body {
     overflow: hidden;
 }
 
-/*form styles*/
 #msform {
     text-align: center;
     position: relative;
@@ -36,17 +34,13 @@ body {
     box-sizing: border-box;
     width: 80%;
     margin: 0 10%;
-
-    /*stacking fieldsets above each other*/
     position: relative;
 }
 
-/*Hide all except first fieldset*/
 #msform fieldset:not(:first-of-type) {
     display: none;
 }
 
-/*inputs*/
 #msform input, #msform textarea {
     padding: 15px;
     border: 1px solid #ccc;
@@ -71,7 +65,6 @@ body {
     -o-transition: All 0.5s ease-in;
 }
 
-/*buttons*/
 #msform .action-button {
     width: 100px;
     background: #2098ce;
@@ -104,7 +97,6 @@ body {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #aCbEd0;
 }
 
-/*headings*/
 .fs-title {
     font-size: 18px;
     text-transform: uppercase;
@@ -121,11 +113,9 @@ body {
     margin-bottom: 20px;
 }
 
-/*progressbar*/
 #progressbar {
     margin-bottom: 30px;
     overflow: hidden;
-    /*CSS counters to number the steps*/
     counter-reset: step;
 }
 
@@ -154,7 +144,6 @@ body {
     margin: 0 auto 10px auto;
 }
 
-/*progressbar connectors*/
 #progressbar li:after {
     content: '';
     width: 100%;
@@ -163,18 +152,31 @@ body {
     position: absolute;
     left: -50%;
     top: 9px;
-    z-index: -1; /*put it behind the numbers*/
+    z-index: -1; 
 }
 
 #progressbar li:first-child:after {
-    /*connector not needed before the first step*/
     content: none;
 }
 
-/*marking active/completed steps blue*/
-/*The number of the step and the connector before it = blue*/
 #progressbar li.active:before, #progressbar li.active:after {
     background: #2098ce;
     color: white;
-}
+} */
 
+@media only screen and (max-width: 767px) {
+    .button-center {
+        margin: auto;
+        width: 50%;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+    
+  }
+
+@media only screen and (max-width: 434px) {
+    .step-bar {
+        margin-left: -40px;
+    }
+    
+  }
