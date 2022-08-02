@@ -4,6 +4,7 @@ import { RecaptchaVerifier,signInWithPhoneNumber } from 'firebase/auth';
 import testImg from './assets/wallpaper-7-eleven-delivery-02.jpeg'
 import logo from '../../assets/logo.png'
 import { Redirect } from 'react-router-dom'
+import OtpInput from "react-otp-input";
 
 const Verifyotp = ({userPhone}) => {
     const [correct, setCorrect] = useState(false);
@@ -33,12 +34,12 @@ const Verifyotp = ({userPhone}) => {
     }
 
 
-    const verifyOTP = (e) => {
+    const verifyOTP = (otp) => {
         console.log('otp');
-        const otp = e.target.value;
+        console.log(otp)
         setOTP(otp);
+        // setOTP(otp);
         if(otp.length === 6){
-            console.log(otp);
             let confirmationResult = window.confirmationResult;
             confirmationResult.confirm(otp).then((result) => {
                 // const user = result.user;
@@ -53,7 +54,7 @@ const Verifyotp = ({userPhone}) => {
     if(correct){
 
         console.log('correct confimcode')
-        return <Redirect to="/personalinformation" />;
+        return <Redirect to="/information" />;
     }
 
     return (
@@ -71,19 +72,37 @@ const Verifyotp = ({userPhone}) => {
                         <h5>{userPhone}</h5>
                     </div>
                     <div className='flex flex-col py-2'>
-                        <label htmlFor="exampleFormControlInput2" className="form-label inline-blocktext-gray-700 pl-2 text-sm">เลข OTP 6 หลัก</label>
+                        <div className=''>
+                            <OtpInput
+                                value={OTP} onChange={(e) =>verifyOTP(e)}
+                                // separator={
+                                // <span>
+                                //     <strong>-</strong>
+                                // </span>
+                                // }
+                                numInputs={6}
+                                type="number"
+                                required
+                                inputStyle={{
+                                width: "40px",
+                                height: "40px",
+                                margin: "0 5px",
+                                fontSize: "1rem",
+                                borderRadius: 4,
+                                border: "1px solid rgba(0,0,0,0.3)"
+                                }}
+                            />
+                        </div>
+                        {/* <label htmlFor="exampleFormControlInput2" className="form-label inline-blocktext-gray-700 pl-2 text-sm">เลข OTP 6 หลัก</label>
                             <input
                               type="number" required
                               className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                               placeholder="000000" id="otpinput" name="phonenumber" value={OTP} onChange={(e) =>verifyOTP(e)}
-                            />
+                        /> */}
                     </div>
                 
-                    <div className='pl-4 pr-4 ml-1 mb-2'>
-                        <button className='border w-full mt-4 mb-2 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl'>ยืนยัน</button>
-                        
-                    </div>
-                    <div className='pl-14 ml-8'>
+                   
+                    <div className='pl-10 ml-6 pt-3 mt-2'>
                         <h2 className='text-red-500 text-sm pt-3 underline' onClick={ResendOTP}>{messageResendOTP}</h2>
                     </div>
                    
@@ -92,11 +111,6 @@ const Verifyotp = ({userPhone}) => {
             </div>
             
         </div>
-        // <div>
-        //     <h1>{userPhone}</h1>
-        //     <label>OTP</label>
-        //     <input type="number" className='border pl-4 pb-2 pt-2' id="otpinput" value={OTP} onChange={(e) => verifyOTP(e)} />
-        // </div>
 
     )
 

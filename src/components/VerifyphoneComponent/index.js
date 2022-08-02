@@ -26,6 +26,7 @@ const Verifyphone = () => {
         const { phonenumber } = e.target.elements;
         console.log(phonenumber.value);
         setPhoneNumber(phonenumber.value)
+        setExpandForm(true);
         //+66960531207
         if(phonenumber.value >= 12){
             setExpandForm(true);

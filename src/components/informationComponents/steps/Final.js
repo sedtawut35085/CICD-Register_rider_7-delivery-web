@@ -24,14 +24,12 @@ export default function Final() {
           </div>
   
           <div className="mt-3 text-xl font-semibold uppercase text-green-500">
-            Congratulations!
+            เสร็จสิ้น
           </div>
-          <div className="text-lg font-semibold text-gray-500">
-            Your Account has been created.
-          </div>
+        
           <a className="mt-10" href="/user/dashboard">
             <button className="h-10 px-5 text-green-700 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-green-500 hover:text-green-100">
-              Close
+              ปิด
             </button>
           </a>
         </div>
