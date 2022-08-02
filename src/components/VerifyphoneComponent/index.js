@@ -26,7 +26,7 @@ const Verifyphone = () => {
         const { phonenumber } = e.target.elements;
         console.log(phonenumber.value);
         setPhoneNumber(phonenumber.value)
-        setExpandForm(true);
+        // setExpandForm(true);
         //+66960531207
         if(phonenumber.value >= 12){
             setExpandForm(true);
@@ -54,11 +54,7 @@ const Verifyphone = () => {
                 {
                     expandForm === false?
                     <>
-                    {/* <h1>ใส่เบอร์โทรศัพท์</h1>
-                    <div>
-                        <input type="tel"  className='border pl-4 pb-2 pt-2'  id="phoneNumberInput" name="phonenumber"/>
-                        <button type="submit" className='border w-40 my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl'>Request OTP</button>
-                    </div> */}
+        
                     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>    
                         <div className='hidden sm:block bg-gray-100'>
                             <img className='w-full h-full object-cover photo' src={testImg} alt="" />
@@ -69,7 +65,7 @@ const Verifyphone = () => {
                             </div>
                             <div className='max-w-[400px] w-full mx-auto bg-white pl-8 pr-8 pt-14 justify-center' >
                                 <h2 className='text-2xl font-bold text-left py-6 pt-14'>กรอกข้อมูลเบอร์โทรศัพท์</h2>
-                                <div className='flex flex-col py-2'>
+                                <div className='flex flex-col py-2 mt-6'>
                                     <label htmlFor="exampleFormControlInput2" className="form-label inline-blocktext-gray-700 pl-2 text-sm">เบอร์โทรศัพท์ของคุณ</label>
                                     <input
                                         type="tel" required
@@ -77,7 +73,7 @@ const Verifyphone = () => {
                                         placeholder="+6696165211" id="phoneNumberInput" name="phonenumber"
                                     />
                                 </div>
-                                <div className='pl-4 pr-4 ml-1'>
+                                <div className='pl-4 pr-4 ml-1 mt-6'>
                                     <button className='border w-full my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl'>ยืนยัน</button>
                                 </div>
                             </div>

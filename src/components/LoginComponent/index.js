@@ -124,7 +124,7 @@ const Home = () => {
     }
 
     if (user) {
-        return <Redirect to="/signup" />
+        return <Redirect to="/Preliminary" />
     }
 
     if(userEmail){
