@@ -48,7 +48,7 @@ const ConfirmCodePage = ({userEmail, userPassword}) => {
     }
 
     if(correct){
-        return <Redirect to="/signup" />;
+        return <Redirect to="/Preliminary" />;
     }
 
     return (
