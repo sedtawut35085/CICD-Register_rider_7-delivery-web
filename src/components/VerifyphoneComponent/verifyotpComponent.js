@@ -9,7 +9,7 @@ import OtpInput from "react-otp-input";
 const Verifyotp = ({userPhone}) => {
     const [correct, setCorrect] = useState(false);
     const [OTP,setOTP] = useState("");
-    const [messageResendOTP,setMessageResendOTP] = useState("คลิกเพื่อส่งรหัส OTP อีกครั้ง")
+    const [messageResendOTP,setMessageResendOTP] = useState(false)
 
     const generateRecaptcha = () => {
         window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
@@ -21,7 +21,7 @@ const Verifyotp = ({userPhone}) => {
     }
 
     const ResendOTP = (e) => {
-        setMessageResendOTP('ส่งรหัส OTP อีกครั้งเรียบร้อย')
+        setMessageResendOTP(true)
         generateRecaptcha();
         let appVerifier = window.recaptchaVerifier;
         signInWithPhoneNumber(authentication,userPhone,appVerifier)
@@ -71,8 +71,8 @@ const Verifyotp = ({userPhone}) => {
                         <h2 className='text-2xl font-bold' >กรอกเลข OTP ที่ส่งไปยังเลข</h2>
                         <h5>{userPhone}</h5>
                     </div>
-                    <div className='flex flex-col py-2'>
-                        <div className=''>
+                    <div className='flex flex-col py-2 mt-6'>
+                        <div className='pr-2 ml-1 pt-2'>
                             <OtpInput
                                 value={OTP} onChange={(e) =>verifyOTP(e)}
                                 // separator={
@@ -93,18 +93,30 @@ const Verifyotp = ({userPhone}) => {
                                 }}
                             />
                         </div>
-                        {/* <label htmlFor="exampleFormControlInput2" className="form-label inline-blocktext-gray-700 pl-2 text-sm">เลข OTP 6 หลัก</label>
-                            <input
-                              type="number" required
-                              className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                              placeholder="000000" id="otpinput" name="phonenumber" value={OTP} onChange={(e) =>verifyOTP(e)}
-                        /> */}
+                    
                     </div>
                 
-                   
-                    <div className='pl-10 ml-6 pt-3 mt-2'>
-                        <h2 className='text-red-500 text-sm pt-3 underline' onClick={ResendOTP}>{messageResendOTP}</h2>
-                    </div>
+                    {messageResendOTP === false?
+                        <>
+                            <div className='pt-12 pr-8'>
+                                <h2 className='text-red-500 text-sm underline text-center' onClick={ResendOTP}>คลิกเพื่อส่ง OTP อีกครั้ง</h2>
+                            </div>
+                        </>
+                        :
+                        null
+                    }
+                    {messageResendOTP === true?
+                        <>
+                            <div className='pt-12 pr-8'>
+                                <h2 className='text-red-500 text-sm text-center' >ส่งรหัสไปยังเมลของคุณเรียบร้อยแล้ว</h2>
+                            </div>
+                        </>
+                        :
+                        null
+                    }
+                    {/* <div className=''>
+                        <h2 className='text-red-500 text-sm pt-8 underline text-center md:pr-8' onClick={ResendOTP}>คลิกเพื่อส่งรหัส OTP อีกครั้ง</h2>
+                    </div> */}
                    
                     </div>       
                     <div id="recaptcha-container"></div>   
