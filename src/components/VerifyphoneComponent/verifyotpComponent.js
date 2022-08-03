@@ -81,7 +81,7 @@ const Verifyotp = ({userPhone}) => {
                                 // </span>
                                 // }
                                 numInputs={6}
-                                type="number"
+                                isInputNum={true}
                                 required
                                 inputStyle={{
                                 width: "40px",
