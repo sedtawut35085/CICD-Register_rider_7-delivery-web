@@ -81,6 +81,7 @@ const Verifyotp = ({userPhone}) => {
                                 // </span>
                                 // }
                                 numInputs={6}
+                                isInputNum={true}
                                 type="number"
                                 required
                                 inputStyle={{
@@ -108,7 +109,7 @@ const Verifyotp = ({userPhone}) => {
                     {messageResendOTP === true?
                         <>
                             <div className='pt-12 pr-8'>
-                                <h2 className='text-red-500 text-sm text-center' >ส่งรหัสไปยังเมลของคุณเรียบร้อยแล้ว</h2>
+                                <h2 className='text-red-500 text-sm text-center' >ส่ง OTP อีกครั้งเรียบร้อยแล้ว</h2>
                             </div>
                         </>
                         :
