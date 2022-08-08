@@ -2,18 +2,17 @@
 
 
 import { useState } from "react";
-import Stepper from "./Stepper";
-import StepperControl from "./StepperControl";
-import { UseContextProvider } from "../../context/StepperContext";
+import Stepper from "../StepComponents/Stepper";
+import StepperControl from "../StepComponents/StepperControl";
+import { UseContextProvider } from "../../context/UserContext";
 
-import Personalinformation from "./steps/Personalinformation";
-import Bookbankinformation from "./steps/Bookbankinformation";
-import Driverlicenseinformation from "./steps/Driverlicenseinformation";
-import Carinformation from './steps/Carinformation'
-import Final from "./steps/Final";
+import Personalinformation from "../StepComponents/steps/Personalinformation";
+import Bookbankinformation from "../StepComponents/steps/Bookbankinformation";
+import Driverlicenseinformation from "../StepComponents/steps/Driverlicenseinformation";
+import Carinformation from '../StepComponents/steps/Carinformation'
+import Final from "../StepComponents/steps/Final";
 
-
-function App() {
+const InformationComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   const steps = [
@@ -52,7 +51,7 @@ function App() {
     <div className="mx-auto rounded-2xl bg-white pb-2">
       {/* Stepper */}
       <div className="">
-        <div className="bg-green-600 pb-10 pt-8 pr-16 pl-16">
+        <div className="bg-green-600 pb-10 pt-8 md:pl-16 md:pr-16">
           <Stepper steps={steps} currentStep={currentStep} />
         </div>
         
@@ -71,7 +70,7 @@ function App() {
         />
       )}
     </div>
-  );
+  )
 }
 
-export default App;
+export default InformationComponent;

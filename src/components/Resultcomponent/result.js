@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Auth from '../configuration/configuration-aws'
+import Auth from '../../configuration/configuration-aws'
 // import { Redirect } from 'react-router-dom'
 
 
