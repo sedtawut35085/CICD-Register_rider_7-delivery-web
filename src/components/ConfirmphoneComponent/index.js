@@ -107,16 +107,11 @@ const ConfirmphoneComponent = ({userPhone}) => {
                             </div>
                         </>
                         :
-                        null
-                    }
-                    {messageResendOTP === true?
                         <>
                             <div className='pt-12 pr-8'>
                                 <h2 className='text-red-500 text-sm text-center' >ส่งรหัสไปยังเมลของคุณเรียบร้อยแล้ว</h2>
                             </div>
                         </>
-                        :
-                        null
                     }
                 </div>
                 <div id="recaptcha-container"></div>

@@ -2,10 +2,10 @@ import React from 'react'
 
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import LoginScreen from './screen/loginScreen/index'
-import Resultpage from './components/Resultcomponent/result'
 import PreliminaryScreen from './screen/preliminaryScreen/index'
 import RegisterphoneScreen from './screen/registerphoneScreen/index'
 import InformationScreen from './screen/informationScreen/index'
+import Resultpage from './components/Resultcomponent/result'
 
 function App() {
 
