@@ -1,15 +1,13 @@
-import { useStepperContext } from "../../../context/StepperContext";
+// import { useStepperContext } from "../../../context/UserContext";
 
 export default function Account() {
-  const { userData, setUserData } = useStepperContext();
+  // const { userData, setUserData } = useStepperContext();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
     
-    setUserData({ ...userData, [name]: value });
-  };
-
-  console.log(userData)
+  //   setUserData({ ...userData, [name]: value });
+  // };
 
   return (
   

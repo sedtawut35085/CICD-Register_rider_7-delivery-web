@@ -1,27 +1,24 @@
 import React from 'react'
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import LoginComponent from './components/LoginComponent'
-import resultpage from './components/Resultcomponent/result'
-import PreliminaryinformationComponent from './components/PreliminaryinformationComponent/index'
-import VerifyphoneComponent from './components/VerifyphoneComponent/index'
-import informationComponent from './components/informationComponents/index'
-// import { AuthProvider } from './components/Resultcomponent/Auth'
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import LoginScreen from './screen/loginScreen/index'
+import Resultpage from './components/Resultcomponent/result'
+import PreliminaryinformationComponent from './screen/preliminaryScreen/index'
+import RegisterphoneComponent from './screen/registerphoneScreen/index'
+import InformationComponent from './screen/informationScreen/index'
 
 function App() {
 
   // console.
   return (
         <Router>
-          <Switch>
-              <Route exact path="/" component={LoginComponent} />
-            {/* <AuthProvider> */}
-              <Route exact path="/Preliminary" component={PreliminaryinformationComponent}/>
-              <Route exact path="/resultpage" component={resultpage}/>
-              <Route exact path="/verifyphone" component={VerifyphoneComponent}/>
-              <Route exact path="/information" component={informationComponent}/>
-            {/* </AuthProvider> */}
-          </Switch>
+          <Routes>
+              <Route path="/" element={<LoginScreen />} />
+              <Route path="/preliminary" element={<PreliminaryinformationComponent />}/>              
+              <Route path="/information" element={<InformationComponent />}/>
+              <Route path="/verifyphone" element={<RegisterphoneComponent />}/>
+              <Route path="/resultpage" element={<Resultpage />}/>
+          </Routes>
         </Router>
   );
 }
