@@ -5,7 +5,7 @@ import LoginScreen from './screen/loginScreen/index'
 import Resultpage from './components/Resultcomponent/result'
 import PreliminaryinformationComponent from './screen/preliminaryScreen/index'
 import RegisterphoneComponent from './screen/registerphoneScreen/index'
-import InformationComponent from './screen/informationScreen/index'
+import InformationComponent from './components/InformationComponent/index'
 
 function App() {
 
