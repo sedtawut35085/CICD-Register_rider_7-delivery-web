@@ -1,22 +1,18 @@
-import { useStepperContext } from "../../../context/StepperContext";
+// import { useStepperContext } from "../../../context/UserContext";
 
 export default function Account() {
-  const { userData, setUserData } = useStepperContext();
+  // const { userData, setUserData } = useStepperContext();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
     
-    setUserData({ ...userData, [name]: value });
-  };
-
-  console.log(userData)
+  //   setUserData({ ...userData, [name]: value });
+  // };
 
   return (
-    <div className="-mt-5 -mb-8">
-        <h1>หน้ากรอกข้อมูลส่วนบุคคล</h1>
-        
-     
-      </div>
+    <div className="-mt-10 -mb-8">
+      <h1>กรอกข้อมูลส่วนบุคคล</h1>
+    </div>
      
   );
 }

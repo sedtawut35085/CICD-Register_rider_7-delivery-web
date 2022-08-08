@@ -1,4 +1,3 @@
-import { useStepperContext } from "../../../context/StepperContext";
 
 export default function Payment() {
 

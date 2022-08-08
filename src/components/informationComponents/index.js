@@ -4,7 +4,7 @@
 import { useState } from "react";
 import Stepper from "./Stepper";
 import StepperControl from "./StepperControl";
-import { UseContextProvider } from "../../context/StepperContext";
+import { UseContextProvider } from "../../context/UserContext";
 
 import Personalinformation from "./steps/Personalinformation";
 import Bookbankinformation from "./steps/Bookbankinformation";
@@ -12,7 +12,7 @@ import Driverlicenseinformation from "./steps/Driverlicenseinformation";
 import Carinformation from './steps/Carinformation'
 import Final from "./steps/Final";
 
-function App() {
+const InformationComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   const steps = [
@@ -51,17 +51,14 @@ function App() {
     <div className="mx-auto rounded-2xl bg-white pb-2">
       {/* Stepper */}
       <div className="">
-        {/* <div className="bg-green-600 pb-10 pt-8 md:pl-16 md:pr-16">
+        <div className="bg-green-600 pb-10 pt-8 md:pl-16 md:pr-16">
           <Stepper steps={steps} currentStep={currentStep} />
-        </div> */}
-        
+        </div>
 
         <div className="my-10 p-10 ">
           <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
         </div>
       </div>
-
-      {/* navigation button */}
       {/* {currentStep !== steps.length && (
         <StepperControl
           handleClick={handleClick}
@@ -73,4 +70,4 @@ function App() {
   );
 }
 
-export default App;
+export default InformationComponent;
