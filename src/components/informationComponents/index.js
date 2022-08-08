@@ -2,15 +2,15 @@
 
 
 import { useState } from "react";
-import Stepper from "./Stepper";
-import StepperControl from "./StepperControl";
+import Stepper from "../StepComponents/Stepper";
+import StepperControl from "../StepComponents/StepperControl";
 import { UseContextProvider } from "../../context/UserContext";
 
-import Personalinformation from "./steps/Personalinformation";
-import Bookbankinformation from "./steps/Bookbankinformation";
-import Driverlicenseinformation from "./steps/Driverlicenseinformation";
-import Carinformation from './steps/Carinformation'
-import Final from "./steps/Final";
+import Personalinformation from "../StepComponents/steps/Personalinformation";
+import Bookbankinformation from "../StepComponents/steps/Bookbankinformation";
+import Driverlicenseinformation from "../StepComponents/steps/Driverlicenseinformation";
+import Carinformation from '../StepComponents/steps/Carinformation'
+import Final from "../StepComponents/steps/Final";
 
 const InformationComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);

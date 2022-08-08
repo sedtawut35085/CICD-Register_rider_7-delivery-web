@@ -1,4 +1,4 @@
-import './style.css'
+
 export default function StepperControl({ handleClick, currentStep, steps }) {
     return (
       <div className="grid md:grid-cols-12 -mt-14">
