@@ -70,7 +70,7 @@ const InformationComponent = () => {
         />
       )}
     </div>
-  );
+  )
 }
 
 export default InformationComponent;
