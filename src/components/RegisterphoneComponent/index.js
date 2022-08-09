@@ -5,12 +5,11 @@ import { RecaptchaVerifier,signInWithPhoneNumber } from 'firebase/auth';
 import VerifyotpComponent from '../ConfirmphoneComponent';
 import * as constant from '../../constant/content'
 
-import wallpaperpreliminary from '../../assets/wallpaper-7-eleven-delivery-02.jpeg'
+import wallpaperpreliminary from '../../assets/wallpaper-preliminary.jpeg'
 import logo from '../../assets/logo.png'
 
 const RegisterphoneComponent = () => {
 
-    // const countryCode = "+66";
     const [phoneNumber, setPhoneNumber] = useState("");
     const [expandForm, setExpandForm] = useState(false);
 

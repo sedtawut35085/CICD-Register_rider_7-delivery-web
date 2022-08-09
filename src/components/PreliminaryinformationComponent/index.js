@@ -7,7 +7,7 @@ import Auth from '../../configuration/configuration-aws'
 import { AuthContext } from '../../auth/Auth'
 import * as constant from '../../constant/content'
 
-import wallpaperpreliminary from '../../assets/wallpaper-7-eleven-delivery-02.jpeg'
+import wallpaperpreliminary from '../../assets/wallpaper-preliminary.jpeg'
 import logo from '../../assets/logo.png'
 
 const PreliminaryComponent = () => {

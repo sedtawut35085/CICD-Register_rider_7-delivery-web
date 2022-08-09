@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaUserAlt, FaLock, FaFacebookF, FaGoogle } from 'react-icons/fa'
 
@@ -8,7 +8,7 @@ import * as constant from '../../constant/content'
 import './style.css'
 
 import logo from '../../assets/logo.png'
-import wallpaperlogincomponent from '../../assets/wallpaper-logincomponent.webp'
+import wallpaperlogincomponent from '../../assets/wallpaper-login.webp'
 
 const LoginComponent = () => {
     
@@ -27,7 +27,7 @@ const LoginComponent = () => {
         async function check() {
             await Auth.currentAuthenticatedUser({
                 bypassCache: false
-            }).then(user => {
+            }).then(() => {
                 navigate('/preliminary')
               })
             .catch(err => console.log('err: ',err));
@@ -38,30 +38,29 @@ const LoginComponent = () => {
     const checkPassword = (e) => {
         const Pass = e.target.value;
         setPassword(Pass);
-        const uppercaseRegExp   = /(?=.*?[A-Z])/;
-        const lowercaseRegExp   = /(?=.*?[a-z])/;
-        const digitsRegExp      = /(?=.*?[0-9])/;
-        const specialCharRegExp = /(?=.*?[#?!@$%^&*-])/;
+        const uppercaseRegExp   = /([A-Z])/;
+        const lowercaseRegExp   = /([a-z])/;
+        const digitsRegExp      = /([0-9])/;
+        const specialCharRegExp = /([#?!@$%^&*-])/;
         const minLengthRegExp   = /.{8,}/;
         const uppercasePassword =   uppercaseRegExp.test(Pass);
         const lowercasePassword =   lowercaseRegExp.test(Pass);
         const digitsPassword    =   digitsRegExp.test(Pass);
         const specialCharPassword = specialCharRegExp.test(Pass);
         const minLengthPassword =   minLengthRegExp.test(Pass);
-        //if have set true
         setIsErrorPassword(false)
         if(Pass.length === 0){
-            setErrorPasswordMessage('โปรดใส่รหัสผ่าน')
+            setErrorPasswordMessage(constant.LoginContent.errorpasswordmessage.emthycase)
         }else if(!uppercasePassword){
-            setErrorPasswordMessage('ต้องมีตัวอักษรใหญ่อย่างน้อย 1 ตัว')
+            setErrorPasswordMessage(constant.LoginContent.errorpasswordmessage.uppercase)
         }else if(!lowercasePassword){
-            setErrorPasswordMessage('ต้องมีตัวอักษรเล็กอย่างน้อย 1 ตัว')
+            setErrorPasswordMessage(constant.LoginContent.errorpasswordmessage.lowercase)
         }else if(!digitsPassword){
-            setErrorPasswordMessage('ต้องมีตัวเลขอย่างน้อย 1 ตัว')
+            setErrorPasswordMessage(constant.LoginContent.errorpasswordmessage.digitcase)
         }else if(!specialCharPassword){
-            setErrorPasswordMessage('ต้องมีตัวอักษรพิเศษอย่างน้อย 1 ตัว')
+            setErrorPasswordMessage(constant.LoginContent.errorpasswordmessage.specialcharcase)
         }else if(!minLengthPassword){
-            setErrorPasswordMessage('ความยาวของรหัสผ่านต้องอย่างน้อย 8 ตัว')
+            setErrorPasswordMessage(constant.LoginContent.errorpasswordmessage.minlengthcase)
         }else{
             setIsErrorPassword(true)
             setErrorPasswordMessage(null)
@@ -69,15 +68,20 @@ const LoginComponent = () => {
     }
     
     const checkValidation = (e) =>{
-        const confPass = e.target.value
-        setConfirmPassword(confPass)
-        if(password !== confPass){
-            setErrorConfirmErrorMessage("รหัสผ่านไม่ตรงกัน")
-            setIsErrorConfirmPassword(false)
+        const confPass = e.target.value    
+        if(isErrorPassword){      
+            setConfirmPassword(confPass)
+            if(password !== confPass){
+                setErrorConfirmErrorMessage(constant.LoginContent.errorconfirmpasswordmessage.notmatch)
+                setIsErrorConfirmPassword(false)
+            }else{
+                setErrorConfirmErrorMessage(null)
+                setIsErrorConfirmPassword(true)
+            }
         }else{
-            setErrorConfirmErrorMessage(null)
-            setIsErrorConfirmPassword(true)
+            setErrorConfirmErrorMessage(constant.LoginContent.errorconfirmpasswordmessage.passwordnotcorrect)
         }
+        
     }
 
     const Signupwithemail = async (e) => {
@@ -92,19 +96,19 @@ const LoginComponent = () => {
                     email: email.value, 
                 }
             })
-            .then(data => {
+            .then(() => {
                 setIsUserEmail(true);
                 setUserEmail(email.value)
+                setIsErrorRegister(null);
             })
             .catch(err =>{
                 if(err.toString().includes('An account with the given email already exists.')){
-                    setIsErrorRegister('อีเมลนี้ได้ถูกใช้งานไปแล้ว');
+                    setIsErrorRegister(constant.LoginContent.errorregistermailmessage.emailalreadyuse);
                 }
             });
         }else{
             console.log('error signup')
         }
-    
     }
 
     const signinwithfacebook = async () => {

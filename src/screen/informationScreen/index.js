@@ -4,9 +4,9 @@ import InformationComponent from '../../components/InformationComponent'
 
 const informationScreen = () => {
     return (
-        <AuthProvider>
+        // <AuthProvider>
             <InformationComponent />
-        </AuthProvider>
+        // </AuthProvider>
     )
 }
 

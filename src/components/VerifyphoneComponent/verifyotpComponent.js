@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import { authentication } from './configuration-firebase';
 import { RecaptchaVerifier,signInWithPhoneNumber } from 'firebase/auth';
-import testImg from './assets/wallpaper-7-eleven-delivery-02.jpeg'
-import logo from '../../assets/logo.png'
-import { Redirect } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import OtpInput from "react-otp-input";
 
+import * as constant from '../../constant/content'
+
+import testImg from './assets/wallpaper-7-eleven-delivery-02.jpeg'
+import logo from '../../assets/logo.png'
+
 const Verifyotp = ({userPhone}) => {
-    const [correct, setCorrect] = useState(false);
+
     const [OTP,setOTP] = useState("");
     const [messageResendOTP,setMessageResendOTP] = useState(false)
+    const navigate = useNavigate()
 
     const generateRecaptcha = () => {
         window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
             'size': 'invisible',
-            'callback': (response) => {
-                
+            'callback': (response) => {       
             }
         }, authentication);
     }
@@ -27,7 +30,6 @@ const Verifyotp = ({userPhone}) => {
         signInWithPhoneNumber(authentication,userPhone,appVerifier)
         .then(confirmationResult => {
             window.confirmationResult = confirmationResult;
-            
         }).catch((error) => {
             console.log(error);
         })
@@ -35,26 +37,15 @@ const Verifyotp = ({userPhone}) => {
 
 
     const verifyOTP = (otp) => {
-        console.log('otp');
-        console.log(otp)
         setOTP(otp);
-        // setOTP(otp);
         if(otp.length === 6){
             let confirmationResult = window.confirmationResult;
-            confirmationResult.confirm(otp).then((result) => {
-                // const user = result.user;
-                console.log('success');
-                setCorrect(true)
+            confirmationResult.confirm(otp).then(() => {
+                navigate('/information')
             }).catch((error) => {
                 console.log(error)
             })
         }
-    }
-
-    if(correct){
-
-        console.log('correct confimcode')
-        return <Redirect to="/information" />;
     }
 
     return (
@@ -68,57 +59,41 @@ const Verifyotp = ({userPhone}) => {
                 </div>
                 <div className='max-w-[400px] w-full mx-auto bg-white pl-8 pr-8 pt-14 justify-center' >
                     <div className='text-left py-6 pt-14'>
-                        <h2 className='text-2xl font-bold' >กรอกเลข OTP ที่ส่งไปยังเลข</h2>
+                        <h2 className='text-2xl font-bold' >{constant.VerifyphoneOTPContent.title}</h2>
                         <h5>{userPhone}</h5>
                     </div>
                     <div className='flex flex-col py-2 mt-6'>
                         <div className='pr-2 ml-1 pt-2'>
                             <OtpInput
                                 value={OTP} onChange={(e) =>verifyOTP(e)}
-                                // separator={
-                                // <span>
-                                //     <strong>-</strong>
-                                // </span>
-                                // }
                                 numInputs={6}
                                 isInputNum={true}
                                 type="number"
                                 required
                                 inputStyle={{
-                                width: "40px",
-                                height: "40px",
-                                margin: "0 5px",
-                                fontSize: "1rem",
-                                borderRadius: 4,
-                                border: "1px solid rgba(0,0,0,0.3)"
+                                    width: "40px",
+                                    height: "40px",
+                                    margin: "0 5px",
+                                    fontSize: "1rem",
+                                    borderRadius: 4,
+                                    border: "1px solid rgba(0,0,0,0.3)"
                                 }}
                             />
-                        </div>
-                    
+                        </div>  
                     </div>
-                
                     {messageResendOTP === false?
                         <>
                             <div className='pt-12 pr-8'>
-                                <h2 className='text-red-500 text-sm underline text-center' onClick={ResendOTP}>คลิกเพื่อส่ง OTP อีกครั้ง</h2>
+                                <h2 className='text-red-500 text-sm underline text-center' onClick={ResendOTP}>{constant.VerifyphoneOTPContent.resendOTP}</h2>
                             </div>
                         </>
                         :
-                        null
-                    }
-                    {messageResendOTP === true?
                         <>
                             <div className='pt-12 pr-8'>
-                                <h2 className='text-red-500 text-sm text-center' >ส่ง OTP อีกครั้งเรียบร้อยแล้ว</h2>
+                                <h2 className='text-red-500 text-sm text-center'>{constant.VerifyphoneOTPContent.successresendOTP}</h2>
                             </div>
                         </>
-                        :
-                        null
                     }
-                    {/* <div className=''>
-                        <h2 className='text-red-500 text-sm pt-8 underline text-center md:pr-8' onClick={ResendOTP}>คลิกเพื่อส่งรหัส OTP อีกครั้ง</h2>
-                    </div> */}
-                   
                     </div>       
                     <div id="recaptcha-container"></div>   
             </div>

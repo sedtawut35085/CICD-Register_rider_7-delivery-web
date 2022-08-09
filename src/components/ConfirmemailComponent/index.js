@@ -24,7 +24,7 @@ const ConfirmemailComponent = ({userEmail, userPassword}) => {
             })
         .catch(err => 
             {
-                setMessageError('รหัสผิด โปรดคลิกส่งรหัสอีกครั้งเพื่อรับรหัสใหม่')
+                setMessageError(constant.ConfirmemailContent.errorcodemessage)
             }
         );
         if(isConfirmcode){

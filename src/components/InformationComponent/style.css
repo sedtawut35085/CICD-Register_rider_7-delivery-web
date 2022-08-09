@@ -1,0 +1,16 @@
+@media only screen and (max-width: 767px) {
+    .button-center {
+        margin: auto;
+        width: 50%;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+    
+  }
+
+@media only screen and (max-width: 434px) {
+    .step-bar {
+        margin-left: -40px;
+    }
+    
+  }
