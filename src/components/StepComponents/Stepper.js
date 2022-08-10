@@ -5,8 +5,7 @@ const Stepper = ({ steps, currentStep }) => {
   const stepsRef = useRef();
 
   const updateStep = (stepNumber, steps) => {
-    const newSteps = [...steps];
-    console.log(newSteps);
+    const newSteps = steps;
     let count = 0;
     while (count < newSteps.length) {
       //current step
@@ -51,9 +50,13 @@ const Stepper = ({ steps, currentStep }) => {
         {},
         {
           description: step,
+          // title
           completed: false,
+          // line
           highlighted: index === 0 ? true : false,
+          // highlight title
           selected: index === 0 ? true : false,
+          // background number circle
         }
       )
     );
