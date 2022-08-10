@@ -1,6 +1,3 @@
-
-
-
 import { useState } from "react";
 import { UseContextProvider } from "../../context/UserContext";
 
@@ -42,9 +39,10 @@ const InformationComponent = () => {
 
   const handleClick = (direction) => {
     let newStep = currentStep;
-
     direction === "next" ? newStep++ : newStep--;
-    newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
+    if(newStep > 0 && newStep <= steps.length ){
+      setCurrentStep(newStep)
+    }
   };
 
   return (
@@ -53,13 +51,15 @@ const InformationComponent = () => {
         <div className="bg-green-600 pb-10 pt-8 md:pl-16 md:pr-16">
           <Stepper steps={steps} currentStep={currentStep} />
         </div>
-        <div className="p-10 ">
-          <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
+        <div className="p-10">
+          <UseContextProvider>
+            {displayStep(currentStep)}
+          </UseContextProvider>
         </div>
       </div>
       {currentStep !== steps.length && (
         <StepperControl
-          handleClick={handleClick}
+          handleClick={handleClick} 
           currentStep={currentStep}
           steps={steps}
         />

@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const Stepper = ({ steps, currentStep }) => {
+
   const [newStep, setNewStep] = useState([]);
   const stepsRef = useRef();
 
   const updateStep = (stepNumber, steps) => {
-    const newSteps = [...steps];
-    console.log(newSteps);
+    console.log('steps: ',steps);
+    console.log('stepNumber: ',stepNumber);
+    const newSteps = steps;
     let count = 0;
     while (count < newSteps.length) {
       //current step
@@ -19,7 +21,6 @@ const Stepper = ({ steps, currentStep }) => {
         };
         count++;
       }
-
       //step completed
       else if (count < stepNumber) {
         newSteps[count] = {
@@ -51,13 +52,16 @@ const Stepper = ({ steps, currentStep }) => {
         {},
         {
           description: step,
+          // description -> title
           completed: false,
+          // completed -> line
           highlighted: index === 0 ? true : false,
+          // highlighted -> highlight title
           selected: index === 0 ? true : false,
+          // selected -> select step
         }
       )
     );
-
     stepsRef.current = stepsState;
     const current = updateStep(currentStep - 1, stepsRef.current);
     setNewStep(current);
@@ -101,7 +105,7 @@ const Stepper = ({ steps, currentStep }) => {
         </div>
         <div
           className={`flex-auto border-t-2 transition duration-500 ease-in-out  ${
-            step.completed ? "border-white-600" : "border-gray-300 "
+            step.completed ? "border-white" : "border-gray-300 "
           }  `}
         ></div>
       </div>
