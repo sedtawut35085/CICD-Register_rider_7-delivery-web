@@ -1,13 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
 
+<<<<<<< HEAD
 const Stepper = ({ steps, currentStep }) => {
 
+=======
+const Stepper = ({ steps, currentStep }) => { 
+>>>>>>> dev
   const [newStep, setNewStep] = useState([]);
   const stepsRef = useRef();
 
   const updateStep = (stepNumber, steps) => {
+<<<<<<< HEAD
     console.log('steps: ',steps);
     console.log('stepNumber: ',stepNumber);
+=======
+>>>>>>> dev
     const newSteps = steps;
     let count = 0;
     while (count < newSteps.length) {
@@ -52,6 +59,7 @@ const Stepper = ({ steps, currentStep }) => {
         {},
         {
           description: step,
+<<<<<<< HEAD
           // description -> title
           completed: false,
           // completed -> line
@@ -59,6 +67,15 @@ const Stepper = ({ steps, currentStep }) => {
           // highlighted -> highlight title
           selected: index === 0 ? true : false,
           // selected -> select step
+=======
+          // title
+          completed: false,
+          // line
+          highlighted: index === 0 ? true : false,
+          // highlight title
+          selected: index === 0 ? true : false,
+          // background number circle
+>>>>>>> dev
         }
       )
     );

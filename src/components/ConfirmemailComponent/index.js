@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import Auth from '../../configuration/configuration-aws'
 import * as constant from '../../constant/content'
+import * as routeconstant from '../../constant/routeconstant'
 
 const ConfirmemailComponent = ({userEmail, userPassword}) => {
 
@@ -30,7 +31,7 @@ const ConfirmemailComponent = ({userEmail, userPassword}) => {
         if(isConfirmcode){
             await Auth.signIn(userEmail, userPassword)
             .then(() => {
-                navigate('/preliminary')
+                navigate(routeconstant.RouteContent.preliminary)
             })
             .catch(err => console.log(err));   
         }   

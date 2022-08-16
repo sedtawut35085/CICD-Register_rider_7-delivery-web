@@ -1,12 +1,15 @@
 
 import { AuthProvider } from '../../auth/Auth'
 import InformationComponent from '../../components/InformationComponent'
+import { UseContextProvider } from "../../context/UserContext";
 
 const informationScreen = () => {
     return (
-        // <AuthProvider>
-            <InformationComponent />
-        // </AuthProvider>
+        <AuthProvider>
+            <UseContextProvider>
+                <InformationComponent />
+            </UseContextProvider>
+        </AuthProvider>
     )
 }
 

@@ -6,6 +6,7 @@ import moment from "moment"
 import Auth from '../../configuration/configuration-aws'
 import { AuthContext } from '../../auth/Auth'
 import * as constant from '../../constant/content'
+import * as routeconstant from '../../constant/routeconstant'
 
 import wallpaperpreliminary from '../../assets/wallpaper-preliminary.jpeg'
 import logo from '../../assets/logo.png'
@@ -45,7 +46,7 @@ const PreliminaryComponent = () => {
             },
             data: data
         }).then(() => {
-            navigate('/verifyphone')
+            navigate(routeconstant.RouteContent.verifyphone)
         }).catch((err)=>{
             console.log('error: ' ,err)
         })
@@ -90,6 +91,7 @@ const PreliminaryComponent = () => {
                 <div className='flex flex-col py-2'>
                     <label htmlFor="exampleFormControlInput2" className="form-label inline-blocktext-gray-700 pl-2 pt-1 text-sm">{constant.PreliminaryContent.label.country}</label>
                     <select required id="countries" name='country' type='text' className="border-bottom text-gray-700 pl-4 pb-2 pt-1 block w-fullfocus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none ">
+                        <option disabled={true} value="">ไม่ระบุ</option>
                         <option>กรุงเทพมหานคร</option>
                         <option>กระบี่</option>
                         <option>กาญจนบุรี</option>

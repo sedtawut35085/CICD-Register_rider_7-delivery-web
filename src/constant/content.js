@@ -37,6 +37,12 @@ export const ConfirmemailContent = {
     }
 }
 
+export const ConfirmphoneContent = {
+    title               : "กรอกเลข OTP ที่ส่งไปยังเลข",
+    resendcode          : "คลิกเพื่อส่ง OTP อีกครั้ง",
+    successresendcode   : "ส่งรหัสไปยังเมลของคุณเรียบร้อยแล้ว",
+}
+
 export const PreliminaryContent = {
     title       : "กรอกข้อมูลผู้ใช้งาน",
     label : {
@@ -52,7 +58,7 @@ export const PreliminaryContent = {
     },
     button : {
         submit  : "ยืนยัน"
-    }  
+    }
 }
 
 export const RegisterphoneContent = {

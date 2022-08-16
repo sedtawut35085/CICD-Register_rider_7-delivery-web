@@ -5,35 +5,37 @@ import { FaUserAlt, FaLock, FaFacebookF, FaGoogle } from 'react-icons/fa'
 import ConfirmemailComponent from '../ConfirmemailComponent'
 import Auth from '../../configuration/configuration-aws'
 import * as constant from '../../constant/content'
+import * as routeconstant from '../../constant/routeconstant'
 import './style.css'
 
 import logo from '../../assets/logo.png'
 import wallpaperlogincomponent from '../../assets/wallpaper-login.webp'
-
+ 
 const LoginComponent = () => {
     
     const [password, setPassword] = useState(""); 
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [userEmail, setUserEmail] = useState(null);
     const [isErrorPassword, setIsErrorPassword] = useState(false);
     const [isErrorConfirmPassword, setIsErrorConfirmPassword] = useState(false);
+    const [isUserEmail, setIsUserEmail] = useState(false);
     const [isErrorRegister, setIsErrorRegister] = useState(null);
     const [errorPasswordMessage, setErrorPasswordMessage] = useState(null);
     const [errorConfirmPasswordMessage, setErrorConfirmErrorMessage] = useState(null);
-    const [isUserEmail, setIsUserEmail] = useState(false);
-    const [userEmail, setUserEmail] = useState(null);
     const navigate = useNavigate()
     
     useEffect( () => {
-        async function check() {
+        async function Authentication() {
             await Auth.currentAuthenticatedUser({
                 bypassCache: false
             }).then(() => {
-                navigate('/preliminary')
+                navigate(routeconstant.RouteContent.preliminary)
               })
             .catch(err => console.log('err: ',err));
         }
-        check();
-    }, )
+        Authentication();
+    }, [])
+    
 
     const checkPassword = (e) => {
         const Pass = e.target.value;
