@@ -1,6 +1,6 @@
 
 export default function StepperControl({ handleClick, currentStep, steps }) {
-    return (
+    return ( 
       <div className="grid md:grid-cols-12 -mt-14">
           <div className="md:col-span-6 flex md:pl-10 items-center md:justify-start ">
             {/* <button

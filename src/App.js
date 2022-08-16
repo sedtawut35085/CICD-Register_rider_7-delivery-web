@@ -6,16 +6,17 @@ import PreliminaryScreen from './screen/preliminaryScreen/index'
 import RegisterphoneScreen from './screen/registerphoneScreen/index'
 import InformationScreen from './screen/informationScreen/index'
 import LogoutScreen from './components/Logoutcomponent'
+import * as routeconstant from './constant/routeconstant'
 
 function App() {
   return (
         <Router>
           <Routes>
-              <Route path="/" element={<LoginScreen />} />
-              <Route path="/preliminary" element={<PreliminaryScreen />}/>  
-              <Route path="/verifyphone" element={<RegisterphoneScreen />}/>            
-              <Route path="/information" element={<InformationScreen />}/>
-              <Route path="/logout" element={<LogoutScreen />}/>
+              <Route path={routeconstant.RouteContent.login} element={<LoginScreen />} />
+              <Route path={routeconstant.RouteContent.preliminary} element={<PreliminaryScreen />}/>  
+              <Route path={routeconstant.RouteContent.verifyphone} element={<RegisterphoneScreen />}/>            
+              <Route path={routeconstant.RouteContent.information} element={<InformationScreen />}/>
+              <Route path={routeconstant.RouteContent.logout} element={<LogoutScreen />}/>
           </Routes>
         </Router>
   );

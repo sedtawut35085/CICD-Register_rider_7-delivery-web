@@ -3,7 +3,10 @@ import { authentication } from '../../configuration/configuration-firebase';
 import { RecaptchaVerifier,signInWithPhoneNumber } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom'
 import OtpInput from "react-otp-input";
-import axios from 'axios'
+import axios from 'axios' 
+
+import * as routeconstant from '../../constant/routeconstant'
+import * as constant from '../../constant/content'
 
 import { AuthContext } from '../../auth/Auth'
 import Auth from '../../configuration/configuration-aws'
@@ -50,7 +53,7 @@ const ConfirmphoneComponent = ({userPhone}) => {
                 .catch(err => console.log(err));
                 var data = {
                     "updateKey"     : "userPhone",
-                    "updateValue"   : "+66960531207"
+                    "updateValue"   : userPhone
                 }
                 var params = {
                     "userId" : userId
@@ -65,7 +68,7 @@ const ConfirmphoneComponent = ({userPhone}) => {
                     },
                     data: data
                 }).then(() => {
-                    navigate('/information')
+                    navigate(routeconstant.RouteContent.information)
                 }).catch((err)=>{
                     console.log('error: ' ,err)
                 })
@@ -79,7 +82,7 @@ const ConfirmphoneComponent = ({userPhone}) => {
         <div>
             <div>
                 <div className='text-left py-6 pt-14'>
-                    <h2 className='text-2xl font-bold' >กรอกเลข OTP ที่ส่งไปยังเลข</h2>
+                    <h2 className='text-2xl font-bold' >{constant.ConfirmphoneContent.title}</h2>
                     <h5>{userPhone}</h5>
                 </div>
                 <div className='flex flex-col py-2 mt-6'>
@@ -103,13 +106,13 @@ const ConfirmphoneComponent = ({userPhone}) => {
                     {messageResendOTP === false?
                         <>
                             <div className='pt-12 pr-8'>
-                                <h2 className='text-red-500 text-sm underline text-center' onClick={ResendOTP}>คลิกเพื่อส่ง OTP อีกครั้ง</h2>
+                                <h2 className='text-red-500 text-sm underline text-center' onClick={ResendOTP}>{constant.ConfirmphoneContent.resendcode}</h2>
                             </div>
                         </>
                         :
                         <>
                             <div className='pt-12 pr-8'>
-                                <h2 className='text-red-500 text-sm text-center' >ส่งรหัสไปยังเมลของคุณเรียบร้อยแล้ว</h2>
+                                <h2 className='text-red-500 text-sm text-center' >{constant.ConfirmphoneContent.successresendcode}</h2>
                             </div>
                         </>
                     }

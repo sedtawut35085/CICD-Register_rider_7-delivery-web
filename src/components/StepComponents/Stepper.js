@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const Stepper = ({ steps, currentStep }) => {
+const Stepper = ({ steps, currentStep }) => { 
   const [newStep, setNewStep] = useState([]);
   const stepsRef = useRef();
 
