@@ -1,6 +1,3 @@
-
-
-
 import { useState , useContext } from "react";
 import { useStepperContext } from "../../context/UserContext";
 import { AuthContext } from '../../auth/Auth'
