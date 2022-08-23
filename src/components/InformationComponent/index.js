@@ -6,6 +6,8 @@ import { useStepperContext } from "../../context/UserContext";
 import { AuthContext } from '../../auth/Auth'
 import { SavepersonalInformation, SaverelevantInformation, SavebookbankInformation, SavecriminalhistoryInformation} from '../SaveinformationComponent/index'
 
+import RingLoader from "react-spinners/RingLoader";
+
 import Stepper from "../StepComponents/Stepper";
 import Personalinformation from "../StepComponents/steps/Personalinformation";
 import Bookbankinformation from "../StepComponents/steps/Bookbankinformation";
@@ -37,7 +39,7 @@ const InformationComponent = () => {
   const displayStep = (step) => {
     switch (step) {
       case 1:
-        return <Personalinformation isMessageErrorPersonalPicture={isMessageErrorPersonalPicture} isMessageErrorIdCard={isMessageErrorIdCard} isResponseError={isResponseError} loading={loading}/>;
+        return <Personalinformation isMessageErrorPersonalPicture={isMessageErrorPersonalPicture} isMessageErrorIdCard={isMessageErrorIdCard} isResponseError={isResponseError}/>;
       case 2:
         return <Bookbankinformation isMessageErrorBookbankPicture={isMessageErrorBookbankPicture} isMessageErrorCriminalHistoryPicture={isMessageErrorCriminalHistoryPicture} isResponseError={isResponseError}/>;
       case 3:
@@ -52,7 +54,6 @@ const InformationComponent = () => {
 
   const Submit = async (e) => { 
     e.preventDefault();
-    setLoading(true)
     let newStep = currentStep;
     newStep++;
     if(newStep > 0 && newStep <= steps.length){
@@ -68,6 +69,7 @@ const InformationComponent = () => {
           setIsMessageErrorIdCard(false)
         }
         if(userData['personalpicture'] !== undefined && userData['idcard'] !== undefined){
+          setLoading(true)
           let responsesavepersonalinformation = await SavepersonalInformation(userData , currentUser.username)
           let responsesaverelevantinformation = await SaverelevantInformation(userData , currentUser.username)
           console.log('responsesavepersonalinformation: ' ,responsesavepersonalinformation)
@@ -91,10 +93,12 @@ const InformationComponent = () => {
           setIsMessageErrorCriminalHistoryPicture(false)
         }
         if(userData['criminalhistoryphoto'] !== undefined && userData['bookbankphoto'] !== undefined){
+          setLoading(true)
           let responsesavebookbankinformation = await SavebookbankInformation(userData , currentUser.username)
           let responsesavecriminalhistoryinformation = await SavecriminalhistoryInformation(userData , currentUser.username)
           console.log('responsesavebookbankinformation: ' ,responsesavebookbankinformation)
           if(responsesavebookbankinformation.status === 200 && responsesavecriminalhistoryinformation.status === 200){
+            setLoading(false)
             setCurrentStep(newStep)
           }else{
             setIsResponseError(true)
@@ -126,11 +130,29 @@ const InformationComponent = () => {
         <div className="grid md:grid-cols-12 -mt-14 button-responsive">
           <div className="md:col-span-6 flex md:pl-10 items-center md:justify-start "></div>
             <div className="md:col-span-6 flex items-center justify-end md:pr-10">
-              <button type="submit"
-                className="cursor-pointer rounded-lg button-center bg-green-500 py-2 px-4 font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-slate-700 hover:text-white"
-              >
-                ยืนยัน
-              </button>
+            {loading === true?
+              <>
+              <div className="loading-center py-2 px-4 flex">
+                <RingLoader
+                    size={25}
+                    color={"#599c3d"}
+                    loading={loading}
+                  />
+                  <div className="pl-6">
+                    กำลังบันทึกข้อมูล
+                  </div>
+              </div>
+              </>
+              :
+              <> 
+                <button type="submit"
+                  className="cursor-pointer rounded-lg button-center bg-green-500 py-2 px-4 font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-slate-700 hover:text-white"
+                >
+                  ยืนยัน
+                </button>
+              </>
+            }
+              
             </div>
         </div>
       

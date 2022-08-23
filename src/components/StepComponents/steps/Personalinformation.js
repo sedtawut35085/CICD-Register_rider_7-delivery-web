@@ -9,7 +9,7 @@ import profile from '../../../assets/profile.png'
 import "react-datepicker/dist/react-datepicker.css";
 import './style.css'
 
-export default function Personalinformation({isMessageErrorPersonalPicture,isMessageErrorIdCard,isResponseError,loading}) {
+export default function Personalinformation({isMessageErrorPersonalPicture,isMessageErrorIdCard,isResponseError}) {
   const { userData, setUserData } = useStepperContext();
   const [ namePersonalPicture , setNamePersonalPicture] = useState(null);
   const [ nameIdCard , setNameIdCard] = useState(null);
@@ -34,18 +34,11 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
     setUserData({ ...userData, [name]: file })
   }
 
+  
   return (
     <div> 
         <div className="grid md:grid-cols-12 gap-5">
         <div className="md:col-span-9">
-        {loading === false?
-          <>
-          loading...
-          </>
-           :
-          <> 
-          </>
-            }
           <h1 className="pb-2">กรอกข้อมูลส่วนบุคคล</h1>
           <div className="border rounded-2xl pl-6 pr-6 pt-6 ">
             <div className="grid md:grid-cols-3 md:gap-x-10 ">
