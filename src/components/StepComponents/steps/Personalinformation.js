@@ -9,7 +9,7 @@ import profile from '../../../assets/profile.png'
 import "react-datepicker/dist/react-datepicker.css";
 import './style.css'
 
-export default function Personalinformation({isMessageErrorPersonalPicture,isMessageErrorIdCard}) {
+export default function Personalinformation({isMessageErrorPersonalPicture,isMessageErrorIdCard,isResponseError}) {
   const { userData, setUserData } = useStepperContext();
   const [ namePersonalPicture , setNamePersonalPicture] = useState(null);
   const [ nameIdCard , setNameIdCard] = useState(null);
@@ -34,6 +34,7 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
     setUserData({ ...userData, [name]: file })
   }
 
+  
   return (
     <div> 
         <div className="grid md:grid-cols-12 gap-5">
@@ -288,8 +289,18 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
           </div> 
         </div>
       </div>
-      
+      {isResponseError === true?
+        <>
+          <div className="md:col-span-12 text-center mt-8">
+            <h1 className="text-red-500">เกิดข้อผิดพลาด</h1>
+          </div>
+        </>
+          :
+        <>
+        </>
+      }
    </div>
+   
 
    
      

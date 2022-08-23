@@ -1,6 +1,7 @@
-import Auth from '../../configuration/configuration-aws'
+import { updateUser, uploadPhoto } from '../../service/index'
 
-import axios from 'axios';
+let response
+let convertedFile
 
 const convertToBase64 = (file) => {
     return new Promise(resolve => {
@@ -13,24 +14,12 @@ const convertToBase64 = (file) => {
   }
 
 export const SavepersonalInformation = async (data , userId) => {
-    console.log('data ', data)
-    let response;
-    let convertedFile = await convertToBase64(data['personalpicture']);
+    convertedFile = await convertToBase64(data['personalpicture']);
     convertedFile = data['personalpicture'].type + ' ' + convertedFile;
-    await axios.post("https://niafewy1vj.execute-api.ap-southeast-1.amazonaws.com/dev/file-upload", convertedFile).then((res) => {
-      data['personalpicture'] = res.data.Location
-    })
+    data['personalpicture'] = await uploadPhoto(convertedFile)
     convertedFile = await convertToBase64(data['idcard']);
     convertedFile = data['idcard'].type + ' ' + convertedFile;
-    await axios.post("https://niafewy1vj.execute-api.ap-southeast-1.amazonaws.com/dev/file-upload", convertedFile).then((res) => {
-      data['idcard'] = res.data.Location
-    })
-    let token;
-    await Auth.currentSession()
-    .then(res => {
-      token = res.getAccessToken();
-    })
-    .catch(err => console.log(err));
+    data['idcard'] = await uploadPhoto(convertedFile)
     var bodydata = {
       "updateKey"     : "personalInformation",
       "updateValue"   : {
@@ -49,31 +38,12 @@ export const SavepersonalInformation = async (data , userId) => {
     var params = {
       "userId" : userId
     }
-    await axios({
-      method: 'patch',
-      url: 'https://niafewy1vj.execute-api.ap-southeast-1.amazonaws.com/dev/user',
-      params: params,
-      headers: { 
-          'Authorization': token.getJwtToken(), 
-          'Content-Type': 'text/plain'
-      },
-      data: bodydata
-      }).then((res) => {
-        response = res
-      }).catch((err)=>{
-        response = err
-      })
-      return response
+    response = await updateUser(params, bodydata)
+    return response
+    
   }
 
   export const SaverelevantInformation = async (data , userId) => {
-    let response;
-    let token;
-    await Auth.currentSession()
-    .then(res => {
-      token = res.getAccessToken();
-    })
-    .catch(err => console.log(err));
     var bodydata = {
       "updateKey"     : "relevantPersonInformation",
       "updateValue"   : {
@@ -86,19 +56,44 @@ export const SavepersonalInformation = async (data , userId) => {
     var params = {
       "userId" : userId
     }
-    await axios({
-      method: 'patch',
-      url: 'https://niafewy1vj.execute-api.ap-southeast-1.amazonaws.com/dev/user',
-      params: params,
-      headers: { 
-          'Authorization': token.getJwtToken(), 
-          'Content-Type': 'text/plain'
-      },
-      data: bodydata
-      }).then((res) => {
-        response = res
-      }).catch((err)=>{
-        response = err
-      })
-      return response
+    response = await updateUser(params, bodydata)
+    return response
+  }
+
+  export const SavebookbankInformation = async (data , userId) => {
+    convertedFile = await convertToBase64(data['bookbankphoto']);
+    convertedFile = data['bookbankphoto'].type + ' ' + convertedFile;
+    data['bookbankphoto'] = await uploadPhoto(convertedFile)
+    var bodydata = {
+      "updateKey"     : "bookBankInformation",
+      "updateValue"   : {
+        "name"         : data["namebookbank"],
+        "surname"      : data["surnamebookbank"],
+        "numberbookbank" : data["idbookbank"],
+        "namebank" : data["namebank"],
+        "bookbankPhoto" : data["bookbankphoto"]
+      }
+    }
+    var params = {
+      "userId" : userId
+    }
+    response = await updateUser(params, bodydata)
+    return response
+  }
+
+  export const SavecriminalhistoryInformation = async (data , userId) => {
+    convertedFile = await convertToBase64(data['criminalhistoryphoto']);
+    convertedFile = data['criminalhistoryphoto'].type + ' ' + convertedFile;
+    data['criminalhistoryphoto'] = await uploadPhoto(convertedFile)
+    var bodydata = {
+      "updateKey"     : "criminalHistoryInformation",
+      "updateValue"   : {
+        "criminalhistoryPhoto"   : data["criminalhistoryphoto"],
+      }
+    }
+    var params = {
+      "userId" : userId
+    }
+    response = await updateUser(params, bodydata)
+    return response
   }

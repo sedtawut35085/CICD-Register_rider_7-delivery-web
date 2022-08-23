@@ -8,8 +8,31 @@
     .button-responsive {
       margin-top: -80px;
     }
+    .loading-center {
+      margin: auto;
+      width: 35%;
+      margin-bottom: 20px;
+      padding: 10px;
+  }
     
   }
+@media only screen and (max-width: 599px) {
+    .loading-center {
+      margin: auto;
+      width: 50%;
+      margin-bottom: 20px;
+      padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .loading-center {
+    margin: auto;
+    width: 60%;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+}
 
 @media only screen and (max-width: 434px) {
     .step-bar {
