@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Auth from '../configuration/configuration-aws'
 import { useNavigate } from 'react-router-dom'
+
+import Auth from '../configuration/configuration-aws'
+import * as routeconstant from '../constant/routeconstant'
 
 export const AuthContext = React.createContext();
 
@@ -15,7 +17,7 @@ export const AuthProvider = ({ children }) => {
                 setCurrentUser(response);
             })
             .catch(() => {
-                navigate('/');
+                navigate(routeconstant.RouteContent.login);
             })
         }
         check();

@@ -4,7 +4,7 @@
 import { useState , useContext } from "react";
 import { useStepperContext } from "../../context/UserContext";
 import { AuthContext } from '../../auth/Auth'
-import { SavepersonalInformation , SaverelevantInformation } from '../SaveinformationComponent/index'
+import { SavepersonalInformation, SaverelevantInformation, SavebookbankInformation, SavecriminalhistoryInformation} from '../SaveinformationComponent/index'
 
 import Stepper from "../StepComponents/Stepper";
 import Personalinformation from "../StepComponents/steps/Personalinformation";
@@ -19,8 +19,12 @@ const InformationComponent = () => {
   const { userData } = useStepperContext();
   const { currentUser } = useContext(AuthContext);
   const [ currentStep , setCurrentStep] = useState(1);
+  const [ loading , setLoading] = useState(false);
   const [ isMessageErrorPersonalPicture , setIsMessageErrorPersonalPicture]  = useState(false);
   const [ isMessageErrorIdCard , setIsMessageErrorIdCard]  = useState(false);
+  const [ isMessageErrorBookbankPicture , setIsMessageErrorBookbankPicture]  = useState(false);
+  const [ isMessageErrorCriminalHistoryPicture , setIsMessageErrorCriminalHistoryPicture ]  = useState(false);
+  const [ isResponseError , setIsResponseError ]  = useState(false);
 
   const steps = [
     "ข้อมูลส่วนบุคคล",
@@ -33,9 +37,9 @@ const InformationComponent = () => {
   const displayStep = (step) => {
     switch (step) {
       case 1:
-        return <Personalinformation isMessageErrorPersonalPicture={isMessageErrorPersonalPicture} isMessageErrorIdCard={isMessageErrorIdCard}/>;
+        return <Personalinformation isMessageErrorPersonalPicture={isMessageErrorPersonalPicture} isMessageErrorIdCard={isMessageErrorIdCard} isResponseError={isResponseError} loading={loading}/>;
       case 2:
-        return <Bookbankinformation />;
+        return <Bookbankinformation isMessageErrorBookbankPicture={isMessageErrorBookbankPicture} isMessageErrorCriminalHistoryPicture={isMessageErrorCriminalHistoryPicture} isResponseError={isResponseError}/>;
       case 3:
         return <Driverlicenseinformation />;
       case 4:
@@ -46,8 +50,9 @@ const InformationComponent = () => {
     }
   };
 
-  const Submit = async (e) => {
+  const Submit = async (e) => { 
     e.preventDefault();
+    setLoading(true)
     let newStep = currentStep;
     newStep++;
     if(newStep > 0 && newStep <= steps.length){
@@ -65,13 +70,42 @@ const InformationComponent = () => {
         if(userData['personalpicture'] !== undefined && userData['idcard'] !== undefined){
           let responsesavepersonalinformation = await SavepersonalInformation(userData , currentUser.username)
           let responsesaverelevantinformation = await SaverelevantInformation(userData , currentUser.username)
-          if(responsesavepersonalinformation.data.Message === "SUCCESS" && responsesaverelevantinformation.data.Message === "SUCCESS"){
+          console.log('responsesavepersonalinformation: ' ,responsesavepersonalinformation)
+          if(responsesavepersonalinformation.status === 200 && responsesaverelevantinformation.status === 200){
+            setLoading(false)
             setCurrentStep(newStep)
+          }else{
+            setIsResponseError(true)
           }
         } 
       }
-      if(newStep === 3){
-        
+      else if(newStep === 3){
+        if(userData['bookbankphoto'] === undefined){
+          setIsMessageErrorBookbankPicture(true)
+        }else{
+          setIsMessageErrorBookbankPicture(false)
+        }
+        if(userData['criminalhistoryphoto'] === undefined){
+          setIsMessageErrorCriminalHistoryPicture(true)
+        }else{
+          setIsMessageErrorCriminalHistoryPicture(false)
+        }
+        if(userData['criminalhistoryphoto'] !== undefined && userData['bookbankphoto'] !== undefined){
+          let responsesavebookbankinformation = await SavebookbankInformation(userData , currentUser.username)
+          let responsesavecriminalhistoryinformation = await SavecriminalhistoryInformation(userData , currentUser.username)
+          console.log('responsesavebookbankinformation: ' ,responsesavebookbankinformation)
+          if(responsesavebookbankinformation.status === 200 && responsesavecriminalhistoryinformation.status === 200){
+            setCurrentStep(newStep)
+          }else{
+            setIsResponseError(true)
+          }
+        } 
+      }
+      else if(newStep === 4){
+        setCurrentStep(newStep)
+      }
+      else if(newStep === 5){
+        setCurrentStep(newStep)
       }
     }
   }

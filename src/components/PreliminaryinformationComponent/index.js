@@ -13,6 +13,13 @@ import logo from '../../assets/logo.png'
 
 const PreliminaryComponent = () => {
 
+    Auth.currentSession()
+    .then(data => {
+        let token = data.getAccessToken();
+        console.log(token)
+      })
+    .catch(err => console.log(err));
+
     const navigate = useNavigate()
     const { currentUser } = useContext(AuthContext);
 
