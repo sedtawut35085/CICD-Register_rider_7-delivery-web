@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext,useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import axios from 'axios' 
 import moment from "moment"
+import RingLoader from "react-spinners/RingLoader";
 
 import Auth from '../../configuration/configuration-aws'
 import { AuthContext } from '../../auth/Auth'
@@ -11,19 +12,15 @@ import * as routeconstant from '../../constant/routeconstant'
 import wallpaperpreliminary from '../../assets/wallpaper-preliminary.jpeg'
 import logo from '../../assets/logo.png'
 
+import './style.css'
+
 const PreliminaryComponent = () => {
-
-    Auth.currentSession()
-    .then(data => {
-        let token = data.getAccessToken();
-        console.log(token)
-      })
-    .catch(err => console.log(err));
-
     const navigate = useNavigate()
+    const [ loading , setLoading] = useState(false);
     const { currentUser } = useContext(AuthContext);
 
     const Savepreliminaryinfomation = async (e) => {
+        setLoading(true)
         e.preventDefault();
         const { name, surname , email ,country} = e.target.elements;
         let token;
@@ -53,13 +50,14 @@ const PreliminaryComponent = () => {
             },
             data: data
         }).then(() => {
+            setLoading(false)
             navigate(routeconstant.RouteContent.verifyphone)
         }).catch((err)=>{
             console.log('error: ' ,err)
         })
     }
 
-    return (  
+    return (   
         <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>    
         <div className='hidden sm:block bg-gray-100'>
             <img className='w-full h-full object-cover photo' src={wallpaperpreliminary} alt="" />
@@ -85,7 +83,7 @@ const PreliminaryComponent = () => {
                         className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder={constant.PreliminaryContent.placeholder.surname} name='surname' id="exampleInputSurname"
                     />
-                </div>
+                </div> 
                 <div className='flex flex-col py-2'>
                     <label htmlFor="exampleFormControlInput2" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.PreliminaryContent.label.email}</label>
                     <input
@@ -99,7 +97,7 @@ const PreliminaryComponent = () => {
                     <label htmlFor="exampleFormControlInput2" className="form-label inline-blocktext-gray-700 pl-2 pt-1 text-sm">{constant.PreliminaryContent.label.country}</label>
                     <select required id="countries" name='country' type='text' className="border-bottom text-gray-700 pl-4 pb-2 pt-1 block w-fullfocus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none ">
                         <option disabled={true} value="">ไม่ระบุ</option>
-                        <option>กรุงเทพมหานคร</option>
+                        <option>กรุงเทพมหานคร</option> 
                         <option>กระบี่</option>
                         <option>กาญจนบุรี</option>
                         <option>กาฬสินธุ์</option>
@@ -133,8 +131,26 @@ const PreliminaryComponent = () => {
                         {/* https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%AD%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%A3%E0%B8%A2%E0%B9%88%E0%B8%AD%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2 */}
                     </select>
                 </div>
-                <div className='pl-4 pr-4 ml-1'>
-                    <button className='border w-full my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl'>{constant.PreliminaryContent.button.submit}</button>
+                
+                <div className='pl-4 ml-1'>
+                {loading === false?
+                    <>
+                       <button className='border w-full my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl'>{constant.PreliminaryContent.button.submit}</button>
+                    </>
+                    :                        
+                    <>
+                    <div className="loading-center my-4 pl-16 flex">
+                        <RingLoader
+                            size={25}
+                            color={"#599c3d"}
+                            loading={loading}
+                        />
+                        <div className="pl-4">
+                            กำลังบันทึกข้อมูล
+                        </div>
+                    </div>
+                    </>
+                }   
                 </div>
             </form>
                  

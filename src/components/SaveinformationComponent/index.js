@@ -97,3 +97,47 @@ export const SavepersonalInformation = async (data , userId) => {
     response = await updateUser(params, bodydata)
     return response
   }
+
+  export const SavedriverlicenseInformation = async (data , userId) => {
+    var bodydata
+    if(data['typedriverlicense'] === 'normal'){
+      convertedFile = await convertToBase64(data['driverlicensephoto']);
+      convertedFile = data['driverlicensephoto'].type + ' ' + convertedFile;
+      data['driverlicensephoto'] = await uploadPhoto(convertedFile)
+      bodydata = {
+        "updateKey"     : "driverLicenseInformation",
+        "updateValue"   : {
+          "numberdriverLicense"   : data["numberdriverlicense"],
+          "typedriverLicense"     : data["typedriverlicense"],
+          "issuedatedriverLicense"    : data["driverlicenseIssueDate"],
+          "expiredatedriverLicense"   : data["driverlicenseExpireDate"],
+          "driverLicensePhoto"  : data['driverlicensephoto']
+        }
+      }
+    }else{
+      convertedFile = await convertToBase64(data['driverlicensephoto']);
+      convertedFile = data['driverlicensephoto'].type + ' ' + convertedFile;
+      data['driverlicensephoto'] = await uploadPhoto(convertedFile)
+      convertedFile = await convertToBase64(data['documentdriverlicensephoto']);
+      convertedFile = data['documentdriverlicensephoto'].type + ' ' + convertedFile;
+      data['documentdriverlicensephoto'] = await uploadPhoto(convertedFile)
+      bodydata = {
+        "updateKey"     : "driverLicenseInformation",
+        "updateValue"   : {
+          "numberdriverLicense"   : data["numberdriverlicense"],
+          "typedriverLicense"     : data["typedriverlicense"],
+          "issuedatedriverLicense"    : data["driverlicenseIssueDate"],
+          "expiredatedriverLicense"   : data["driverlicenseExpireDate"],
+          "driverLicensePhoto"        : data['driverlicensephoto'],
+          "documentdriverLicensePhoto" : data['documentdriverlicensephoto'],
+          "issmartcarddriverlicense" : data['issmartcarddriverlicense']
+        }
+      }
+    }
+   
+    var params = {
+      "userId" : userId
+    }
+    response = await updateUser(params, bodydata)
+    return response
+  }

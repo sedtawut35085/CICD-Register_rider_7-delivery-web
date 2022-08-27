@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaUserAlt, FaLock, FaFacebookF, FaGoogle } from 'react-icons/fa'
+import RingLoader from "react-spinners/RingLoader";
 
 import ConfirmemailComponent from '../ConfirmemailComponent'
 import Auth from '../../configuration/configuration-aws'
@@ -22,6 +23,7 @@ const LoginComponent = () => {
     const [isErrorRegister, setIsErrorRegister] = useState(null);
     const [errorPasswordMessage, setErrorPasswordMessage] = useState(null);
     const [errorConfirmPasswordMessage, setErrorConfirmErrorMessage] = useState(null);
+    const [loading , setLoading] = useState(false);
     const navigate = useNavigate()
     
     useEffect( () => {
@@ -89,6 +91,7 @@ const LoginComponent = () => {
     const Signupwithemail = async (e) => {
         e.preventDefault();
         if(isErrorConfirmPassword === true && isErrorPassword === true){
+            setLoading(true)
             const { email, password } = e.target.elements;
             await Auth.signUp({
                 username: email.value,
@@ -102,6 +105,7 @@ const LoginComponent = () => {
                 setIsUserEmail(true);
                 setUserEmail(email.value)
                 setIsErrorRegister(null);
+                setLoading(false)
             })
             .catch(err =>{
                 if(err.toString().includes('An account with the given email already exists.')){
@@ -150,7 +154,25 @@ const LoginComponent = () => {
                             <div className='ml-2 text-sm text-red-500'>{errorConfirmPasswordMessage}</div>
                         </div>
                         <div className='pl-4 pr-4 ml-1'>
-                            <button className='transition border w-full my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl delay-150'>{constant.LoginContent.button.email}</button>
+                        {loading === false?
+                            <>
+                                <button className='transition border w-full my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl delay-150'>{constant.LoginContent.button.email}</button>
+                            </>
+                            :                        
+                            <>
+                                <div className="my-4 pl-14 pt-2 flex">
+                                    <RingLoader
+                                        size={25}
+                                        color={"#599c3d"}
+                                        loading={loading}
+                                    />
+                                    <div className="pl-4 text-center">
+                                        {constant.LoginContent.loading}
+                                    </div>
+                                </div>
+                            </>
+                        }   
+                         
                         </div>
                     </form>
                     <div className='max-w-[400px] w-full mx-auto bg-white pl-8 pr-8'>
