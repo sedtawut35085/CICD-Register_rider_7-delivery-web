@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useStepperContext } from "../../../context/UserContext";
 import { FaCloudUploadAlt } from 'react-icons/fa'
 
+import * as constant from '../../../constant/content'
+
 import bookbank from '../../../assets/bookbank.png'
 import criminalhistory from '../../../assets/criminalhistory.png'
 
@@ -30,12 +32,12 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
     <div> 
     <div className="grid md:grid-cols-12 gap-5">
     <div className="md:col-span-9">
-      <h1 className="pb-2">กรอกข้อมูลบัญชีธนาคาร</h1>
+      <h1 className="pb-2">{constant.BookbankInformationContent.title}</h1>
       <div className="border rounded-2xl pl-6 pr-6 pt-6 ">
         <div className="grid md:grid-cols-2 md:gap-x-10 ">
         <div className='flex flex-col py-2 z-50'>
           <div className="relative z-0 mb-6 w-full group">
-            <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">ชื่อตามบัญชี</label>
+            <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.BookbankInformationContent.label.name}</label>
             <input
               required
               onChange={handleChange}
@@ -43,13 +45,13 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
               name="namebookbank"   
               type="text"  
               className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="นายสมชาย" id="exampleInputNamebookbank"
+              placeholder={constant.BookbankInformationContent.placeholder.name} id="exampleInputNamebookbank"
             />
           </div>
         </div>
         <div className='flex flex-col py-2 z-0'>
           <div className="relative z-0 mb-6 w-full group">
-            <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">นามสกุลตามบัญชี</label>
+            <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.BookbankInformationContent.label.surname}</label>
             <input
               required
               onChange={handleChange}
@@ -57,14 +59,14 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
               name="surnamebookbank"   
               type="text"  
               className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="เข็มกลัด" id="exampleInputSurNamebookbank"
+              placeholder={constant.BookbankInformationContent.placeholder.surname} id="exampleInputSurNamebookbank"
             />
           </div>
         </div>
        
         <div className='flex flex-col py-2'>
           <div className="relative z-0 mb-6 w-full group">
-            <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">เลขบัญชีธนาคาร</label>
+            <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.BookbankInformationContent.label.idbookbank}</label>
             <input
               onChange={handleChange}
               required
@@ -72,13 +74,13 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
               name="idbookbank"
               type="text"  
               className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="0000000" id="exampleInputIdbookbank"
+              placeholder={constant.BookbankInformationContent.placeholder.idbookbank} id="exampleInputIdbookbank"
             />
           </div>
         </div>
         <div className='flex flex-col py-2'>
           <div className="relative z-0 mb-6 w-full group">
-            <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">ชื่อธนาคาร</label>
+            <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.BookbankInformationContent.label.namebookbank}</label>
             <input
               onChange={handleChange}
               required
@@ -86,7 +88,7 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
               name="namebank"
               type="text"  
               className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="ธนาคารไทยพานิชณ์" id="exampleInputNamebank"
+              placeholder={constant.BookbankInformationContent.placeholder.namebookbank} id="exampleInputNamebank"
             />
           </div>
         </div>
@@ -94,53 +96,53 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
         <div className=" grid md:grid-cols-2 md:gap-x-0 pl-6 pr-6 pt-2 pb-6 ">
           <div className='flex flex-col py-2 text-center'>
             <div className="relative z-0 w-full group">
-              <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">รูปบัญชีธนาคารหน้าที่มีชื่อและเลขบัญชี</label>
+              <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.BookbankInformationContent.label.bookbankpicture.title}</label>
               <div className="flex justify-center items-center w-full">
                   <label htmlFor="dropzone-file" className="flex flex-col justify-center items-center w-40 h-36 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                       <div className="flex flex-col justify-center items-center pt-8 pb-4 pl-2 pr-2">
                       {userData['bookbankphoto'] === undefined?
-                          <>
-                            <img className='w-14 h-14 object-cover absolute mb-20 z-0' src={bookbank} alt="" />
-                            <FaCloudUploadAlt className="mb-2 mt-4 w-8 h-8 text-gray-600 z-20"></FaCloudUploadAlt>
-                            <p className="mb-2 text-xs text-gray-500 dark:text-gray-400"><span className="font-semibold">คลิกเพื่ออัพโหลด</span></p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">รูปภาพบัญชีธนาคาร</p>
-                          </>
-                            :
-                          <>
-                            <p className="mb-2 text-xs text-gray-500 dark:text-gray-400 break-all"><span className="font-semibold ">{namebookbankphoto}</span></p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">คลิกเพื่ออัพโหลดรูปอีกครั้ง</p>
-                          </>
+                        <>
+                          <img className='w-14 h-14 object-cover absolute mb-20 z-0' src={bookbank} alt="" />
+                          <FaCloudUploadAlt className="mb-2 mt-4 w-8 h-8 text-gray-600 z-20"></FaCloudUploadAlt>
+                          <p className="mb-2 text-xs text-gray-500 dark:text-gray-400"><span className="font-semibold">{constant.BookbankInformationContent.label.bookbankpicture.buttonclick}</span></p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">{constant.BookbankInformationContent.label.bookbankpicture.title}</p>
+                        </>
+                        :
+                        <>
+                          <p className="mb-2 text-xs text-gray-500 dark:text-gray-400 break-all"><span className="font-semibold ">{namebookbankphoto}</span></p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">{constant.BookbankInformationContent.label.bookbankpicture.buttonclickagain}</p>
+                        </>
                         }
                       </div>
                       <input id="dropzone-file" name="bookbankphoto" className="hidden" type="file" accept="image/*" onChange={onSelectFile}/>
                   </label>
               </div> 
               {isMessageErrorBookbankPicture === true?
-                          <>
-                            <label htmlFor="exampleFormControlInput" className="pl-2 pt-4 text-xs text-red-500">โปรดคลิกเพื่ออัพโหลดรูปบัญชีธนาคาร</label>
-                          </>
-                          :
-                          <>
-                          </>
+                <>
+                  <label htmlFor="exampleFormControlInput" className="pl-2 pt-4 text-xs text-red-500">{constant.BookbankInformationContent.label.bookbankpicture.errormessage}</label>
+                </>
+                :
+                <>
+                </>
               }
             </div>
           </div>
           <div className='flex flex-col py-2'>
             <div className="relative z-0 w-full group text-center suggesstion-box pt-12">
-              <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">คำแนะนำรูป</label>
-              <h5 className="text-xs text-gray-500">ภาพถ่ายหน้าเลขสมุดบัญชีธนาคาร<br/>ตัวอักษรชัดเจน ไม่มีเงาสะท้อน</h5>
+              <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{constant.BookbankInformationContent.label.bookbankpicturesuggest.title}</label>
+              <h5 className="text-xs text-gray-500">{constant.BookbankInformationContent.label.bookbankpicturesuggest.bodysuggest[0]}<br/>{constant.BookbankInformationContent.label.bookbankpicturesuggest.bodysuggest[1]}</h5>
             </div>
           </div>
         </div>  
       </div>
   </div>
   <div className="md:col-span-3 ">
-  <h1 className="pb-2">เพิ่มเอกสารตรวจสอบประวัติอาญชกรรม</h1>
+  <h1 className="pb-2">{constant.BookbankInformationContent.label.criminalhistorypicture.title}</h1>
     <div className="border rounded-2xl pl-6 pr-6 pt-12 pb-14 mb-14">
-    <div className=" grid md:grid-cols-0 md:gap-x-0 pl-6 pr-6 pt-2 pb-0 ">
+      <div className=" grid md:grid-cols-0 md:gap-x-0 pl-6 pr-6 pt-2 pb-0 ">
           <div className='flex flex-col py-2 text-center'>
             <div className="relative z-0 w-full group">
-              <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 pb-4 text-sm">รูปประวัติตรวจสอบอาญชกรรม</label>
+              <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 pb-4 text-sm">{constant.BookbankInformationContent.label.criminalhistorypicture.title}</label>
               <div className="flex justify-center items-center w-full">
                   <label htmlFor="dropzone-file-2" className="flex flex-col justify-center items-center w-40 h-36 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                       <div className="flex flex-col justify-center items-center pt-8 pb-4 pl-2 pr-2">
@@ -148,13 +150,13 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
                           <>
                             <img className='w-14 h-14 object-cover absolute mb-20 z-0' src={criminalhistory} alt="" />
                             <FaCloudUploadAlt className="mb-2 mt-4 w-8 h-8 text-gray-600 z-20"></FaCloudUploadAlt>
-                            <p className="mb-2 text-xs text-gray-500 dark:text-gray-400"><span className="font-semibold">คลิกเพื่ออัพโหลด</span></p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">รูปภาพประวัติตรวจ<br/>สอบอาญชกรรม</p>
+                            <p className="mb-2 text-xs text-gray-500 dark:text-gray-400"><span className="font-semibold">{constant.BookbankInformationContent.label.criminalhistorypicture.buttonclick}</span></p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{constant.BookbankInformationContent.label.criminalhistorypicture.title}</p>
                           </>
                             :
                           <>
                             <p className="mb-2 text-xs text-gray-500 dark:text-gray-400 break-all"><span className="font-semibold ">{namecriminalhistoryphoto}</span></p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">คลิกเพื่ออัพโหลดรูปอีกครั้ง</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{constant.BookbankInformationContent.label.criminalhistorypicture.buttonclickagain}</p>
                           </>
                         }
                       </div>
@@ -162,19 +164,19 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
                   </label>
               </div> 
               {isMessageErrorCriminalHistoryPicture === true?
-                          <>
-                            <label htmlFor="exampleFormControlInput" className="pl-2 pt-4 text-xs text-red-500">โปรดคลิกเพื่ออัพโหลดรูปประวัติตรวจสอบอาญชกรรม</label>
-                          </>
-                          :
-                          <>
-                          </>
+              <>
+                <label htmlFor="exampleFormControlInput" className="pl-2 pt-4 text-xs text-red-500">{constant.BookbankInformationContent.label.criminalhistorypicture.errormessage}</label>
+              </>
+              :
+              <>
+              </>
               }
             </div>
           </div>
           <div className='flex flex-col py-2'>
             <div className="relative z-0 w-full group text-center suggesstion-box pt-10">
-              <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">คำแนะนำรูป</label>
-              <h5 className="text-xs text-gray-500">ภาพตรวจสอบประวัติอาญชกรรม<br/>ตัวอักษรชัดเจน ไม่มีเงาสะท้อน</h5>
+              <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{constant.BookbankInformationContent.label.criminalhistorypicturesuggest.title}</label>
+              <h5 className="text-xs text-gray-500">{constant.BookbankInformationContent.label.criminalhistorypicturesuggest.bodysuggest[0]}<br/>{constant.BookbankInformationContent.label.criminalhistorypicturesuggest.bodysuggest[1]}</h5>
             </div>
           </div>
         </div>  
@@ -184,7 +186,7 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
   {isResponseError === true?
     <>
       <div className="md:col-span-12 text-center mt-8">
-        <h1 className="text-red-500">เกิดข้อผิดพลาด</h1>
+        <h1 className="text-red-500">{constant.BookbankInformationContent.messegeerror}</h1>
       </div>
     </>
       :

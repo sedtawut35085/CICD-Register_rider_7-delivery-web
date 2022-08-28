@@ -1,7 +1,7 @@
 import { useState , useContext } from "react";
 import { useStepperContext } from "../../context/UserContext";
 import { AuthContext } from '../../auth/Auth'
-import { SavepersonalInformation, SaverelevantInformation, SavebookbankInformation, SavecriminalhistoryInformation} from '../SaveinformationComponent/index'
+import { SavepersonalInformation, SaverelevantInformation, SavebookbankInformation, SavecriminalhistoryInformation, SavedriverlicenseInformation} from '../SaveinformationComponent/index'
 
 import RingLoader from "react-spinners/RingLoader";
 
@@ -23,6 +23,8 @@ const InformationComponent = () => {
   const [ isMessageErrorIdCard , setIsMessageErrorIdCard]  = useState(false);
   const [ isMessageErrorBookbankPicture , setIsMessageErrorBookbankPicture]  = useState(false);
   const [ isMessageErrorCriminalHistoryPicture , setIsMessageErrorCriminalHistoryPicture ]  = useState(false);
+  const [ isMessageErrorDriverLicensePicture , setIsMessageErrorDriverLicensePicture ]  = useState(false);
+  const [ isMessageErrorDocumentDriverLicensePicture , setIsMessageErrorDocumentDriverLicensePicture ]  = useState(false);
   const [ isResponseError , setIsResponseError ]  = useState(false);
 
   const steps = [
@@ -40,7 +42,7 @@ const InformationComponent = () => {
       case 2:
         return <Bookbankinformation isMessageErrorBookbankPicture={isMessageErrorBookbankPicture} isMessageErrorCriminalHistoryPicture={isMessageErrorCriminalHistoryPicture} isResponseError={isResponseError}/>;
       case 3:
-        return <Driverlicenseinformation />;
+        return <Driverlicenseinformation isMessageErrorDriverLicensePicture={isMessageErrorDriverLicensePicture} isMessageErrorDocumentDriverLicensePicture={isMessageErrorDocumentDriverLicensePicture} isResponseError={isResponseError}/>;
       case 4:
         return <Carinformation />;
     case 5:
@@ -54,6 +56,7 @@ const InformationComponent = () => {
     let newStep = currentStep;
     newStep++;
     if(newStep > 0 && newStep <= steps.length){
+      
       if(newStep === 2){
         if(userData['personalpicture'] === undefined){
           setIsMessageErrorPersonalPicture(true)
@@ -93,7 +96,6 @@ const InformationComponent = () => {
           setLoading(true)
           let responsesavebookbankinformation = await SavebookbankInformation(userData , currentUser.username)
           let responsesavecriminalhistoryinformation = await SavecriminalhistoryInformation(userData , currentUser.username)
-          console.log('responsesavebookbankinformation: ' ,responsesavebookbankinformation)
           if(responsesavebookbankinformation.status === 200 && responsesavecriminalhistoryinformation.status === 200){
             setLoading(false)
             setCurrentStep(newStep)
@@ -102,10 +104,39 @@ const InformationComponent = () => {
           }
         } 
       }
-      else if(newStep === 4){
-        setCurrentStep(newStep)
+      else if(newStep === 4){      
+        
+        if(userData['typedriverlicense'] === 'normal'){
+          if(userData['driverlicensephoto'] === undefined){
+            setIsMessageErrorDriverLicensePicture(true)
+          }else{
+            setIsMessageErrorDriverLicensePicture(false)
+          }
+        }else{
+          if(userData['driverlicensephoto'] === undefined){
+            setIsMessageErrorDriverLicensePicture(true)
+          }else{
+            setIsMessageErrorDriverLicensePicture(false)
+          }
+          if(userData['documentdriverlicensephoto'] === undefined){
+            setIsMessageErrorDocumentDriverLicensePicture(true)
+          }else{
+            setIsMessageErrorDocumentDriverLicensePicture(false)
+          }
+        }
+        if((userData['driverlicensephoto'] !== undefined && userData['documentdriverlicensephoto'] !== undefined && userData['typedriverlicense'] === 'special') || (userData['typedriverlicense'] === 'normal' && userData['driverlicensephoto'] !== undefined)){
+          setLoading(true)
+          let responsesavesavedriverlicenseinformation = await SavedriverlicenseInformation(userData , currentUser.username)
+          if(responsesavesavedriverlicenseinformation.status === 200 && responsesavesavedriverlicenseinformation.status === 200){
+            setLoading(false)
+            setCurrentStep(newStep)
+          }else{
+            setIsResponseError(true)
+          }
+        }
       }
       else if(newStep === 5){
+        // อย่าลืม constant !!!!
         setCurrentStep(newStep)
       }
     }

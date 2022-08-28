@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaCode } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import RingLoader from "react-spinners/RingLoader";
 
 import Auth from '../../configuration/configuration-aws'
 import * as constant from '../../constant/content'
@@ -8,12 +9,13 @@ import * as routeconstant from '../../constant/routeconstant'
 
 const ConfirmemailComponent = ({userEmail, userPassword}) => {
 
-    const [messageError,setMessageError] = useState(null);
-    const [isResendCode, setIsResendCode] = useState(false)
-
+    const [ messageError, setMessageError] = useState(null);
+    const [ isResendCode, setIsResendCode] = useState(false)
+    const [ loading , setLoading] = useState(false);
     const navigate = useNavigate()
 
     const confirmCode = async (e) =>  {
+        setLoading(true)
         e.preventDefault();
         const { code } = e.target.elements;
         let isConfirmcode = false;
@@ -31,6 +33,7 @@ const ConfirmemailComponent = ({userEmail, userPassword}) => {
         if(isConfirmcode){
             await Auth.signIn(userEmail, userPassword)
             .then(() => {
+                setLoading(false)
                 navigate(routeconstant.RouteContent.preliminary)
             })
             .catch(err => console.log(err));   
@@ -61,8 +64,25 @@ const ConfirmemailComponent = ({userEmail, userPassword}) => {
                     </div>                    
                 </div>
                 <div className='pl-4 pr-4 ml-1 pt-2'>
-                    <button className='transition border w-full my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl delay-150'>{constant.ConfirmemailContent.button.submit}</button>
-                </div>
+                {loading === false?
+                    <>
+                      <button className='transition border w-full my-4 py-2 bg-green-600 hover:bg-green-800 text-white rounded-2xl delay-150'>{constant.ConfirmemailContent.button.submit}</button>
+                    </>
+                    :                        
+                    <>
+                    <div className="my-4 pl-2 pb-2 pt-2 flex">
+                        <RingLoader
+                            size={25}
+                            color={"#599c3d"}
+                            loading={loading}
+                        />
+                        <div className="pl-6">
+                            กำลังตรวจสอบการยืนยันอีเมล
+                        </div>
+                    </div>
+                    </>
+                }
+               </div>
                 {isResendCode === false?
                     <>
                         <div className='pt-2'>
