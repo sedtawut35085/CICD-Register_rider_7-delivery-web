@@ -28,7 +28,7 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
     setUserData({ ...userData, [name]: file })
   }
 
-  return (
+  return ( 
     <div> 
     <div className="grid md:grid-cols-12 gap-5">
     <div className="md:col-span-9">

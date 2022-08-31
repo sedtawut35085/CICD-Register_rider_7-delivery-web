@@ -261,5 +261,7 @@ export const DriverLicenseInformationContent = {
         },
     
     },
+    messagesmartcarderror : "โปรเลือกชนิดของใบขับขี่ตลอดชีพของคุณ",
+    messagetypeerror : "โปรดเลือกชนิดของใบขับขี่",
     messegeerror : "เกิดข้อผิดพลาด"
 }

@@ -25,12 +25,12 @@ export const SavepersonalInformation = async (data , userId) => {
       "updateValue"   : {
         "name"             : data['name'],
         "surname"          : data['surname'],
-        "birthday"         : data['birthday'],
+        "birthday"         : data['birthday'].toLocaleDateString("en-US"),
         "gender"           : data['gender'],
         "age"              : data['age'],
         "cardNumber"       : data['cardNumber'],
-        "cardIssueDate"    : data['cardIssueDate'],
-        "cardExpireDate"   : data['cardExpireDate'],
+        "cardIssueDate"    : data['cardIssueDate'].toLocaleDateString("en-US"),
+        "cardExpireDate"   : data['cardExpireDate'].toLocaleDateString("en-US"),
         "cardPhoto"        : data['idcard'],
         "userPhoto"        : data['personalpicture']
       }
@@ -109,8 +109,9 @@ export const SavepersonalInformation = async (data , userId) => {
         "updateValue"   : {
           "numberdriverLicense"   : data["numberdriverlicense"],
           "typedriverLicense"     : data["typedriverlicense"],
-          "issuedatedriverLicense"    : data["driverlicenseIssueDate"],
-          "expiredatedriverLicense"   : data["driverlicenseExpireDate"],
+          "typecardriverLicense"     : data["typecardriverlicense"],
+          "issuedatedriverLicense"    : data["driverlicenseIssueDate"].toLocaleDateString("en-US"),
+          "expiredatedriverLicense"   : data["driverlicenseExpireDate"].toLocaleDateString("en-US"),
           "driverLicensePhoto"  : data['driverlicensephoto']
         }
       }
@@ -126,8 +127,8 @@ export const SavepersonalInformation = async (data , userId) => {
         "updateValue"   : {
           "numberdriverLicense"   : data["numberdriverlicense"],
           "typedriverLicense"     : data["typedriverlicense"],
-          "issuedatedriverLicense"    : data["driverlicenseIssueDate"],
-          "expiredatedriverLicense"   : data["driverlicenseExpireDate"],
+          "typecardriverLicense"     : data["typecardriverlicense"],
+          "issuedatedriverLicense"    : data["driverlicenseIssueDate"].toLocaleDateString("en-US"),
           "driverLicensePhoto"        : data['driverlicensephoto'],
           "documentdriverLicensePhoto" : data['documentdriverlicensephoto'],
           "issmartcarddriverlicense" : data['issmartcarddriverlicense']
