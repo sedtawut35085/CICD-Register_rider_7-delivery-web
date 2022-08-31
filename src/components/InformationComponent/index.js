@@ -26,8 +26,10 @@ const InformationComponent = () => {
   const [ isMessageErrorIdCard , setIsMessageErrorIdCard]  = useState(false);
   const [ isMessageErrorBookbankPicture , setIsMessageErrorBookbankPicture]  = useState(false);
   const [ isMessageErrorCriminalHistoryPicture , setIsMessageErrorCriminalHistoryPicture ]  = useState(false);
+  const [ isMessageErrorTypeDriverLicense , setIsMessageErrorTypeDriverLicense]  = useState(false);
   const [ isMessageErrorDriverLicensePicture , setIsMessageErrorDriverLicensePicture ]  = useState(false);
   const [ isMessageErrorDocumentDriverLicensePicture , setIsMessageErrorDocumentDriverLicensePicture ]  = useState(false);
+  const [ isMessageErrorSmartcardDriverLicense , setIsMessageErrorSmartcardDriverLicense ]  = useState(false);
   const [ isResponseError , setIsResponseError ]  = useState(false);
 
   const steps = [
@@ -45,7 +47,7 @@ const InformationComponent = () => {
       case 2:
         return <Bookbankinformation isMessageErrorBookbankPicture={isMessageErrorBookbankPicture} isMessageErrorCriminalHistoryPicture={isMessageErrorCriminalHistoryPicture} isResponseError={isResponseError}/>;
       case 3:
-        return <Driverlicenseinformation isMessageErrorDriverLicensePicture={isMessageErrorDriverLicensePicture} isMessageErrorDocumentDriverLicensePicture={isMessageErrorDocumentDriverLicensePicture} isResponseError={isResponseError}/>;
+        return <Driverlicenseinformation isMessageErrorDriverLicensePicture={isMessageErrorDriverLicensePicture} isMessageErrorDocumentDriverLicensePicture={isMessageErrorDocumentDriverLicensePicture} isResponseError={isResponseError} isMessageErrorTypeDriverLicense={isMessageErrorTypeDriverLicense} isMessageErrorSmartcardDriverLicense={isMessageErrorSmartcardDriverLicense}/>;
       case 4:
         return <Carinformation />;
     case 5:
@@ -108,14 +110,15 @@ const InformationComponent = () => {
         } 
       }
       else if(newStep === 4){      
-        
         if(userData['typedriverlicense'] === 'normal'){
+          setIsMessageErrorTypeDriverLicense(false)
           if(userData['driverlicensephoto'] === undefined){
             setIsMessageErrorDriverLicensePicture(true)
           }else{
             setIsMessageErrorDriverLicensePicture(false)
           }
-        }else{
+        }else if(userData['typedriverlicense'] === 'special'){
+          setIsMessageErrorTypeDriverLicense(false)
           if(userData['driverlicensephoto'] === undefined){
             setIsMessageErrorDriverLicensePicture(true)
           }else{
@@ -126,8 +129,15 @@ const InformationComponent = () => {
           }else{
             setIsMessageErrorDocumentDriverLicensePicture(false)
           }
+          if(userData['issmartcarddriverlicense'] === undefined){
+            setIsMessageErrorSmartcardDriverLicense(true)
+          }else{
+            setIsMessageErrorSmartcardDriverLicense(false)
+          }
+        }else{
+          setIsMessageErrorTypeDriverLicense(true)
         }
-        if((userData['driverlicensephoto'] !== undefined && userData['documentdriverlicensephoto'] !== undefined && userData['typedriverlicense'] === 'special') || (userData['typedriverlicense'] === 'normal' && userData['driverlicensephoto'] !== undefined)){
+        if((userData['driverlicensephoto'] !== undefined && userData['documentdriverlicensephoto'] !== undefined && userData['typedriverlicense'] === 'special' && userData['issmartcarddriverlicense'] !== undefined) || (userData['typedriverlicense'] === 'normal' && userData['driverlicensephoto'] !== undefined)){
           setLoading(true)
           let responsesavesavedriverlicenseinformation = await SavedriverlicenseInformation(userData , currentUser.username)
           if(responsesavesavedriverlicenseinformation.status === 200 && responsesavesavedriverlicenseinformation.status === 200){

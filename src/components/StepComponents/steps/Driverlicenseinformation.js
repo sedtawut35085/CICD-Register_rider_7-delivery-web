@@ -9,7 +9,7 @@ import * as constant from '../../../constant/content'
 import driverlicence from '../../../assets/driverlicence.png'
 import criminalhistory from '../../../assets/criminalhistory.png'
 
-export default function Driverlicenseinformation({isMessageErrorDriverLicensePicture,isMessageErrorDocumentDriverLicensePicture,isResponseError}) {
+export default function Driverlicenseinformation({isMessageErrorDriverLicensePicture,isMessageErrorDocumentDriverLicensePicture,isResponseError,isMessageErrorTypeDriverLicense,isMessageErrorSmartcardDriverLicense}) {
  
   const { userData, setUserData } = useStepperContext();
   const [ typeLicense, setTypeLicense ] = useState(false);
@@ -22,7 +22,7 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
   };
 
   const dateChanged = (date, name) => {
-    setUserData({ ...userData, [name]: date });
+    setUserData({ ...userData, [name]: date});
   }
 
   const onSelectFile = async (event) => {
@@ -95,7 +95,7 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                             <div className="relative z-0 mb-6 w-full group">
                               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.DriverLicenseInformationContent.label.normaldriverlicense.label.typedriverlicense}</label>
                               <select onChange={handleChange}
-                                value={userData["typedriverlicense"] || ""} required id="exampleInputTypedriverlicense" name='typedriverlicense' type='text'  className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                                value={userData["typecardriverlicense"] || ""} required id="exampleInputTypedriverlicense" name='typecardriverlicense' type='text'  className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                                       <option disabled={true} value="">
                                       {constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.typedriverlicense[0]}
                                       </option>
@@ -146,7 +146,6 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                                     <p className="text-xs text-gray-500 dark:text-gray-400">{constant.DriverLicenseInformationContent.label.driverlicencepicture.buttonclickagain}</p>
                                   </>
                                   }
-                                  
                                 </div>
                                 <input id="dropzone-file-2" className="hidden form-control" name="driverlicensephoto" type="file" accept="image/*" onChange={onSelectFile}/>
                             </label>
@@ -210,7 +209,7 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                             <div className="relative z-0 mb-6 w-full group">
                               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.DriverLicenseInformationContent.label.specialdriverlicense.label.typedriverlicense}</label>
                               <select onChange={handleChange}
-                                value={userData["typedriverlicense"] || ""} required id="exampleInputTypedriverlicense" name='typedriverlicense' type='text'  className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                                value={userData["typecardriverlicense"] || ""} required id="exampleInputTypedriverlicense" name='typecardriverlicense' type='text'  className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                                       <option disabled={true} value="">
                                       {constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.typedriverlicense[0]}
                                       </option>
@@ -251,6 +250,14 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                                     <label htmlFor="helper-checkbox" className="font-medium text-gray-900 dark:text-gray-300">{constant.DriverLicenseInformationContent.label.specialdriverlicense.label.issmartcarddriverlicense.no}</label>
                                   </div>
                               </div>
+                              {isMessageErrorSmartcardDriverLicense === true?
+                                <>
+                                  <label htmlFor="exampleFormControlInput" className="pl-2 pt-4 text-xs text-red-500">{constant.DriverLicenseInformationContent.messagesmartcarderror}</label>
+                                </>
+                                :
+                                <>
+                                </>
+                              }
                             </div>
                           </div>
                         </div>
@@ -293,7 +300,7 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                       </div>
                       <div className='flex flex-col py-2'>
                         <div className="relative z-0 w-full group text-center suggesstion-box pt-8">
-                          <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest.title}</label>
+                          <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.title}</label>
                           <h5 className="text-xs text-gray-500">{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[0]}<br/>{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[1]}</h5>
                         </div>
                       </div>
@@ -313,10 +320,8 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                                     <>
                                       <p className="mb-2 text-xs text-gray-500 dark:text-gray-400 break-all"><span className="font-semibold ">{namedocumentdriverlicensePicture}</span></p>
                                       <p className="text-xs text-gray-500 dark:text-gray-400">{constant.DriverLicenseInformationContent.label.documentdriverlicencepicture.buttonclickagain}</p>
-                                    </>
-                                    
+                                    </>                      
                                   }
-                                  
                                 </div>
                                 <input id="dropzone-file-2" className="hidden form-control" name="documentdriverlicensephoto" type="file" accept="image/*" onChange={onSelectFile}/>
                             </label>
@@ -355,8 +360,18 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
     </div>
     {isResponseError === true?
       <>
-        <div className="md:col-span-12 text-center mt-8">
+        <div className="md:col-span-12 text-center mt-0">
           <h1 className="text-red-500">{constant.DriverLicenseInformationContent.messegeerror}</h1>
+        </div>
+      </>
+        :
+      <>
+      </>
+    }
+    {isMessageErrorTypeDriverLicense === true?
+      <>
+        <div className="md:col-span-12 text-center mt-0 mb-4">
+          <h1 className="text-red-500">{constant.DriverLicenseInformationContent.messagetypeerror}</h1>
         </div>
       </>
         :

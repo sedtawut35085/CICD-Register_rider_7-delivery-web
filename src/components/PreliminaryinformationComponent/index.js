@@ -12,7 +12,6 @@ import * as routeconstant from '../../constant/routeconstant'
 import wallpaperpreliminary from '../../assets/wallpaper-preliminary.jpeg'
 import logo from '../../assets/logo.png'
 
-import './style.css'
 
 const PreliminaryComponent = () => {
     const navigate = useNavigate()
@@ -36,7 +35,7 @@ const PreliminaryComponent = () => {
             "userCountry"   : country.value,
             "userName"      : name.value,
             "userSurName"   : surname.value,
-            "startDate"     : moment().format("DD-MM-YYYY hh:mm:ss")};
+            "startDate"     : moment().format("DD/MM/YYYY hh:mm:ss")};
         var params = {
             "userId" : userId
         }
@@ -139,7 +138,7 @@ const PreliminaryComponent = () => {
                     </>
                     :                        
                     <>
-                    <div className="loading-center my-4 pl-16 flex">
+                    <div className="my-4 pl-12 pt-2 flex">
                         <RingLoader
                             size={25}
                             color={"#599c3d"}
