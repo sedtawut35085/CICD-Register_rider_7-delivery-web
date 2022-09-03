@@ -1,37 +1,22 @@
+import documenticon from '../../../assets/finish.png'
+import * as constant from '../../../constant/content'
+
 export default function Final() {
+
     return (
-      <div className="container md:mt-10">
+      <div className="container md:mt-16 md:pt-16">
         <div className="flex flex-col items-center">
-          <div className="wrapper">
-            <svg
-              className="checkmark"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 52 52"
-            >
-              <circle
-                className="checkmark__circle"
-                cx="26"
-                cy="26"
-                r="25"
-                fill="none"
-              />
-              <path
-                className="checkmark__check"
-                fill="none"
-                d="M14.1 27.2l7.1 7.2 16.7-16.8"
-              />
-            </svg>
+          <div className="text-center pt-6">
+            <div className="flex flex-col justify-center items-center pb-10">
+              <img className='w-20 h-20 object-cover' src={documenticon} alt="" />
+            </div>
+           
+            <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 text-xl font-bold">{constant.FinalContent.label}</label>
+            <h5 className="text-xl text-gray-500">{constant.FinalContent.description}</h5>
           </div>
-  
-          <div className="mt-3 text-xl font-semibold uppercase text-green-500">
-            เสร็จสิ้น
-          </div>
-        
-          <a className="mt-10" href="/user/dashboard">
-            <button className="h-10 px-5 text-green-700 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-green-500 hover:text-green-100">
+          {/* <button className="h-10 px-5 mt-4 text-green-700 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-green-500 hover:text-green-100">
               ปิด
-            </button>
-          </a>
+          </button> */}    
         </div>
       </div>
     );

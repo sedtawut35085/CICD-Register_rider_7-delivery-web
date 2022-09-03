@@ -142,3 +142,35 @@ export const SavepersonalInformation = async (data , userId) => {
     response = await updateUser(params, bodydata)
     return response
   }
+
+  export const SavecarInformation = async (data , userId) => {
+    convertedFile = await convertToBase64(data['carlicencepicture']);
+    convertedFile = data['carlicencepicture'].type + ' ' + convertedFile;
+    data['carlicencepicture'] = await uploadPhoto(convertedFile)
+    convertedFile = await convertToBase64(data['taxpicture']);
+    convertedFile = data['taxpicture'].type + ' ' + convertedFile;
+    data['taxpicture'] = await uploadPhoto(convertedFile)
+    var bodydata = {
+      "updateKey"     : "carInformation",
+      "updateValue"   : {
+        "carType"           : data["cartype"],
+        "carNumber"         : data["numbercar"],
+        "typeofCarsign"     : data["typeofcarsign"],
+        "carCountry"        : data["carcountry"], 
+        "carBrand"          : data["brand"],
+        "carColor"          : data["color"],
+        "licenseIssueDate"  : data["licenseissuedate"],
+        "licenseExpireDate" : data["licenseexpiredate"],
+        "licenseName"       : data["licensename"],
+        "taxIssueDate"      : data["taxissuedate"],
+        "taxExpireDate"     : data["taxexpiredate"],
+        "LicencePhoto"      : data['carlicencepicture'],
+        "TaxPhotp"          : data['taxpicture']
+      }
+    }
+    var params = {
+      "userId" : userId
+    }
+    response = await updateUser(params, bodydata)
+    return response
+  }
