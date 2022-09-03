@@ -130,7 +130,7 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
           <div className='flex flex-col py-2'>
             <div className="relative z-0 w-full group text-center suggesstion-box pt-12">
               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{constant.BookbankInformationContent.label.bookbankpicturesuggest.title}</label>
-              <h5 className="text-xs text-gray-500">{constant.BookbankInformationContent.label.bookbankpicturesuggest.bodysuggest[0]}<br/>{constant.BookbankInformationContent.label.bookbankpicturesuggest.bodysuggest[1]}</h5>
+              <h5 className="text-xs text-gray-500">{constant.BookbankInformationContent.label.bookbankpicturesuggest.bodysuggest[0]}<br/>{constant.BookbankInformationContent.label.bookbankpicturesuggest.bodysuggest[1]}<br/>{constant.BookbankInformationContent.label.bookbankpicturesuggest.bodysuggest[2]}</h5>
             </div>
           </div>
         </div>  
@@ -139,7 +139,6 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
   <div className="md:col-span-3 ">
   <h1 className="pb-2">{constant.BookbankInformationContent.label.criminalhistorypicture.title}</h1>
     <div className="border rounded-2xl pl-6 pr-6 pt-12 pb-14 mb-14">
-      <div className=" grid md:grid-cols-0 md:gap-x-0 pl-6 pr-6 pt-2 pb-0 ">
           <div className='flex flex-col py-2 text-center'>
             <div className="relative z-0 w-full group">
               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 pb-4 text-sm">{constant.BookbankInformationContent.label.criminalhistorypicture.title}</label>
@@ -174,12 +173,11 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
             </div>
           </div>
           <div className='flex flex-col py-2'>
-            <div className="relative z-0 w-full group text-center suggesstion-box pt-10">
+            <div className="relative z-0 w-full group text-center suggesstion-box pt-8">
               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{constant.BookbankInformationContent.label.criminalhistorypicturesuggest.title}</label>
-              <h5 className="text-xs text-gray-500">{constant.BookbankInformationContent.label.criminalhistorypicturesuggest.bodysuggest[0]}<br/>{constant.BookbankInformationContent.label.criminalhistorypicturesuggest.bodysuggest[1]}</h5>
+              <h5 className="text-xs text-gray-500">{constant.BookbankInformationContent.label.criminalhistorypicturesuggest.bodysuggest[0]}<br/>{constant.BookbankInformationContent.label.criminalhistorypicturesuggest.bodysuggest[1]}<br/>{constant.BookbankInformationContent.label.criminalhistorypicturesuggest.bodysuggest[2]}</h5>
             </div>
           </div>
-        </div>  
     </div> 
   </div>
   </div>

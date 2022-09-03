@@ -4,7 +4,7 @@
 import { useState , useContext } from "react";
 import { useStepperContext } from "../../context/UserContext";
 import { AuthContext } from '../../auth/Auth'
-import { SavepersonalInformation, SaverelevantInformation, SavebookbankInformation, SavecriminalhistoryInformation, SavedriverlicenseInformation} from '../SaveinformationComponent/index'
+import { SavepersonalInformation, SaverelevantInformation, SavebookbankInformation, SavecriminalhistoryInformation, SavedriverlicenseInformation, SavecarInformation} from '../SaveinformationComponent/index'
 
 import RingLoader from "react-spinners/RingLoader";
 
@@ -30,6 +30,8 @@ const InformationComponent = () => {
   const [ isMessageErrorDriverLicensePicture , setIsMessageErrorDriverLicensePicture ]  = useState(false);
   const [ isMessageErrorDocumentDriverLicensePicture , setIsMessageErrorDocumentDriverLicensePicture ]  = useState(false);
   const [ isMessageErrorSmartcardDriverLicense , setIsMessageErrorSmartcardDriverLicense ]  = useState(false);
+  const [ isMessageErrorCarLicensePicture , setIsMessageErrorCarLicensePicture ]  = useState(false);
+  const [ isMessageErrorTaxPicture , setIsMessageErrorTaxPicture ]  = useState(false);
   const [ isResponseError , setIsResponseError ]  = useState(false);
 
   const steps = [
@@ -49,7 +51,7 @@ const InformationComponent = () => {
       case 3:
         return <Driverlicenseinformation isMessageErrorDriverLicensePicture={isMessageErrorDriverLicensePicture} isMessageErrorDocumentDriverLicensePicture={isMessageErrorDocumentDriverLicensePicture} isResponseError={isResponseError} isMessageErrorTypeDriverLicense={isMessageErrorTypeDriverLicense} isMessageErrorSmartcardDriverLicense={isMessageErrorSmartcardDriverLicense}/>;
       case 4:
-        return <Carinformation />;
+        return <Carinformation isMessageErrorCarLicensePicture={isMessageErrorCarLicensePicture} isMessageErrorTaxPicture={isMessageErrorTaxPicture} isResponseError={isResponseError}/>;
     case 5:
         return <Final />;
       default:
@@ -149,7 +151,27 @@ const InformationComponent = () => {
         }
       }
       else if(newStep === 5){
-        // อย่าลืม constant !!!!
+        if(userData['carlicencepicture'] === undefined){
+          setIsMessageErrorCarLicensePicture(true)
+        }else{
+          setIsMessageErrorCarLicensePicture(false)
+        }
+        if(userData['taxpicture'] === undefined){
+          setIsMessageErrorTaxPicture(true)
+        }else{
+          setIsMessageErrorTaxPicture(false)
+        }
+        if(userData['carlicencepicture'] !== undefined && userData['taxpicture'] !== undefined){
+          setLoading(true)
+          let responseSavecarInformation = await SavecarInformation(userData , currentUser.username)
+          if(responseSavecarInformation.status === 200){
+            setLoading(false)
+            setCurrentStep(newStep)
+          }else{
+            setIsResponseError(true) 
+          }
+        } 
+      }else{
         setCurrentStep(newStep)
       }
     }

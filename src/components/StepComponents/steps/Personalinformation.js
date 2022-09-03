@@ -34,7 +34,6 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
     }
     setUserData({ ...userData, [name]: file })
   }
-
   
   return (
     <div> 
@@ -82,11 +81,11 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
                 <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.PersonalInformationContent.label.gender}</label>
                 <select onChange={handleChange}
                   value={userData["gender"] || ""} required id="exampleInputGender" name='gender' type='text'  className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                        <option disabled={true} value="">
-                        {constant.PersonalInformationContent.placeholder.gender.option}
+                      {constant.optionsgender.map((option) => (
+                        <option disabled={option.disable} key={option.value} value={option.value}>
+                          {option.label}
                         </option>
-                        <option>{constant.PersonalInformationContent.placeholder.gender.option1}</option>
-                        <option>{constant.PersonalInformationContent.placeholder.gender.option2}</option>
+                      ))}
                 </select>
               </div>
             </div>
@@ -182,7 +181,7 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
               <div className='flex flex-col py-2'>
                 <div className="relative z-0 w-full group text-center suggesstion-box pt-8">
                   <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{constant.PersonalInformationContent.label.profilepicturesuggest.title}</label>
-                  <h5 className="text-xs text-gray-500">{constant.PersonalInformationContent.label.profilepicturesuggest.bodysuggest[0]}<br/>{constant.PersonalInformationContent.label.profilepicturesuggest.bodysuggest[1]}<br/>{constant.PersonalInformationContent.label.profilepicturesuggest.bodysuggest[2]}</h5>
+                  <h5 className="text-xs text-gray-500">{constant.PersonalInformationContent.label.profilepicturesuggest.bodysuggest[0]}<br/>{constant.PersonalInformationContent.label.profilepicturesuggest.bodysuggest[1]}<br/>{constant.PersonalInformationContent.label.profilepicturesuggest.bodysuggest[2]}<br/>{constant.PersonalInformationContent.label.profilepicturesuggest.bodysuggest[3]}</h5>
                 </div>
               </div>
               <div className='flex flex-col py-2'>
@@ -222,7 +221,7 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
               <div className='flex flex-col py-2'>
                 <div className="relative z-0 w-full group text-center suggesstion-box pt-8">
                   <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.PersonalInformationContent.label.idcardpicturesuggest.title}</label>
-                  <h5 className="text-xs text-gray-500">{constant.PersonalInformationContent.label.idcardpicturesuggest.bodysuggest[0]}<br/>{constant.PersonalInformationContent.label.idcardpicturesuggest.bodysuggest[1]}</h5>
+                  <h5 className="text-xs text-gray-500">{constant.PersonalInformationContent.label.idcardpicturesuggest.bodysuggest[0]}<br/>{constant.PersonalInformationContent.label.idcardpicturesuggest.bodysuggest[1]}<br/>{constant.PersonalInformationContent.label.idcardpicturesuggest.bodysuggest[2]}</h5>
                 </div>
               </div>
             </div>  

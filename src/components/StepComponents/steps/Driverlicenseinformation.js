@@ -89,25 +89,18 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                                 className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                 placeholder={constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.numberdriverlicense} id="exampleInputNumberdriverlicense"
                               />
-                            </div>
+                            </div> 
                           </div>
                           <div className='flex flex-col py-2 z-0'>
                             <div className="relative z-0 mb-6 w-full group">
                               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.DriverLicenseInformationContent.label.normaldriverlicense.label.typedriverlicense}</label>
                               <select onChange={handleChange}
                                 value={userData["typecardriverlicense"] || ""} required id="exampleInputTypedriverlicense" name='typecardriverlicense' type='text'  className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                                      <option disabled={true} value="">
-                                      {constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.typedriverlicense[0]}
+                                    {constant.optionstypedriverlicense.map((option) => (
+                                      <option disabled={option.disable} key={option.value} value={option.value}>
+                                        {option.label}
                                       </option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.typedriverlicense[1]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.typedriverlicense[2]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.typedriverlicense[3]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.typedriverlicense[4]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.typedriverlicense[5]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.typedriverlicense[6]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.typedriverlicense[7]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.typedriverlicense[8]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.typedriverlicense[9]}</option>
+                                    ))}
                               </select>
                             </div>
                           </div>
@@ -162,8 +155,8 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                       </div>
                       <div className='flex flex-col py-2'>
                         <div className="relative z-0 w-full group text-center suggesstion-box pt-8">
-                          <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest.title}</label>
-                          <h5 className="text-xs text-gray-500">{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[0]}<br/>{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[1]}</h5>
+                          <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{ <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.title}</label>}</label>
+                          <h5 className="text-xs text-gray-500">{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[0]}<br/>{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[1]}<br/>{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[2]}</h5>
                         </div>
                       </div>
                     </div>
@@ -210,18 +203,11 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.DriverLicenseInformationContent.label.specialdriverlicense.label.typedriverlicense}</label>
                               <select onChange={handleChange}
                                 value={userData["typecardriverlicense"] || ""} required id="exampleInputTypedriverlicense" name='typecardriverlicense' type='text'  className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                                      <option disabled={true} value="">
-                                      {constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.typedriverlicense[0]}
+                                     {constant.optionstypedriverlicense.map((option) => (
+                                      <option disabled={option.disable} key={option.value} value={option.value}>
+                                        {option.label}
                                       </option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.typedriverlicense[1]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.typedriverlicense[2]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.typedriverlicense[3]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.typedriverlicense[4]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.typedriverlicense[5]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.typedriverlicense[6]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.typedriverlicense[7]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.typedriverlicense[8]}</option>
-                                      <option>{constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.typedriverlicense[9]}</option>
+                                    ))}
                               </select>
                             </div>
                           </div>
@@ -301,7 +287,7 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                       <div className='flex flex-col py-2'>
                         <div className="relative z-0 w-full group text-center suggesstion-box pt-8">
                           <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.title}</label>
-                          <h5 className="text-xs text-gray-500">{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[0]}<br/>{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[1]}</h5>
+                          <h5 className="text-xs text-gray-500">{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[0]}<br/>{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[1]}<br/>{constant.DriverLicenseInformationContent.label.driverlicencepicturesuggest.bodysuggest[2]}</h5>
                         </div>
                       </div>
                       <div className='flex flex-col py-2 text-center'>
@@ -339,7 +325,7 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                       <div className='flex flex-col py-2'>
                         <div className="relative z-0 w-full group text-center suggesstion-box pt-8">
                           <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm font-bold">{constant.DriverLicenseInformationContent.label.documentdriverlicencepicturesuggest.title}</label>
-                          <h5 className="text-xs text-gray-500">{constant.DriverLicenseInformationContent.label.documentdriverlicencepicturesuggest.bodysuggest[0]}<br/>{constant.DriverLicenseInformationContent.label.documentdriverlicencepicturesuggest.bodysuggest[1]}</h5>
+                          <h5 className="text-xs text-gray-500">{constant.DriverLicenseInformationContent.label.documentdriverlicencepicturesuggest.bodysuggest[0]}<br/>{constant.DriverLicenseInformationContent.label.documentdriverlicencepicturesuggest.bodysuggest[1]}<br/>{constant.DriverLicenseInformationContent.label.documentdriverlicencepicturesuggest.bodysuggest[2]}</h5>
                         </div>
                       </div>
                     </div>

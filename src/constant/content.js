@@ -105,7 +105,7 @@ export const PersonalInformationContent = {
         },
         profilepicturesuggest : {
             title : "คำแนะนำรูป",
-            bodysuggest : ["ไม่สวมหมวก แว่นกันแดด","หรือเครื่องประดับอื่นๆที่บดบังใบหน้า","เป็นรูปสีไม่เกิน 6 เดือน"]
+            bodysuggest : ["ไม่สวมหมวก แว่นกันแดด","หรือเครื่องประดับอื่นๆที่บดบังใบหน้า","เป็นรูปสีไม่เกิน 6 เดือน","ไฟล์รูปต้องเป็น jpg หรือ png"]
         },
         idcardpicture : {
             title : "รูปบัตรประชาชน",
@@ -115,18 +115,13 @@ export const PersonalInformationContent = {
         },
         idcardpicturesuggest : {
             title : "คำแนะนำรูป",
-            bodysuggest : ["ภาพถ่ายด้านหน้าบัตรประชาชน","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน"]
+            bodysuggest : ["ภาพถ่ายด้านหน้าบัตรประชาชน","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน","ไฟล์รูปต้องเป็น jpg หรือ png"]
         },
     },
     placeholder : {
         name   : "นายสมชาย",
         surname : "เข็มกลัด",
         birthday : "00/00/0000",
-        gender : {
-            option : "ไม่ระบุ",
-            option1 : "ชาย",
-            option2 : "หญิง"
-        },
         email : "example@gmail.com",
         age : "20",
         cardnumber : "0-0000-0000-00-0",
@@ -168,7 +163,7 @@ export const BookbankInformationContent = {
         },
         bookbankpicturesuggest : {
             title : "คำแนะนำรูป",
-            bodysuggest : ["ภาพถ่ายหน้าเลขสมุดบัญชีธนาคาร","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน"],
+            bodysuggest : ["ภาพถ่ายหน้าเลขสมุดบัญชีธนาคาร","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน","ไฟล์รูปต้องเป็น jpg หรือ png"],
         },
         criminalhistorypicture : {
             title : "รูปประวัติตรวจสอบอาญชกรรม",
@@ -178,7 +173,7 @@ export const BookbankInformationContent = {
         },
         criminalhistorypicturesuggest : {
             title : "คำแนะนำรูป",
-            bodysuggest : ["ภาพตรวจสอบประวัติอาญชกรรม","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน"]
+            bodysuggest : ["ภาพตรวจสอบประวัติอาญชกรรม","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน","ไฟล์รูปต้องเป็น jpg หรือ png"]
         },
     },
     placeholder : {
@@ -192,7 +187,7 @@ export const BookbankInformationContent = {
 }
 
 export const DriverLicenseInformationContent = {
-    title       : "กรอกข้อกรอกข้อมูลใบขับขี่มูลบัญชีธนาคาร",
+    title       : "กรอกข้อกรอกข้อมูลใบขับขี่",
     description : "เลือกชนิดใบขับขี่ ณ ปัจจุบันของคุณแล้วทำการกรอกข้อมูลทั้งหมดให้ครบถ้วนและถูกต้อง",
     label : {
         normaldriverlicense : {
@@ -228,7 +223,7 @@ export const DriverLicenseInformationContent = {
         },
         driverlicencepicturesuggest : {
             title : "คำแนะนำรูป",
-            bodysuggest :["ภาพถ่ายด้านหน้าใบขับขี่","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน"],
+            bodysuggest :["ภาพถ่ายด้านหน้าใบขับขี่","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน","ไฟล์รูปต้องเป็น jpg หรือ png"],
         },
         documentdriverlicencepicture : {
             title : "รูปภาพเอกสารยืนยันใบขับขี่ตลอดชีพ",
@@ -238,9 +233,8 @@ export const DriverLicenseInformationContent = {
         },
         documentdriverlicencepicturesuggest : {
             title : "คำแนะนำรูป",
-            bodysuggest :["ภาพถ่ายเอกสารยืนยันใบขับขี่ตลอดชีพ","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน"],
-        },
-       
+            bodysuggest :["ภาพถ่ายเอกสารยืนยันใบขับขี่ตลอดชีพ","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน","ไฟล์รูปต้องเป็น jpg หรือ png"],
+        },  
     },
     placeholder : {
         name   : "นายสมชาย",
@@ -249,13 +243,11 @@ export const DriverLicenseInformationContent = {
         namebookbank : "ธนาคารไทยพานิชณ์",
         normaldriverlicense : {
             numberdriverlicense : "00000000",
-            typedriverlicense : ["ไม่ระบุ","ใบขับขี่รถชนิดชั่วคราว","ใบขับขี่รถยนต์ส่วนบุคคล","ใบขับขี่รถยนต์สามล้อส่วนบุคคล","ใบขับขี่รถจักรยานยนต์ส่วนบุคคล","ใบขับขี่สากล หรือใบอนุญาตขับรถระหว่างประเทศ","ใบขับขี่รถจักรยานยนต์สาธารณะ","ใบขับขี่รถบดถนน","ใบขับขี่รถแทรกเตอร์","ใบขับขี่รถชนิดอื่น"],
             issuedatedriverlicense : "00/00/0000",
             expiredatedriverlicense : "00/00/0000"
         },
         specialdriverlicense : {
             numberdriverlicense : "00000000",
-            typedriverlicense : ["ไม่ระบุ","ใบขับขี่รถชนิดชั่วคราว","ใบขับขี่รถยนต์ส่วนบุคคล","ใบขับขี่รถยนต์สามล้อส่วนบุคคล","ใบขับขี่รถจักรยานยนต์ส่วนบุคคล","ใบขับขี่สากล หรือใบอนุญาตขับรถระหว่างประเทศ","ใบขับขี่รถจักรยานยนต์สาธารณะ","ใบขับขี่รถบดถนน","ใบขับขี่รถแทรกเตอร์","ใบขับขี่รถชนิดอื่น"],
             issuedatedriverlicense : "00/00/0000",
          
         },
@@ -264,4 +256,137 @@ export const DriverLicenseInformationContent = {
     messagesmartcarderror : "โปรเลือกชนิดของใบขับขี่ตลอดชีพของคุณ",
     messagetypeerror : "โปรดเลือกชนิดของใบขับขี่",
     messegeerror : "เกิดข้อผิดพลาด"
+}
+
+export const optionsgender = [
+    { value: "", disable: true , label:"ไม่ระบุ"},
+    { value: "ชาย", disable: false , label: "ชาย"},
+    { value: "หญิง", disable: false , label: "หญิง"}
+]
+
+export const optionscountry = [
+    { value: "กรุงเทพมหานคร", disable: false , label: "กรุงเทพมหานคร"},
+    { value: "กระบี่", disable: false , label: "กระบี่"},
+    { value: "กาญจนบุรี", disable: false , label: "กาญจนบุรี"},
+    { value: "กาฬสินธุ์", disable: false , label: "กาฬสินธุ์"},
+    { value: "กำแพงเพชร", disable: false , label: "กำแพงเพชร"},
+    { value: "ขอนแก่น", disable: false , label: "ขอนแก่น"},
+    { value: "จันทบุรี", disable: false , label: "จันทบุรี"},
+    { value: "ฉะเชิงเทรา", disable: false , label: "ฉะเชิงเทรา"},
+    { value: "ชลบุรี", disable: false , label: "ชลบุรี"},
+    { value: "ชัยนาท", disable: false , label: "ชัยนาท"},
+    { value: "ชัยภูมิ", disable: false , label: "ชัยภูมิ"},
+    { value: "ชุมพร", disable: false , label: "ชุมพร"},
+    { value: "เชียงราย", disable: false , label: "เชียงราย"},
+    { value: "เชียงใหม่", disable: false , label: "เชียงใหม่"},
+    { value: "ตรัง", disable: false , label: "ตรัง"},
+    { value: "ตราด", disable: false , label: "ตราด"},
+    { value: "ตาก", disable: false , label: "ตาก"},
+    { value: "นครนายก", disable: false , label: "นครนายก"},
+    { value: "นครปฐม", disable: false , label: "นครปฐม"},
+    { value: "นครพนม", disable: false , label: "นครพนม"},
+    { value: "นครราชสีมา", disable: false , label: "นครราชสีมา"},
+    { value: "นครศรีธรรมราช", disable: false , label: "นครศรีธรรมราช"},
+    { value: "นครสวรรค์", disable: false , label: "นครสวรรค์"},
+    { value: "นนทบุรี", disable: false , label: "นนทบุรี"},
+    { value: "นราธิวาส", disable: false , label: "นราธิวาส"},
+    { value: "น่าน", disable: false , label: "น่าน"},
+    { value: "บึงกาฬ", disable: false , label: "บึงกาฬ"},
+    { value: "บุรีรัมย์", disable: false , label: "บุรีรัมย์"},
+    { value: "ปทุมธานี", disable: false , label: "ปทุมธานี"},
+    { value: "ประจวบคีรีขันธ์", disable: false , label: "ประจวบคีรีขันธ์"},
+    { value: "ปราจีนบุรี", disable: false , label: "ปราจีนบุรี"}
+]
+
+export const optionstypedriverlicense = [
+    { value: "", disable: true , label:"ไม่ระบุ"},
+    { value: "ใบขับขี่รถชนิดชั่วคราว", disable: false , label: "ใบขับขี่รถชนิดชั่วคราว"},
+    { value: "ใบขับขี่รถยนต์ส่วนบุคคล", disable: false , label: "ใบขับขี่รถยนต์ส่วนบุคคล"},
+    { value: "ใบขับขี่รถยนต์สามล้อส่วนบุคคล", disable: false , label: "ใบขับขี่รถยนต์สามล้อส่วนบุคคล"},
+    { value: "ใบขับขี่รถจักรยานยนต์ส่วนบุคคล", disable: false , label: "ใบขับขี่รถจักรยานยนต์ส่วนบุคคล"},
+    { value: "ใบขับขี่สากล หรือใบอนุญาตขับรถระหว่างประเทศ", disable: false , label: "ใบขับขี่สากล หรือใบอนุญาตขับรถระหว่างประเทศ"},
+    { value: "ใบขับขี่รถจักรยานยนต์สาธารณะ", disable: false , label: "ใบขับขี่รถจักรยานยนต์สาธารณะ"},
+    { value: "ใบขับขี่รถบดถนน", disable: false , label: "ใบขับขี่รถบดถนน"},
+    { value: "ใบขับขี่รถแทรกเตอร์", disable: false , label: "ใบขับขี่รถแทรกเตอร์"},
+    { value: "ใบขับขี่รถชนิดอื่น", disable: false , label: "ใบขับขี่รถชนิดอื่น"},
+]
+
+export const optionstypecar = [
+    { value: "", disable: true , label:"ไม่ระบุ"},
+    { value: "จักรยานยนต์", disable: false , label: "จักรยานยนต์"},
+    { value: "รถยนต์", disable: false , label: "รถยนต์"},
+]
+
+export const optionstypesigncar = [
+    { value: "", disable: true , label:"ไม่ระบุ"},
+    { value: "ป้ายสีขาว ตัวอักษรสีดำ", disable: false , label: "ป้ายสีขาว ตัวอักษรสีดำ"},
+    { value: "ป้ายสีขาว ตัวอักษรสีเขียว", disable: false , label: "ป้ายสีขาว ตัวอักษรสีเขียว"},
+    { value: "ป้ายสีขาว ตัวอักษรสีน้ำเงิน", disable: false , label:"ป้ายสีขาว ตัวอักษรสีน้ำเงิน"},
+    { value: "ป้ายประมูลหรือป้ายทะเบียนที่มีพื้นหลังเป็นลายกราฟฟิค", disable: false , label:"ป้ายประมูลหรือป้ายทะเบียนที่มีพื้นหลังเป็นลายกราฟฟิค"},
+    { value: "ป้ายสีแดง", disable: false , label:"ป้ายสีแดง"},
+    { value: "ป้ายสีเหลือง ตัวอักษรสีดำ", disable: false , label:"ป้ายสีเหลือง ตัวอักษรสีดำ"},
+    // { value: "ป้ายสีเหลือง ตัวอักษรสีเขียว", disable: true , label:"ป้ายสีเหลือง ตัวอักษรสีเขียว"},
+    // { value: "ป้ายสีเหลือง ตัวอักษรสีแดง", disable: true , label:"ป้ายสีเหลือง ตัวอักษรสีแดง"},
+    // { value: "ป้ายสีเหลือง ตัวอักษรสีน้ำเงิน", disable: true , label:"ป้ายสีเหลือง ตัวอักษรสีน้ำเงิน"},
+    // { value: "ป้ายสีเขียว ตัวอักษรสีดำ/สีขาว", disable: true , label:"ป้ายสีเขียว ตัวอักษรสีดำ/สีขาว"},
+    // { value: "ป้ายสีส้ม ตัวอักษรสีดำ", disable: true , label:"ป้ายสีส้ม ตัวอักษรสีดำ"},
+    // { value: "ป้ายสีขาว (ไม่สะท้อนแสง) ตัวหนังสือสีดำ", disable: true , label:"ป้ายสีขาว (ไม่สะท้อนแสง) ตัวหนังสือสีดำ"},
+    // { value: "ป้ายสีฟ้า (ไม่สะท้อนแสง) ตัวหนังสือสีขาว", disable: true , label:"ป้ายสีฟ้า (ไม่สะท้อนแสง) ตัวหนังสือสีขาว"},
+]
+
+export const CarInformationContent = {
+    title       : "กรอกข้อมูลยานพาหนะ",
+    placeholder : {
+        typecar : "รถยนต์",
+        numbercar : "กข 1234",
+        typeofcarsign : "ทั่วไป",
+        countryofsigncar : "กรุงเทพ",
+        brand : "โตโยต้า",
+        color : "แดง",
+        licenseissuedate : "00/00/0000",
+        licenseexpiredate : "00/00/0000",
+        licensename : "นายสมชาย",
+        taxissuedate : "00/00/0000",
+        taxexpiredate : "00/00/0000"
+    },
+    label : {
+        typecar : "ชนิดยานพาหนะ",
+        numbercar : "เลขทะเบียนรถ",
+        typeofcarsign : "ประเภทป้ายทะเบียน",
+        countryofsigncar : "จังหวัดที่จดทะเบียนรถ",
+        brand : "ยี่ห้อรถ",
+        color : "สีรถ",
+        licenseissuedate : "วันที่ออก พรบ.",
+        licenseexpiredate : "วันหมดอายุ พรบ.",
+        licensename : "ชื่อผู้ขอกรรมสิทธิ",
+        taxissuedate : "วันที่เสียภาษี",
+        taxexpiredate : "วันที่ครบกำหนดเสียภาษี",
+        carlicencepicture : {
+            title : "รูปภาพจดทะเบียนรถ",
+            buttonclick : "คลิกเพื่ออัพโหลด",
+            buttonclickagain : "คลิกเพื่ออัพโหลดรูปอีกครั้ง",
+            errormessage : "โปรดคลิกเพื่ออัพโหลดรูปภาพจดทะเบียนรถ"
+        },  
+        carlicencepicturesuggest : {
+            title : "คำแนะนำรูป",
+            bodysuggest :["รูปภาพจดทะเบียนรถต้องมี","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน","ไฟล์รูปต้องเป็น jpg หรือ png"],
+        },  
+        taxpicture : {
+            title : "รูปรายการเสียภาษี",
+            buttonclick : "คลิกเพื่ออัพโหลด",
+            buttonclickagain : "คลิกเพื่ออัพโหลดรูปอีกครั้ง",
+            errormessage : "โปรดคลิกเพื่ออัพโหลดรูปรายการเสียภาษี"
+        },  
+        taxpicturesuggest : {
+            title : "คำแนะนำรูป",
+            bodysuggest :["รูปภาพรายการเสียภาษีต้องมี","ตัวอักษรชัดเจน ไม่มีเงาสะท้อน","ไฟล์รูปต้องเป็น jpg หรือ png"],
+        },  
+    },
+    messegeerror : "เกิดข้อผิดพลาด"
+}
+
+export const FinalContent = {
+    label : "กรอกข้อมูลเสร็จสิ้น",
+    description : "รอการอนุมัติจะส่งไปยังอีเมลของคุณ"
+
 }
