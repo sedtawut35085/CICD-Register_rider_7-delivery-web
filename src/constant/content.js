@@ -1,7 +1,7 @@
 export const LoginContent = {
     title        : "ลงทะเบียนผู้ใช้งาน",
     button : {
-        email    : "เข้าสู่ระบบ",
+        email    : "ลงทะเบียน",
         facebook : "เข้าสู่ระบบด้วย Facebook",
         google   : "เข้าสู่ระบบด้วย Google"
     },
@@ -25,6 +25,29 @@ export const LoginContent = {
     errorregistermailmessage : {
         emailalreadyuse     : "อีเมลนี้ได้ถูกใช้งานไปแล้ว"
     },
+    loading : "กำลังลงทะเบียนบัญชี",
+    loginmessage : "มีบัญชีอยู่แล้ว ? คลิกเพื่อเข้าสู่ระบบ"
+}
+
+export const LoginemailContent = {
+    title        : "เข้าสู่ระบบ",
+    button : {
+        email    : "เข้าสู่ระบบ",
+    },
+    placeholder : {
+        email           : "อีเมลผู้ใช้งาน",
+        password        : "รหัสผ่าน",
+    },
+    errorpasswordmessage : {
+        emthycase       : "โปรดใส่รหัสผ่าน",
+        minlengthcase   : "ความยาวของรหัสผ่านต้องอย่างน้อย 8 ตัว",
+        uppercase       : "ต้องมีตัวอักษรใหญ่อย่างน้อย 1 ตัว",
+        lowercase       : "ต้องมีตัวอักษรเล็กอย่างน้อย 1 ตัว",
+        digitcase       : "ต้องมีตัวเลขอย่างน้อย 1 ตัว",
+        specialcharcase : "ต้องมีตัวอักษรพิเศษอย่างน้อย 1 ตัว",
+    },
+    errorlogin : "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+    registermessage : "ไม่มีบัญชี ? คลิกเพื่อลงทะเบียนบัญชี",
     loading : "กำลังเข้าสู่ระบบ"
 }
 
@@ -124,11 +147,13 @@ export const PersonalInformationContent = {
         birthday : "00/00/0000",
         email : "example@gmail.com",
         age : "20",
-        cardnumber : "0-0000-0000-00-0",
+        cardnumber : "0-0000-00000-00-0",
         cardissuedate : "00/00/0000",
         cardexpiredate : "00/00/0000"
     },
-    messegeerror : "เกิดข้อผิดพลาด"
+    messegeerror : "เกิดข้อผิดพลาด",
+    messageerrorcardnumber : "ข้อมูลต้องเป็นรูปแบบ 0-0000-00000-00-0",
+    messageerrorphonenumber : "ข้อมูลต้องเป็นรูปแบบ 000-000-0000"
 
 }
 
@@ -182,6 +207,7 @@ export const BookbankInformationContent = {
         idbookbank : "012-345678-9",
         namebookbank : "ธนาคารไทยพานิชณ์"
     },
+    messageerrorbookbanknumber : "ข้อมูลต้องเป็นรูปแบบ 000-000000-0",
     messegeerror : "เกิดข้อผิดพลาด"
 
 }
@@ -255,6 +281,7 @@ export const DriverLicenseInformationContent = {
     },
     messagesmartcarderror : "โปรเลือกชนิดของใบขับขี่ตลอดชีพของคุณ",
     messagetypeerror : "โปรดเลือกชนิดของใบขับขี่",
+    messageerrordiverlicensenumber : "ข้อมูลต้องเป็นรูปแบบ 00000000",
     messegeerror : "เกิดข้อผิดพลาด"
 }
 

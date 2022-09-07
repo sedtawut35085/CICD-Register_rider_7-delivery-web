@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaUserAlt, FaLock, FaFacebookF, FaGoogle } from 'react-icons/fa'
 import RingLoader from "react-spinners/RingLoader";
+import { getUser } from '../../service/index'
+import { checkinformationstate, checkstate } from '../CheckinformationComponent/index'
 
 import ConfirmemailComponent from '../ConfirmemailComponent'
 import Auth from '../../configuration/configuration-aws'
@@ -30,15 +32,26 @@ const LoginComponent = () => {
         async function Authentication() {
             await Auth.currentAuthenticatedUser({
                 bypassCache: false
-            }).then(() => {
-                navigate(routeconstant.RouteContent.preliminary)
+            }).then(async() => {
+                // test
+                let response = await getUser()
+                let result = await checkstate(response.data)
+                Navigate(result, response)
               })
             .catch(err => console.log('err: ',err));
         }
         Authentication();
     }, [])
-    
 
+    const Navigate = async (result, response) => {
+        if(result === routeconstant.RouteContent.information){
+            let resultcurrentstep = await checkinformationstate(response.data)
+            navigate(result, { state: { currentstep: resultcurrentstep} })  
+        }else{
+            navigate(result)  
+        }
+    }
+    
     const checkPassword = (e) => {
         const Pass = e.target.value;
         setPassword(Pass);
@@ -125,6 +138,10 @@ const LoginComponent = () => {
         await Auth.federatedSignIn({provider: 'Google'});
     }
 
+    const loginemail = async () => {
+        navigate(routeconstant.RouteContent.loginemail)
+    }
+
     return (  
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>    
         <div className='hidden sm:block'>
@@ -172,10 +189,14 @@ const LoginComponent = () => {
                                 </div>
                             </>
                         }   
-                         
+                          
                         </div>
-                    </form>
+                    </form> 
+                    <div className='pt-2 pb-4'>
+                        <h2 className='text-blue-800 text-sm underline text-center' onClick={loginemail}>{constant.LoginContent.loginmessage}</h2>
+                    </div>
                     <div className='max-w-[400px] w-full mx-auto bg-white pl-8 pr-8'>
+                      
                         <div className='or'></div>
                         <div className='pl-4 pr-4 ml-1'>
                             <FaFacebookF className='absolute pt-8 mt-1 pl-9 w-14 h-12 text-white'></FaFacebookF>

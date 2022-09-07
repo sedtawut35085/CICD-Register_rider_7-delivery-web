@@ -7,7 +7,7 @@ import * as constant from '../../../constant/content'
 import bookbank from '../../../assets/bookbank.png'
 import criminalhistory from '../../../assets/criminalhistory.png'
 
-export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCriminalHistoryPicture,isResponseError}) {
+export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCriminalHistoryPicture,isResponseError,isErrorBookbanknumber}) {
   const { userData, setUserData } = useStepperContext();
   const [ namebookbankphoto , setNameBookbankphoto] = useState(null);
   const [ namecriminalhistoryphoto , setNameCriminalhistoryphoto] = useState(null);
@@ -75,7 +75,16 @@ export default function Bookbank({isMessageErrorBookbankPicture,isMessageErrorCr
               type="text"  
               className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               placeholder={constant.BookbankInformationContent.placeholder.idbookbank} id="exampleInputIdbookbank"
-            />
+            /> 
+            {isErrorBookbanknumber === true?
+              <>
+                <div className='text-xs text-red-500 pl-4'>{constant.BookbankInformationContent.messageerrorbookbanknumber}</div>
+              </>
+                :
+              <>
+                
+              </>
+            }
           </div>
         </div>
         <div className='flex flex-col py-2'>

@@ -9,7 +9,7 @@ import * as constant from '../../../constant/content'
 import driverlicence from '../../../assets/driverlicence.png'
 import criminalhistory from '../../../assets/criminalhistory.png'
 
-export default function Driverlicenseinformation({isMessageErrorDriverLicensePicture,isMessageErrorDocumentDriverLicensePicture,isResponseError,isMessageErrorTypeDriverLicense,isMessageErrorSmartcardDriverLicense}) {
+export default function Driverlicenseinformation({isMessageErrorDriverLicensePicture,isMessageErrorDocumentDriverLicensePicture,isResponseError,isMessageErrorTypeDriverLicense,isMessageErrorSmartcardDriverLicense,isErrorDriverlicensenumber}) {
  
   const { userData, setUserData } = useStepperContext();
   const [ typeLicense, setTypeLicense ] = useState(false);
@@ -89,6 +89,15 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                                 className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                 placeholder={constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.numberdriverlicense} id="exampleInputNumberdriverlicense"
                               />
+                              {isErrorDriverlicensenumber === true?
+                                <>
+                                  <div className='text-xs text-red-500 pl-4'>{constant.DriverLicenseInformationContent.messageerrordiverlicensenumber}</div>
+                                </>
+                                  :
+                                <>
+                                  
+                                </>
+                              }
                             </div> 
                           </div>
                           <div className='flex flex-col py-2 z-0'>
@@ -196,6 +205,15 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                                 className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                 placeholder={constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.numberdriverlicense} id="exampleInputNumberdriverlicense"
                               />
+                              {isErrorDriverlicensenumber === true?
+                                <>
+                                  <div className='text-xs text-red-500 pl-4'>{constant.DriverLicenseInformationContent.messageerrordiverlicensenumber}</div>
+                                </>
+                                  :
+                                <>
+                                  
+                                </>
+                              }
                             </div>
                           </div>
                           <div className='flex flex-col py-2 z-0'>
@@ -206,7 +224,7 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                                      {constant.optionstypedriverlicense.map((option) => (
                                       <option disabled={option.disable} key={option.value} value={option.value}>
                                         {option.label}
-                                      </option>
+                                      </option> 
                                     ))}
                               </select>
                             </div>

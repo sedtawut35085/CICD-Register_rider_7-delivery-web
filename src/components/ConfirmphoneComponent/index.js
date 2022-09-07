@@ -74,7 +74,7 @@ const ConfirmphoneComponent = ({userPhone}) => {
                     data: data
                 }).then(() => {
                     setLoading(false)
-                    navigate(routeconstant.RouteContent.information)
+                    navigate(routeconstant.RouteContent.information, { state: { currentstep: 1} })
                 }).catch((err)=>{
                     console.log('error: ' ,err)
                 })

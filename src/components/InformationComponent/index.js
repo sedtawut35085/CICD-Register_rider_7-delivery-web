@@ -5,6 +5,8 @@ import { SavepersonalInformation, SaverelevantInformation, SavebookbankInformati
 
 import RingLoader from "react-spinners/RingLoader";
 
+import { useLocation } from "react-router-dom";
+
 import Stepper from "../StepComponents/Stepper";
 import Personalinformation from "../StepComponents/steps/Personalinformation";
 import Bookbankinformation from "../StepComponents/steps/Bookbankinformation";
@@ -15,9 +17,11 @@ import './style.css'
 
 const InformationComponent = () => {
 
+  const { state } = useLocation();
+  const { currentstep } = state || 1;
   const { userData } = useStepperContext();
   const { currentUser } = useContext(AuthContext);
-  const [ currentStep , setCurrentStep] = useState(1);
+  const [ currentStep , setCurrentStep] = useState(currentstep || 1);
   const [ loading , setLoading] = useState(false);
   const [ isMessageErrorPersonalPicture , setIsMessageErrorPersonalPicture]  = useState(false);
   const [ isMessageErrorIdCard , setIsMessageErrorIdCard]  = useState(false);
@@ -29,8 +33,12 @@ const InformationComponent = () => {
   const [ isMessageErrorSmartcardDriverLicense , setIsMessageErrorSmartcardDriverLicense ]  = useState(false);
   const [ isMessageErrorCarLicensePicture , setIsMessageErrorCarLicensePicture ]  = useState(false);
   const [ isMessageErrorTaxPicture , setIsMessageErrorTaxPicture ]  = useState(false);
+  const [ isErrorCardnumber, setIsErrorCardnumber] = useState(false);
+  const [ isErrorPhonenumber, setIsErrorPhonenumber] = useState(false);
+  const [ isErrorBookbanknumber, setIsErrorBookbanknumber] = useState(false);
+  const [ isErrorDriverlicensenumber, setIsErrorDriverlicensenumber] = useState(false);
   const [ isResponseError , setIsResponseError ]  = useState(false);
-
+  
   const steps = [
     "ข้อมูลส่วนบุคคล",
     "ข้อมูลบัญชีธนาคาร",
@@ -42,13 +50,13 @@ const InformationComponent = () => {
   const displayStep = (step) => {
     switch (step) {
       case 1:
-        return <Personalinformation isMessageErrorPersonalPicture={isMessageErrorPersonalPicture} isMessageErrorIdCard={isMessageErrorIdCard} isResponseError={isResponseError}/>;
+        return <Personalinformation isMessageErrorPersonalPicture={isMessageErrorPersonalPicture} isMessageErrorIdCard={isMessageErrorIdCard} isResponseError={isResponseError} isErrorCardnumber={isErrorCardnumber} isErrorPhonenumber={isErrorPhonenumber}/>;
       case 2:
-        return <Bookbankinformation isMessageErrorBookbankPicture={isMessageErrorBookbankPicture} isMessageErrorCriminalHistoryPicture={isMessageErrorCriminalHistoryPicture} isResponseError={isResponseError}/>;
+        return <Bookbankinformation isMessageErrorBookbankPicture={isMessageErrorBookbankPicture} isMessageErrorCriminalHistoryPicture={isMessageErrorCriminalHistoryPicture} isResponseError={isResponseError} isErrorBookbanknumber={isErrorBookbanknumber}/>;
       case 3:
-        return <Driverlicenseinformation isMessageErrorDriverLicensePicture={isMessageErrorDriverLicensePicture} isMessageErrorDocumentDriverLicensePicture={isMessageErrorDocumentDriverLicensePicture} isResponseError={isResponseError} isMessageErrorTypeDriverLicense={isMessageErrorTypeDriverLicense} isMessageErrorSmartcardDriverLicense={isMessageErrorSmartcardDriverLicense}/>;
+        return <Driverlicenseinformation isMessageErrorDriverLicensePicture={isMessageErrorDriverLicensePicture} isMessageErrorDocumentDriverLicensePicture={isMessageErrorDocumentDriverLicensePicture} isResponseError={isResponseError} isMessageErrorTypeDriverLicense={isMessageErrorTypeDriverLicense} isMessageErrorSmartcardDriverLicense={isMessageErrorSmartcardDriverLicense} isErrorDriverlicensenumber={isErrorDriverlicensenumber}/>;
       case 4:
-        return <Carinformation isMessageErrorCarLicensePicture={isMessageErrorCarLicensePicture} isMessageErrorTaxPicture={isMessageErrorTaxPicture} isResponseError={isResponseError}/>;
+        return <Carinformation isMessageErrorCarLicensePicture={isMessageErrorCarLicensePicture} isMessageErrorTaxPicture={isMessageErrorTaxPicture} isResponseError={isResponseError} />;
     case 5:
         return <Final />;
       default:
@@ -56,12 +64,18 @@ const InformationComponent = () => {
   };
 
   const Submit = async (e) => { 
+    setLoading(false)
     e.preventDefault();
     let newStep = currentStep;
     newStep++;
     if(newStep > 0 && newStep <= steps.length){
-      
       if(newStep === 2){
+        const LengthcardnumberRegExp   = /(\d{1})-(\d{4})-(\d{5})-(\d{2})-(\d{1})/;
+        const LengthphonenumberRegExp   = /(\d{3})-(\d{3})-(\d{4})/;
+        let LengthcardNumber
+        let LengthphoneNumber
+        LengthcardNumber =   LengthcardnumberRegExp.test(userData['cardNumber']);
+        LengthphoneNumber =   LengthphonenumberRegExp.test(userData['phonerelevant']);
         if(userData['personalpicture'] === undefined){
           setIsMessageErrorPersonalPicture(true)
         }else{
@@ -71,8 +85,18 @@ const InformationComponent = () => {
           setIsMessageErrorIdCard(true)
         }else{
           setIsMessageErrorIdCard(false)
+        } 
+        if(!LengthcardNumber || userData['cardNumber'].length !== 17) {
+          setIsErrorCardnumber(true)
+        }else{
+          setIsErrorCardnumber(false) 
+        } 
+        if(!LengthphoneNumber || userData['phonerelevant'].length !== 12) {
+          setIsErrorPhonenumber(true)
+        }else{
+          setIsErrorPhonenumber(false) 
         }
-        if(userData['personalpicture'] !== undefined && userData['idcard'] !== undefined){
+        if(userData['personalpicture'] !== undefined && userData['idcard'] !== undefined && LengthcardNumber && LengthphoneNumber && userData['cardNumber'].length === 17 && userData['phonerelevant'].length === 12){
           setLoading(true)
           let responsesavepersonalinformation = await SavepersonalInformation(userData , currentUser.username)
           let responsesaverelevantinformation = await SaverelevantInformation(userData , currentUser.username)
@@ -86,6 +110,9 @@ const InformationComponent = () => {
         } 
       }
       else if(newStep === 3){
+        const LengthbookbanknumberRegExp   = /(\d{3})-(\d{6})-(\d{1})/;
+        let LengthbookbankNumber
+        LengthbookbankNumber =   LengthbookbanknumberRegExp.test(userData['idbookbank']);
         if(userData['bookbankphoto'] === undefined){
           setIsMessageErrorBookbankPicture(true)
         }else{
@@ -95,8 +122,13 @@ const InformationComponent = () => {
           setIsMessageErrorCriminalHistoryPicture(true)
         }else{
           setIsMessageErrorCriminalHistoryPicture(false)
+        }   
+        if(!LengthbookbankNumber || userData['idbookbank'].length !== 12) {
+          setIsErrorBookbanknumber(true)
+        }else{
+          setIsErrorBookbanknumber(false) 
         }
-        if(userData['criminalhistoryphoto'] !== undefined && userData['bookbankphoto'] !== undefined){
+        if(userData['criminalhistoryphoto'] !== undefined && userData['bookbankphoto'] !== undefined && LengthbookbankNumber){
           setLoading(true)
           let responsesavebookbankinformation = await SavebookbankInformation(userData , currentUser.username)
           let responsesavecriminalhistoryinformation = await SavecriminalhistoryInformation(userData , currentUser.username)
@@ -108,7 +140,15 @@ const InformationComponent = () => {
           }
         } 
       }
-      else if(newStep === 4){      
+      else if(newStep === 4){     
+        const LengthdriverlicenseRegExp   = /(\d{8})/;
+        let Lengthdriverlicense
+        Lengthdriverlicense =   LengthdriverlicenseRegExp.test(userData['numberdriverlicense']); 
+        if(!Lengthdriverlicense || userData['numberdriverlicense'].length !== 8 ) {
+          setIsErrorDriverlicensenumber(true)
+        }else{
+          setIsErrorDriverlicensenumber(false) 
+        }
         if(userData['typedriverlicense'] === 'normal'){
           setIsMessageErrorTypeDriverLicense(false)
           if(userData['driverlicensephoto'] === undefined){
@@ -136,7 +176,7 @@ const InformationComponent = () => {
         }else{
           setIsMessageErrorTypeDriverLicense(true)
         }
-        if((userData['driverlicensephoto'] !== undefined && userData['documentdriverlicensephoto'] !== undefined && userData['typedriverlicense'] === 'special' && userData['issmartcarddriverlicense'] !== undefined) || (userData['typedriverlicense'] === 'normal' && userData['driverlicensephoto'] !== undefined)){
+        if((userData['driverlicensephoto'] !== undefined && userData['documentdriverlicensephoto'] !== undefined && userData['typedriverlicense'] === 'special' && userData['issmartcarddriverlicense'] !== undefined && Lengthdriverlicense && userData['numberdriverlicense'].length === 8) || (userData['typedriverlicense'] === 'normal' && userData['driverlicensephoto'] !== undefined && Lengthdriverlicense && userData['numberdriverlicense'].length === 8)){
           setLoading(true)
           let responsesavesavedriverlicenseinformation = await SavedriverlicenseInformation(userData , currentUser.username)
           if(responsesavesavedriverlicenseinformation.status === 200 && responsesavesavedriverlicenseinformation.status === 200){

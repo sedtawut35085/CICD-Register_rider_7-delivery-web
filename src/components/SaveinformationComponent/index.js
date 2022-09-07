@@ -12,7 +12,7 @@ const convertToBase64 = (file) => {
           }
     })
   }
-
+  
 export const SavepersonalInformation = async (data , userId) => {
     convertedFile = await convertToBase64(data['personalpicture']);
     convertedFile = data['personalpicture'].type + ' ' + convertedFile;

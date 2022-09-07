@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCode } from 'react-icons/fa'
+import { FaCode } from 'react-icons/fa' 
 import { useNavigate } from 'react-router-dom'
 import RingLoader from "react-spinners/RingLoader";
 
