@@ -32,7 +32,7 @@ const LoginComponent = () => {
         async function Authentication() {
             await Auth.currentAuthenticatedUser({
                 bypassCache: false
-            }).then(async() => {
+            }).then(async() => {  
                 let response = await getUser()
                 let result = await checkstate(response.data)
                 Navigate(result, response)
@@ -49,7 +49,7 @@ const LoginComponent = () => {
         }else{
             navigate(result)  
         }
-    }
+    } 
     
     const checkPassword = (e) => {
         const Pass = e.target.value;

@@ -27,6 +27,7 @@ const ConfirmemailComponent = ({userEmail, userPassword}) => {
             })
         .catch(err => 
             {
+                setLoading(false)
                 setMessageError(constant.ConfirmemailContent.errorcodemessage)
             }
         );

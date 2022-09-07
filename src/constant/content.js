@@ -77,7 +77,6 @@ export const PreliminaryContent = {
         email   : "อีเมล",
         country : "จังหวัดที่ต้องการรับงาน"
     },
-    // dropdown : ["ไม่ระบุ","กรุงเทพมหานคร","กระบี่","กาญจนบุรี","กาฬสินธุ์","กำแพงเพชร","ขอนแก่น","จันทบุรี","ฉะเชิงเทรา","ชลบุรี","ชัยนาท","ชัยภูมิ"],
     placeholder : {
         name    : "นายสมชาย",
         surname : "เข็มกลัด",
@@ -152,8 +151,8 @@ export const PersonalInformationContent = {
         cardexpiredate : "00/00/0000"
     },
     messegeerror : "เกิดข้อผิดพลาด",
-    messageerrorcardnumber : "ข้อมูลต้องเป็นรูปแบบ 0-0000-00000-00-0",
-    messageerrorphonenumber : "ข้อมูลต้องเป็นรูปแบบ 000-000-0000"
+    messageerrorcardnumber : "บัตรประชาชนต้องเป็นรูปแบบ X-XXXX-XXXXX-XX-X",
+    messageerrorphonenumber : "เบอร์โทรศัพท์ต้องเป็นรูปแบบ XXX-XXX-XXXX"
 
 }
 
@@ -207,7 +206,7 @@ export const BookbankInformationContent = {
         idbookbank : "012-345678-9",
         namebookbank : "ธนาคารไทยพานิชณ์"
     },
-    messageerrorbookbanknumber : "ข้อมูลต้องเป็นรูปแบบ 000-000000-0",
+    messageerrorbookbanknumber : "เลขบัญชีต้องเป็นรูปแบบ XXX-XXXXXX-X",
     messegeerror : "เกิดข้อผิดพลาด"
 
 }
@@ -281,7 +280,7 @@ export const DriverLicenseInformationContent = {
     },
     messagesmartcarderror : "โปรเลือกชนิดของใบขับขี่ตลอดชีพของคุณ",
     messagetypeerror : "โปรดเลือกชนิดของใบขับขี่",
-    messageerrordiverlicensenumber : "ข้อมูลต้องเป็นรูปแบบ 00000000",
+    messageerrordiverlicensenumber : "เลขใบขับขี่ต้องเป็นรูปแบบ XXXXXXXX",
     messegeerror : "เกิดข้อผิดพลาด"
 }
 
