@@ -3,7 +3,7 @@ import * as routeconstant from '../../constant/routeconstant'
 
 export const checkstate = async (data) => {
     let route
-    if(data.userEmail === undefined){
+    if(data.userEmail === undefined){ 
         route = routeconstant.RouteContent.preliminary
     }else if(data.userPhone === undefined){
         route = routeconstant.RouteContent.verifyphone
