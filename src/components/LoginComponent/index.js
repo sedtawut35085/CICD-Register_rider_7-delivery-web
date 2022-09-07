@@ -33,7 +33,6 @@ const LoginComponent = () => {
             await Auth.currentAuthenticatedUser({
                 bypassCache: false
             }).then(async() => {
-                // test
                 let response = await getUser()
                 let result = await checkstate(response.data)
                 Navigate(result, response)

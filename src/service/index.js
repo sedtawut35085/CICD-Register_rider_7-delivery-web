@@ -20,7 +20,7 @@ export const getUser = async () => {
   })
   await axios({
       method: 'get',
-      url: `${baseUrl}/user`,
+      url: `${baseUrl}/user`, 
       params: {
         "userId" : userId
       },
