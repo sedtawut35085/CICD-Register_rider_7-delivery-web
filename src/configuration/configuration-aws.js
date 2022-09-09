@@ -20,10 +20,10 @@ const awsConfig = {
         oauth: {
             domain: 'authregisterrider.auth.ap-southeast-1.amazoncognito.com',
             scope: ['register-rider-web/auth.write','register-rider-web/auth.read','openid','profile','email'],
-            redirectSignIn: 'https://d2jw790xar9n64.cloudfront.net/',
-            redirectSignOut: 'https://d2jw790xar9n64.cloudfront.net/',
+            redirectSignIn: 'http://localhost:3000/',
+            redirectSignOut: 'http://localhost:3000/',
             responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
-        }
+        },
 };
   
 Amplify.configure(awsConfig);

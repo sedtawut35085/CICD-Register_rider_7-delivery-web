@@ -20,7 +20,7 @@ export const getUser = async () => {
   })
   await axios({
       method: 'get',
-      url: `${baseUrl}/user`, 
+      url: `${baseUrl}/user`,  
       params: {
         "userId" : userId
       },
@@ -28,6 +28,29 @@ export const getUser = async () => {
           'Authorization': token.getJwtToken(), 
           'Content-Type': 'text/plain'
       },
+      }).then((res) => {
+        response = res
+      }).catch((err)=>{
+        response = err
+      })
+  return response
+}
+
+export const saveUser = async (params , bodydata) => {
+  await Auth.currentSession()
+  .then(res => {
+    token = res.getAccessToken();
+  })
+  .catch(err => console.log(err));
+  await axios({
+      method: 'post',
+      url: `${baseUrl}/user`,
+      params: params,
+      headers: { 
+          'Authorization': token.getJwtToken(), 
+          'Content-Type': 'text/plain'
+      },
+      data: bodydata
       }).then((res) => {
         response = res
       }).catch((err)=>{

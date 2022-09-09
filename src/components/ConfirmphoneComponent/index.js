@@ -2,15 +2,14 @@ import React, { useState, useContext } from 'react';
 import { authentication } from '../../configuration/configuration-firebase';
 import { RecaptchaVerifier,signInWithPhoneNumber } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom'
+import { updateUser } from '../../service';
 import OtpInput from "react-otp-input";
-import axios from 'axios' 
 import RingLoader from "react-spinners/RingLoader";
 
 import * as routeconstant from '../../constant/routeconstant'
 import * as constant from '../../constant/content'
 
 import { AuthContext } from '../../auth/Auth'
-import Auth from '../../configuration/configuration-aws'
 
 const ConfirmphoneComponent = ({userPhone}) => {
 
@@ -49,13 +48,7 @@ const ConfirmphoneComponent = ({userPhone}) => {
             setIsCodeNotcorrect(false)
             let confirmationResult = window.confirmationResult;
             confirmationResult.confirm(otp).then( async () => {
-                let token;
                 const userId = currentUser.username
-                await Auth.currentSession()
-                .then(data => {
-                    token = data.getAccessToken();
-                })
-                .catch(err => console.log(err));
                 var data = {
                     "updateKey"     : "userPhone",
                     "updateValue"   : userPhone
@@ -63,19 +56,15 @@ const ConfirmphoneComponent = ({userPhone}) => {
                 var params = {
                     "userId" : userId
                 }
-                await axios({
-                    method: 'patch',
-                    url: 'https://niafewy1vj.execute-api.ap-southeast-1.amazonaws.com/dev/user',
-                    params: params,
-                    headers: { 
-                        'Authorization': token.getJwtToken(), 
-                        'Content-Type': 'text/plain'
-                    },
-                    data: data
-                }).then(() => {
-                    setLoading(false)
-                    navigate(routeconstant.RouteContent.information, { state: { currentstep: 1} })
+                await updateUser( params, data).then((response) => {
+                    if(response.status === 200){
+                        setLoading(false)
+                        navigate(routeconstant.RouteContent.information, { state: { currentstep: 1} })
+                    }else{
+                        setLoading(false)
+                    }
                 }).catch((err)=>{
+                    setLoading(false)
                     console.log('error: ' ,err)
                 })
             }).catch((error) => {

@@ -1,3 +1,8 @@
+export const NavbarContent = {
+    titlelogo : "7-Delivery",
+    logout : "ออกจากระบบ"
+}
+
 export const LoginContent = {
     title        : "ลงทะเบียนผู้ใช้งาน",
     button : {
@@ -321,7 +326,52 @@ export const optionscountry = [
     { value: "บุรีรัมย์", disable: false , label: "บุรีรัมย์"},
     { value: "ปทุมธานี", disable: false , label: "ปทุมธานี"},
     { value: "ประจวบคีรีขันธ์", disable: false , label: "ประจวบคีรีขันธ์"},
-    { value: "ปราจีนบุรี", disable: false , label: "ปราจีนบุรี"}
+    { value: "ปราจีนบุรี", disable: false , label: "ปราจีนบุรี"},
+    { value: "ปัตตานี", disable: false , label: "ปัตตานี"},
+    { value: "พระนครศรีอยุธยา", disable: false , label: "พระนครศรีอยุธยา"},
+    { value: "พังงา", disable: false , label: "พังงา"},
+    { value: "พัทลุง", disable: false , label: "พัทลุง"},
+    { value: "พิจิตร", disable: false , label: "พิจิตร"},
+    { value: "พิษณุโลก", disable: false , label: "พิษณุโลก"},
+    { value: "เพชรบุรี", disable: false , label: "เพชรบุรี"},
+    { value: "เพชรบูรณ์", disable: false , label: "เพชรบูรณ์"},
+    { value: "แพร", disable: false , label: "แพร"},
+    { value: "พะเยา", disable: false , label: "พะเยา"},
+    { value: "ภูเก็ต", disable: false , label: "ภูเก็ต"},
+    { value: "มหาสารคาม", disable: false , label: "มหาสารคาม"},
+    { value: "มุกดาหาร", disable: false , label: "มุกดาหาร"},
+    { value: "แม่ฮ่องสอน", disable: false , label: "แม่ฮ่องสอน"},
+    { value: "ยะลา", disable: false , label: "ยะลา"},
+    { value: "ยโสธร", disable: false , label: "ยโสธร"},
+    { value: "ร้อยเอ็ด", disable: false , label: "ร้อยเอ็ด"},
+    { value: "ระนอง", disable: false , label: "ระนอง"},
+    { value: "ระยอง", disable: false , label: "ระยอง"},
+    { value: "ราชบุรี", disable: false , label: "ราชบุรี"},
+    { value: "ลพบุรี", disable: false , label: "ลพบุรี"},
+    { value: "ลำปาง", disable: false , label: "ลำปาง"},
+    { value: "ลำพูน", disable: false , label: "ลำพูน"},
+    { value: "เลย", disable: false , label: "เลย"},
+    { value: "ศรีสะเกษ", disable: false , label: "ศรีสะเกษ"},
+    { value: "สกลนคร", disable: false , label: "สกลนคร"},
+    { value: "สงขลา", disable: false , label: "สงขลา"},
+    { value: "สตูล", disable: false , label: "สตูล"},
+    { value: "สมุทรปราการ", disable: false , label: "สมุทรปราการ"},
+    { value: "สมุทรสงคราม", disable: false , label: "สมุทรสงคราม"},
+    { value: "สมุทรสาคร", disable: false , label: "สมุทรสาคร"},
+    { value: "สระแก้ว", disable: false , label: "สระแก้ว"},
+    { value: "สระบุรี", disable: false , label: "สระบุรี"},
+    { value: "สิงห์บุรี", disable: false , label: "สิงห์บุรี"},
+    { value: "สุโขทัย", disable: false , label: "สุโขทัย"},
+    { value: "สุพรรณบุรี", disable: false , label: "สุพรรณบุรี"},
+    { value: "สุราษฎร์ธานี", disable: false , label: "สุราษฎร์ธานี"},
+    { value: "สุรินทร์", disable: false , label: "สุรินทร์"},
+    { value: "หนองคาย", disable: false , label: "หนองคาย"},
+    { value: "หนองบัวลำภู", disable: false , label: "หนองบัวลำภู"},
+    { value: "อ่างทอง", disable: false , label: "อ่างทอง"},
+    { value: "อุดรธานี", disable: false , label: "อุดรธานี"},
+    { value: "อุตรดิตถ์", disable: false , label: "อุตรดิตถ์"},
+    { value: "อุบลราชธานี", disable: false , label: "อุบลราชธานี"},
+    { value: "อำนาจเจริญ", disable: false , label: "อำนาจเจริญ"}
 ]
 
 export const optionstypedriverlicense = [
@@ -351,13 +401,6 @@ export const optionstypesigncar = [
     { value: "ป้ายประมูลหรือป้ายทะเบียนที่มีพื้นหลังเป็นลายกราฟฟิค", disable: false , label:"ป้ายประมูลหรือป้ายทะเบียนที่มีพื้นหลังเป็นลายกราฟฟิค"},
     { value: "ป้ายสีแดง", disable: false , label:"ป้ายสีแดง"},
     { value: "ป้ายสีเหลือง ตัวอักษรสีดำ", disable: false , label:"ป้ายสีเหลือง ตัวอักษรสีดำ"},
-    // { value: "ป้ายสีเหลือง ตัวอักษรสีเขียว", disable: true , label:"ป้ายสีเหลือง ตัวอักษรสีเขียว"},
-    // { value: "ป้ายสีเหลือง ตัวอักษรสีแดง", disable: true , label:"ป้ายสีเหลือง ตัวอักษรสีแดง"},
-    // { value: "ป้ายสีเหลือง ตัวอักษรสีน้ำเงิน", disable: true , label:"ป้ายสีเหลือง ตัวอักษรสีน้ำเงิน"},
-    // { value: "ป้ายสีเขียว ตัวอักษรสีดำ/สีขาว", disable: true , label:"ป้ายสีเขียว ตัวอักษรสีดำ/สีขาว"},
-    // { value: "ป้ายสีส้ม ตัวอักษรสีดำ", disable: true , label:"ป้ายสีส้ม ตัวอักษรสีดำ"},
-    // { value: "ป้ายสีขาว (ไม่สะท้อนแสง) ตัวหนังสือสีดำ", disable: true , label:"ป้ายสีขาว (ไม่สะท้อนแสง) ตัวหนังสือสีดำ"},
-    // { value: "ป้ายสีฟ้า (ไม่สะท้อนแสง) ตัวหนังสือสีขาว", disable: true , label:"ป้ายสีฟ้า (ไม่สะท้อนแสง) ตัวหนังสือสีขาว"},
 ]
 
 export const CarInformationContent = {

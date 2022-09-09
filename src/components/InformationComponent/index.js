@@ -4,8 +4,9 @@ import { AuthContext } from '../../auth/Auth'
 import { SavepersonalInformation, SaverelevantInformation, SavebookbankInformation, SavecriminalhistoryInformation, SavedriverlicenseInformation, SavecarInformation} from '../SaveinformationComponent/index'
 
 import RingLoader from "react-spinners/RingLoader";
-
 import { useLocation } from "react-router-dom";
+
+import NavbarComponent from "../NavbarComponent";
 
 import Stepper from "../StepComponents/Stepper";
 import Personalinformation from "../StepComponents/steps/Personalinformation";
@@ -90,7 +91,7 @@ const InformationComponent = () => {
           setIsErrorCardnumber(true)
         }else{
           setIsErrorCardnumber(false) 
-        } 
+        }  
         if(!LengthphoneNumber || userData['phonerelevant'].length !== 12) {
           setIsErrorPhonenumber(true)
         }else{
@@ -216,7 +217,9 @@ const InformationComponent = () => {
     
 
   return (
+    
     <div className="mx-auto rounded-2xl bg-white pb-2">
+      <NavbarComponent />
       <div>
         <div className="bg-green-600 pb-8 pt-6 md:pl-16 md:pr-16">
           <Stepper steps={steps} currentStep={currentStep} />

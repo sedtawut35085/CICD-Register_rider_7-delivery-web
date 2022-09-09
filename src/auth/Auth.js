@@ -8,23 +8,30 @@ export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
+    const [currentEmailUser, setCurrentEmailUser] = useState(null);
     const navigate = useNavigate()
 
     useEffect( () => {
         async function check() {
             await Auth.currentAuthenticatedUser()
-            .then((response) => {
+            .then(async(response) => {
                 setCurrentUser(response);
+                await Auth.currentSession()
+                .then(res => {
+                  setCurrentEmailUser(res.getIdToken().payload.email)
+                })
+                .catch(err => console.log(err));
             })
             .catch(() => {
                 navigate(routeconstant.RouteContent.login);
             })
+           
         }
         check();
     }, [])
 
     return (
-        <AuthContext.Provider value={{currentUser}}>
+        <AuthContext.Provider value={{currentUser,currentEmailUser}}>
             {children}
         </AuthContext.Provider>
     )
