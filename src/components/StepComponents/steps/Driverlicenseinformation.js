@@ -113,13 +113,13 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                               </select>
                             </div>
                           </div>
-                          <div className='flex flex-col py-2 z-20'>
+                          <div className='flex flex-col py-2 z-auto'>
                             <div className="relative mb-6 w-full group">
                               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.DriverLicenseInformationContent.label.normaldriverlicense.label.issuedatedriverlicense}</label>
                               <DatePicker required className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  selected={userData['driverlicenseIssueDate']} placeholderText={constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.issuedatedriverlicense}  onChange={(date)=> dateChanged(date, 'driverlicenseIssueDate')} />
                             </div>
                           </div>
-                          <div className='flex flex-col py-2 z-15'>
+                          <div className='flex flex-col py-2 z-auto'>
                             <div className="relative mb-6 w-full group">
                               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.DriverLicenseInformationContent.label.normaldriverlicense.label.expiredatedriverlicense}</label>
                               <DatePicker required className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  selected={userData['driverlicenseExpireDate']} placeholderText={constant.DriverLicenseInformationContent.placeholder.normaldriverlicense.expiredatedriverlicense}   onChange={(date)=> dateChanged(date, 'driverlicenseExpireDate')} />
@@ -229,8 +229,8 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
                               </select>
                             </div>
                           </div>
-                          <div className='flex flex-col py-2 z-40'>
-                            <div className="relative z-0 mb-6 w-full group">
+                          <div className='flex flex-col py-2 z-auto'>
+                            <div className="relative mb-6 w-full group">
                               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.DriverLicenseInformationContent.label.specialdriverlicense.label.issuedatedriverlicense}</label>
                               <DatePicker required className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  selected={userData['driverlicenseIssueDate']} placeholderText={constant.DriverLicenseInformationContent.placeholder.specialdriverlicense.issuedatedriverlicense}  onChange={(date)=> dateChanged(date, 'driverlicenseIssueDate')} />
                             </div>

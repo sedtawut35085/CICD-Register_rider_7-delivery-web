@@ -71,7 +71,7 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
               </div>
             </div>
             <div className='flex flex-col py-2'>
-              <div className="relative z-50 mb-6 w-full group">
+              <div className="relative z-auto mb-6 w-full group">
                 <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.PersonalInformationContent.label.birthday}</label>
                 <DatePicker className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" selected={userData['birthday']} placeholderText={constant.PersonalInformationContent.placeholder.birthday} required onChange={(date)=> dateChanged(date, 'birthday')} />
               </div>
@@ -142,13 +142,13 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
             </div>
             
             <div className='flex flex-col py-2'>
-              <div className="relative z-40 mb-6 w-full group">
+              <div className="relative z-auto mb-6 w-full group">
                 <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.PersonalInformationContent.label.cardissuedate}</label>
                 <DatePicker required className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  selected={userData['cardIssueDate']} placeholderText={constant.PersonalInformationContent.placeholder.cardissuedate}  onChange={(date)=> dateChanged(date, 'cardIssueDate')} />
               </div>
             </div>
             <div className='flex flex-col py-2'>
-              <div className="relative z-30 mb-6 w-full group">
+              <div className="relative z-auto mb-6 w-full group">
                 <label htmlFor="exampleFormControlInput2" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.PersonalInformationContent.label.cardexpiredate}</label>
                 <DatePicker required className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  selected={userData['cardExpireDate']} placeholderText={constant.PersonalInformationContent.placeholder.cardexpiredate}  onChange={(date)=> dateChanged(date, 'cardExpireDate')} />
               </div>

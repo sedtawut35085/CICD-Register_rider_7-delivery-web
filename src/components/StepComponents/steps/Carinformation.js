@@ -123,19 +123,19 @@ export default function Carinformation({isMessageErrorCarLicensePicture,isMessag
             </div>
           </div>
           <div className='flex flex-col py-2'>
-            <div className="relative z-40 mb-6 w-full group">
+            <div className="relative mb-6 w-full group z-auto">
               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.CarInformationContent.label.licenseissuedate}</label>
-              <DatePicker required className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  selected={userData['licenseissuedate']} placeholderText={constant.CarInformationContent.placeholder.licenseissuedate}  onChange={(date)=> dateChanged(date, 'licenseissuedate')} />
+              <DatePicker required className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" selected={userData['licenseissuedate']} placeholderText={constant.CarInformationContent.placeholder.licenseissuedate}  onChange={(date)=> dateChanged(date, 'licenseissuedate')} />
             </div>
           </div>
           <div className='flex flex-col py-2'>
-            <div className="relative z-30 mb-6 w-full group">
+            <div className="relative z-auto mb-6 w-full group">
               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.CarInformationContent.label.licenseexpiredate}</label>
               <DatePicker required className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  selected={userData['licenseexpiredate']} placeholderText={constant.CarInformationContent.placeholder.licenseexpiredate}  onChange={(date)=> dateChanged(date, 'licenseexpiredate')} />
             </div>
           </div>
           <div className='flex flex-col py-2'>
-            <div className="relative z-20 mb-6 w-full group">
+            <div className="relative z-auto mb-6 w-full group">
               <label htmlFor="exampleFormControlInput2" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.CarInformationContent.label.licensename}</label>
               <input
                 onChange={handleChange}
@@ -149,13 +149,13 @@ export default function Carinformation({isMessageErrorCarLicensePicture,isMessag
             </div>
           </div> 
           <div className='flex flex-col py-2'>
-            <div className="relative z-10 mb-6 w-full group">
+            <div className="relative z-auto mb-6 w-full group">
               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.CarInformationContent.label.taxissuedate}</label>
               <DatePicker required className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  selected={userData['taxissuedate']} placeholderText={constant.CarInformationContent.placeholder.taxissuedate}  onChange={(date)=> dateChanged(date, 'taxissuedate')} />
             </div>
           </div>
           <div className='flex flex-col py-2'>
-            <div className="relative z-5 mb-6 w-full group">
+            <div className="relative z-auto mb-6 w-full group">
               <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.CarInformationContent.label.taxexpiredate}</label>
               <DatePicker required className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  selected={userData['taxexpiredate']} placeholderText={constant.CarInformationContent.placeholder.taxexpiredate}  onChange={(date)=> dateChanged(date, 'taxexpiredate')} />
             </div>
