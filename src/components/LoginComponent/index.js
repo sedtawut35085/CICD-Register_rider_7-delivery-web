@@ -122,6 +122,7 @@ const LoginComponent = () => {
             .catch(err =>{
                 if(err.toString().includes('An account with the given email already exists.')){
                     setIsErrorRegister(constant.LoginContent.errorregistermailmessage.emailalreadyuse);
+                    setLoading(false)
                 }
             });
         }else{

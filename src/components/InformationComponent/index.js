@@ -234,7 +234,7 @@ const InformationComponent = () => {
           <div className="md:col-span-6 flex md:pl-10 items-center md:justify-start "></div>
             <div className="md:col-span-6 flex items-center justify-end md:pr-10">
             {loading === true?
-              <>
+              <> 
               <div className="loading-center py-2 px-4 flex">
                 <RingLoader
                     size={25}

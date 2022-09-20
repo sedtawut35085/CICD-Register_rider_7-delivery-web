@@ -58,7 +58,7 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
             </div>
             <div className='flex flex-col py-2 z-0'>
               <div className="relative z-0 mb-6 w-full group">
-                <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.PersonalInformationContent.label.name}</label>
+                <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.PersonalInformationContent.label.surname}</label>
                 <input
                   required
                   onChange={handleChange}
