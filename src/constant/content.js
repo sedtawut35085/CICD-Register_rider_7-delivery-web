@@ -4,7 +4,7 @@ export const NavbarContent = {
 }
 
 export const LoginContent = {
-    title        : "ลงทะเบียนผู้ใช้งาน",
+    title        : "ลงทะเบียนผู้ใช้งาน check",
     button : {
         email    : "ลงทะเบียน",
         facebook : "เข้าสู่ระบบด้วย Facebook",
