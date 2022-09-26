@@ -36,7 +36,7 @@ export default function Carinformation({isMessageErrorCarLicensePicture,isMessag
 
   return (
     <div> 
-    <div className="grid md:grid-cols-12 gap-5 mb-6">
+    <div className="grid md:grid-cols-12 gap-5">
       <div className="md:col-span-12">
         <h1 className="pb-2">{constant.CarInformationContent.title}</h1>
         <div className="border rounded-2xl pl-6 pr-6 pt-6 ">
@@ -161,7 +161,7 @@ export default function Carinformation({isMessageErrorCarLicensePicture,isMessag
             </div>
           </div>
           </div>
-          <div className=" grid md:grid-cols-4 md:gap-x-10 pl-6 pr-6 pt-2 pb-6 ">
+          <div className=" grid md:grid-cols-4 md:gap-x-10 pl-6 pr-6 pt-2 pb-4">
             <div className='flex flex-col py-2 text-center'>
               <div className="relative z-0 w-full group">
                 <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.CarInformationContent.label.carlicencepicture.title}</label>

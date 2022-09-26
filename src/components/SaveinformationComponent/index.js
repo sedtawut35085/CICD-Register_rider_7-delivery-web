@@ -144,6 +144,7 @@ export const SavedriverlicenseInformation = async (data, userId) => {
 }
 
 export const SavecarInformation = async (data, userId) => {
+  console.log('data check : ', data)
   convertedFile = await convertToBase64(data['carlicencepicture']);
   convertedFile = data['carlicencepicture'].type + ' ' + convertedFile;
   data['carlicencepicture'] = await uploadPhoto(convertedFile)
@@ -154,16 +155,16 @@ export const SavecarInformation = async (data, userId) => {
     "updateKey": "carInformation",
     "updateValue": {
       "carType": data["cartype"],
-      "carNumber": data["numbercar"],
+      "carNumber": data["carnumber"],
       "typeofCarsign": data["typeofcarsign"],
       "carCountry": data["carcountry"],
       "carBrand": data["brand"],
       "carColor": data["color"],
-      "licenseIssueDate": data["licenseissuedate"],
-      "licenseExpireDate": data["licenseexpiredate"],
+      "licenseIssueDate": data["licenseissuedate"].toLocaleDateString("en-US"),
+      "licenseExpireDate": data["licenseexpiredate"].toLocaleDateString("en-US"),
       "licenseName": data["licensename"],
-      "taxIssueDate": data["taxissuedate"],
-      "taxExpireDate": data["taxexpiredate"],
+      "taxIssueDate": data["taxissuedate"].toLocaleDateString("en-US"),
+      "taxExpireDate": data["taxexpiredate"].toLocaleDateString("en-US"),
       "LicencePhoto": data['carlicencepicture'],
       "TaxPhotp": data['taxpicture']
     }

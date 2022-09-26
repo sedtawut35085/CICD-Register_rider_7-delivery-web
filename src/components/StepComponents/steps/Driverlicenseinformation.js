@@ -53,7 +53,7 @@ export default function Driverlicenseinformation({isMessageErrorDriverLicensePic
 
   return (
     <div> 
-      <div className="grid md:grid-cols-12 gap-5 pb-5">
+      <div className="grid md:grid-cols-12 gap-5">
       <div className="md:col-span-12">
         <h1 className="pb-2">{constant.DriverLicenseInformationContent.title}</h1>
         <div className="border rounded-2xl pl-6 pr-6 pt-6 ">

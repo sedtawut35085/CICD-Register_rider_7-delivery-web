@@ -296,6 +296,7 @@ export const optionsgender = [
 ]
 
 export const optionscountry = [
+    { value: "", disable: true , label: "ไม่ระบุ"},
     { value: "กรุงเทพมหานคร", disable: false , label: "กรุงเทพมหานคร"},
     { value: "กระบี่", disable: false , label: "กระบี่"},
     { value: "กาญจนบุรี", disable: false , label: "กาญจนบุรี"},

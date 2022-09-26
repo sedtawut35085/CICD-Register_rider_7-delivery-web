@@ -101,7 +101,6 @@ const InformationComponent = () => {
           setLoading(true)
           let responsesavepersonalinformation = await SavepersonalInformation(userData , currentUser.username)
           let responsesaverelevantinformation = await SaverelevantInformation(userData , currentUser.username)
-          console.log('responsesavepersonalinformation: ' ,responsesavepersonalinformation)
           if(responsesavepersonalinformation.status === 200 && responsesaverelevantinformation.status === 200){
             setLoading(false)
             setCurrentStep(newStep)
@@ -226,11 +225,11 @@ const InformationComponent = () => {
         </div>  
       </div>
       <form onSubmit={Submit}>
-        <div className="pl-10 pr-10 pb-10 pt-6 mb-8">
+        <div className="pl-10 pr-10 pb-0 pt-6 mb-8">
             {displayStep(currentStep)}
         </div>
         {currentStep !== steps.length && (
-        <div className="grid md:grid-cols-12 -mt-14 button-responsive">
+        <div className="grid md:grid-cols-12 -mt-2 button-responsive">
           <div className="md:col-span-6 flex md:pl-10 items-center md:justify-start "></div>
             <div className="md:col-span-6 flex items-center justify-end md:pr-10">
             {loading === true?
