@@ -80,7 +80,12 @@ export const PreliminaryContent = {
         name    : "ชื่อ",
         surname : "นามสกุล",
         email   : "อีเมล",
-        country : "จังหวัดที่ต้องการรับงาน"
+        country : "จังหวัดที่ต้องการรับงาน",
+    },
+    papa : {
+        title : "ข้อกำหนดและการความยินยอม",
+        des : "อ่านข้อกำหนดและการความยินยอมคลิก",
+        body : ""
     },
     placeholder : {
         name    : "นายสมชาย",

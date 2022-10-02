@@ -70,7 +70,7 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
                 />
               </div>
             </div>
-            <div className='flex flex-col py-2'>
+            <div className='flex flex-col py-2'> 
               <div className="relative z-auto mb-6 w-full group">
                 <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.PersonalInformationContent.label.birthday}</label>
                 <DatePicker className="block w-full pl-4 pb-1 font-normal text-gray-700 bg-white bg-clip-padding border-bottom border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" selected={userData['birthday']} placeholderText={constant.PersonalInformationContent.placeholder.birthday} required onChange={(date)=> dateChanged(date, 'birthday')} />
