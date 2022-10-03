@@ -153,12 +153,12 @@ export const PersonalInformationContent = {
     placeholder : {
         name   : "นายสมชาย",
         surname : "เข็มกลัด",
-        birthday : "00/00/0000",
+        birthday : "ดด/วว/ปป",
         email : "example@gmail.com",
         age : "20",
         cardnumber : "0-0000-00000-00-0",
-        cardissuedate : "00/00/0000",
-        cardexpiredate : "00/00/0000"
+        cardissuedate : "ดด/วว/ปป",
+        cardexpiredate : "ดด/วว/ปป"
     },
     messegeerror : "เกิดข้อผิดพลาด",
     messageerrorcardnumber : "บัตรประชาชนต้องเป็นรูปแบบ X-XXXX-XXXXX-XX-X",
@@ -278,12 +278,12 @@ export const DriverLicenseInformationContent = {
         namebookbank : "ธนาคารไทยพานิชณ์",
         normaldriverlicense : {
             numberdriverlicense : "00000000",
-            issuedatedriverlicense : "00/00/0000",
-            expiredatedriverlicense : "00/00/0000"
+            issuedatedriverlicense : "ดด/วว/ปป",
+            expiredatedriverlicense : "ดด/วว/ปป"
         },
         specialdriverlicense : {
             numberdriverlicense : "00000000",
-            issuedatedriverlicense : "00/00/0000",
+            issuedatedriverlicense : "ดด/วว/ปป",
          
         },
     
@@ -418,11 +418,11 @@ export const CarInformationContent = {
         countryofsigncar : "กรุงเทพ",
         brand : "โตโยต้า",
         color : "แดง",
-        licenseissuedate : "00/00/0000",
-        licenseexpiredate : "00/00/0000",
+        licenseissuedate : "ดด/วว/ปป",
+        licenseexpiredate : "ดด/วว/ปป",
         licensename : "นายสมชาย",
-        taxissuedate : "00/00/0000",
-        taxexpiredate : "00/00/0000"
+        taxissuedate : "ดด/วว/ปป",
+        taxexpiredate : "ดด/วว/ปป"
     },
     label : {
         typecar : "ชนิดยานพาหนะ",

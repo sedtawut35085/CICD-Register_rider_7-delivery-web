@@ -25,12 +25,12 @@ export const SavepersonalInformation = async (data, userId) => {
     "updateValue": {
       "name": data['name'],
       "surname": data['surname'],
-      "birthday": data['birthday'].toLocaleDateString("en-US"),
+      "birthday": data['birthday'].toLocaleDateString("en-GB"),
       "gender": data['gender'],
       "age": data['age'],
       "cardNumber": data['cardNumber'],
-      "cardIssueDate": data['cardIssueDate'].toLocaleDateString("en-US"),
-      "cardExpireDate": data['cardExpireDate'].toLocaleDateString("en-US"),
+      "cardIssueDate": data['cardIssueDate'].toLocaleDateString("en-GB"),
+      "cardExpireDate": data['cardExpireDate'].toLocaleDateString("en-GB"),
       "cardPhoto": data['idcard'],
       "userPhoto": data['personalpicture']
     }
@@ -110,8 +110,8 @@ export const SavedriverlicenseInformation = async (data, userId) => {
         "numberdriverLicense": data["numberdriverlicense"],
         "typedriverLicense": data["typedriverlicense"],
         "typecardriverLicense": data["typecardriverlicense"],
-        "issuedatedriverLicense": data["driverlicenseIssueDate"].toLocaleDateString("en-US"),
-        "expiredatedriverLicense": data["driverlicenseExpireDate"].toLocaleDateString("en-US"),
+        "issuedatedriverLicense": data["driverlicenseIssueDate"].toLocaleDateString("en-GB"),
+        "expiredatedriverLicense": data["driverlicenseExpireDate"].toLocaleDateString("en-GB"),
         "driverLicensePhoto": data['driverlicensephoto']
       }
     }
@@ -128,7 +128,7 @@ export const SavedriverlicenseInformation = async (data, userId) => {
         "numberdriverLicense": data["numberdriverlicense"],
         "typedriverLicense": data["typedriverlicense"],
         "typecardriverLicense": data["typecardriverlicense"],
-        "issuedatedriverLicense": data["driverlicenseIssueDate"].toLocaleDateString("en-US"),
+        "issuedatedriverLicense": data["driverlicenseIssueDate"].toLocaleDateString("en-GB"),
         "driverLicensePhoto": data['driverlicensephoto'],
         "documentdriverLicensePhoto": data['documentdriverlicensephoto'],
         "issmartcarddriverlicense": data['issmartcarddriverlicense']
@@ -160,11 +160,11 @@ export const SavecarInformation = async (data, userId) => {
       "carCountry": data["carcountry"],
       "carBrand": data["brand"],
       "carColor": data["color"],
-      "licenseIssueDate": data["licenseissuedate"].toLocaleDateString("en-US"),
-      "licenseExpireDate": data["licenseexpiredate"].toLocaleDateString("en-US"),
+      "licenseIssueDate": data["licenseissuedate"].toLocaleDateString("en-GB"),
+      "licenseExpireDate": data["licenseexpiredate"].toLocaleDateString("en-GB"),
       "licenseName": data["licensename"],
-      "taxIssueDate": data["taxissuedate"].toLocaleDateString("en-US"),
-      "taxExpireDate": data["taxexpiredate"].toLocaleDateString("en-US"),
+      "taxIssueDate": data["taxissuedate"].toLocaleDateString("en-GB"),
+      "taxExpireDate": data["taxexpiredate"].toLocaleDateString("en-GB"),
       "LicencePhoto": data['carlicencepicture'],
       "TaxPhotp": data['taxpicture']
     }

@@ -42,7 +42,7 @@ export default function Personalinformation({isMessageErrorPersonalPicture,isMes
           <h1 className="pb-2">{constant.PersonalInformationContent.title}</h1>
           <div className="border rounded-2xl pl-6 pr-6 pt-6 ">
             <div className="grid md:grid-cols-3 md:gap-x-10 ">
-            <div className='flex flex-col py-2 z-50'>
+            <div className='flex flex-col py-2'>
               <div className="relative z-0 mb-6 w-full group">
                 <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.PersonalInformationContent.label.name}</label>
                 <input
