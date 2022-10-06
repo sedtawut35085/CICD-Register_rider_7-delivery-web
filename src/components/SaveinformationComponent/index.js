@@ -144,7 +144,6 @@ export const SavedriverlicenseInformation = async (data, userId) => {
 }
 
 export const SavecarInformation = async (data, userId) => {
-  console.log('data check : ', data)
   convertedFile = await convertToBase64(data['carlicencepicture']);
   convertedFile = data['carlicencepicture'].type + ' ' + convertedFile;
   data['carlicencepicture'] = await uploadPhoto(convertedFile)

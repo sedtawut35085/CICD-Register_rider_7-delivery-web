@@ -2,6 +2,7 @@ import { useState , useContext } from "react";
 import { useStepperContext } from "../../context/UserContext";
 import { AuthContext } from '../../auth/Auth'
 import { SavepersonalInformation, SaverelevantInformation, SavebookbankInformation, SavecriminalhistoryInformation, SavedriverlicenseInformation, SavecarInformation} from '../SaveinformationComponent/index'
+import { updateUser } from '../../service/index'
 
 import RingLoader from "react-spinners/RingLoader";
 import { useLocation } from "react-router-dom";
@@ -101,11 +102,20 @@ const InformationComponent = () => {
           setLoading(true)
           let responsesavepersonalinformation = await SavepersonalInformation(userData , currentUser.username)
           let responsesaverelevantinformation = await SaverelevantInformation(userData , currentUser.username)
-          if(responsesavepersonalinformation.status === 200 && responsesaverelevantinformation.status === 200){
+          var params = {
+            "userId": currentUser.username
+          }
+          var bodydata = {
+            "updateKey": "userIdcardnumber",
+            "updateValue": userData['cardNumber']
+          }
+          let responseupdateuserIdcard = await updateUser(params, bodydata)
+          if(responsesavepersonalinformation.status === 200 && responsesaverelevantinformation.status === 200 && responseupdateuserIdcard.status === 200){
             setLoading(false)
             setCurrentStep(newStep)
           }else{
             setIsResponseError(true)
+            setLoading(false)
           }
         } 
       }
@@ -137,6 +147,7 @@ const InformationComponent = () => {
             setCurrentStep(newStep)
           }else{
             setIsResponseError(true)
+            setLoading(false)
           }
         } 
       }
@@ -184,6 +195,7 @@ const InformationComponent = () => {
             setCurrentStep(newStep)
           }else{
             setIsResponseError(true)
+            setLoading(false)
           }
         }
       }
@@ -206,6 +218,7 @@ const InformationComponent = () => {
             setCurrentStep(newStep)
           }else{
             setIsResponseError(true) 
+            setLoading(false)
           }
         } 
       }else{
