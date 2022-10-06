@@ -35,7 +35,7 @@ export default function Bookbank({ isMessageErrorBookbankPicture, isMessageError
           <h1 className="pb-2">{constant.BookbankInformationContent.title}</h1>
           <div className="border rounded-2xl pl-6 pr-6 pt-6 ">
             <div className="grid md:grid-cols-2 md:gap-x-10 ">
-              <div className='flex flex-col py-2 z-50'>
+              <div className='flex flex-col py-2'>
                 <div className="relative z-0 mb-6 w-full group">
                   <label htmlFor="exampleFormControlInput" className="form-label inline-blocktext-gray-700 pl-2 text-sm">{constant.BookbankInformationContent.label.name}</label>
                   <input
